@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>      
+	  
+        <ion-card-content>
+          
+      <div *ngIf="resultSuccess == true" style="color: blue;">
+        {{message}}
+      </div>
+      
+      <div *ngIf="resultError == true" style="color: red;">
+        {{message}}
+      </div>
+      
+      <form #paymentForm="ngForm" (ngSubmit)="payment(paymentForm)" >
+          <ion-list>
+              <ion-label><b>Credit Card Details</b></ion-label>
+              <ion-item>
+                <ion-label><b>Card Number </b></ion-label>
+                <ion-input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="newCreditCard.cardNumber" required="true" #cardNumber="ngModel"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label><b>Security Code</b></ion-label>
+                <ion-input type="text" id="securityCode" name="securityCode" [(ngModel)]="newCreditCard.securityCode" #securityCode="ngModel"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                  <ion-label><b>Expiration Date</b></ion-label>
+                  <ion-input type="text" id="expirationDate" name="expirationDate" [(ngModel)]="newCreditCard.expirationDate" #expirationDate="ngModel"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-button (click)="clear()">
+                    Clear
+                  </ion-button>
+                  <ion-button type="submit" ion-button block>
+                    Finish 
+                  </ion-button>
+              </ion-item>
+  
+          </ion-list>
+      </form>
+  
+    </ion-card-content>
+      
+  </ion-card>
+  
+  </ion-content>
+  
+  <ion-footer>
+  
+      <ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
+      
+    </ion-footer>
+  
