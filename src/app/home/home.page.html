@@ -9,13 +9,29 @@
 	</ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-	<ion-card>      
-		<ion-card-header>        
-			<ion-card-title>RyuClean</ion-card-title>
+	<ion-card *ngIf="utilityService.getIsLogin()==false">
+		<ion-card-header>
+			<ion-card-title>Welcome</ion-card-title>
 		</ion-card-header>
 		<ion-card-content>
-			<p>Use the side menu to navigate around this demo app.</p>
+			<p>
+				This version of the RyuClean App is Amazing!
+			</p>
+			<ul style="margin-left:20px;">
+				<li>Awesome meet cleaners yoy</li>
+				<li>Awesome service yow</li>
+			</ul>
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="sessionService.getIsLogin()==true">
+		<ion-card-header>
+			<ion-card-title>WELCOME HOME YO</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<h1>yeboii</h1>
+			
 		</ion-card-content>
 	</ion-card>
 </ion-content>
