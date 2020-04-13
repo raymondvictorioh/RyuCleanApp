@@ -23,11 +23,14 @@ export class UtilityService {
 
 	}
 
-	getIsLogin(): boolean {
-		if (sessionStorage.isLogin == "true") {
+	getIsLogin(): boolean
+	{
+		if(sessionStorage.isLogin == "true")
+		{
 			return true;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}

@@ -77,7 +77,7 @@
 
   <ion-card *ngIf="utilityService.getIsLogin() == true">
     <ion-card-content>
-      You are login as {{utilityService.getCurrentCustomer().firstName}} {{sessionService.getCurrentCustomer().lastName}}
+      You are login as {{utilityService.getCurrentCustomer().firstName}} {{utilityService.getCurrentCustomer().lastName}}
     </ion-card-content>
 
   </ion-card>
