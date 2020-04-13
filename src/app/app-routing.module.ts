@@ -32,12 +32,11 @@ const routes: Routes = [
   
   { path: 'viewMap', loadChildren: './view-map/view-map.module#ViewMapPageModule' },
   
-  { path: 'success', loadChildren:'./success/success.module#SuccessPageModule' }
-  
-  
-  
+  { path: 'success', loadChildren:'./success/success.module#SuccessPageModule' },
 
+  {path: 'packages', loadChildren:'./package/package.module#PackagePageModule'},
 
+  {path: 'register', loadChildren:'./register/register.module#RegisterPageModule'}
   
 ];
 

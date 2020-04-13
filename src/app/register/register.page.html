@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="register(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-xs="12">
+          <div text-center>
+            <h3>Create your account!</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="firstName" id="firstName" type="text" placeholder="First Name" [(ngModel)]="newCustomer.firstName" required="true" #infirstName="ngModel"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="lastName" id="lastName" type="text" placeholder="Last Name" [(ngModel)]="newCustomer.lastName" required="true" #inlastName="ngModel"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="contactNum" id="contactNum" type="text" placeholder="Contact Number" [(ngModel)]="contactNum" minlength="4" maxlength="32"
+              required="true" #incontactNum="ngModel"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="username" id="username" type="text" placeholder="Username" [(ngModel)]="username" minlength="4" maxlength="32"
+              required="true" #inusername="ngModel"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" id="password" type="password" placeholder="Password" [(ngModel)]="password" minlength="4" maxlength="32"
+              required="true" #inpassword="ngModel"></ion-input>
+            </ion-item>
+
+          </div>
+          <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

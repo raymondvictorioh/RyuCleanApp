@@ -15,6 +15,12 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
+
+        <ion-list *ngIf="utilityService.getIsLogin()">
+          <ion-list-header>
+            <ion-label>System Admin</ion-label>
+          </ion-list-header>
+        </ion-list>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

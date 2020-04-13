@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class CustomerService {
 
-  baseUrl: String;
+  baseUrl: string;
 
   constructor(private httpClient: HttpClient,
     private utilityService: UtilityService) {
@@ -24,10 +24,19 @@ export class CustomerService {
   }
 
   customerLogin(username: string, password: string): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "/customerLogin?username=" + username + "&password" + password).pipe
+    return this.httpClient.get<any>(this.baseUrl + "/customerLogin?username=" + username + "&password=" + password).pipe
       (
         catchError(this.handleError)
       );
+  }
+
+  createNewCustomer(newCustomer: Customer): Observable<any> {
+    let createNewCustomerReq = {
+      "newCustomer": newCustomer
+    }
+    return this.httpClient.put<any>(this.baseUrl, createNewCustomerReq, httpOptions).pipe(
+      catchError(this.handleError)
+    )
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -41,6 +50,10 @@ export class CustomerService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
+
+
+ 
+
 
 
 }
