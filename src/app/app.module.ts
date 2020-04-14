@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GMapModule } from 'primeng/gmap';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,12 +26,14 @@ import { GMapModule } from 'primeng/gmap';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    GMapModule
+    GMapModule,
+    NgxQRCodeModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner
   ],
   bootstrap: [AppComponent]
 })
