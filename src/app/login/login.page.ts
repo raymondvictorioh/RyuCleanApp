@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import {UtilityService} from '../utility.service';
+
+import { UtilityService } from '../utility.service';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 
@@ -64,9 +66,11 @@ export class LoginPage implements OnInit {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);
   }
-
+  customerRegister() {
+    this.router.navigate(["register"])
+  }
   back() {
-    this.router.navigate(["/home"]);
+    this.router.navigate(["home"]);
   }
 
 }

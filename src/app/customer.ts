@@ -1,21 +1,25 @@
 import { OrderEntity } from './order-entity';
+import { CreditCard } from './credit-card';
 
 export class Customer {
 
-    customerId: number;
+    cusId: number;
     firstName: string;
     lastName: string;
     username: string;
     contactNum: number;
     password: string;
-    orderList: OrderEntity[];
+    orders: OrderEntity[];
+    creditCards: CreditCard[];
 
-    constructor(customerId?: number,firstName?:string, lastName?: string, username?: string, contactNum?: number, password?: string){
+    constructor(cusId?: number,firstName?:string, lastName?: string, username?: string, contactNum?: number, password?: string){
+        this.cusId = cusId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.contactNum = contactNum;
         this.password = password;
-        this.orderList = new Array(); 
+        this.orders = new Array(); 
+        this.creditCards = new Array();
     }
 }

@@ -15,6 +15,7 @@ import { GMapModule } from 'primeng/gmap';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
+import { Calendar } from '@ionic-native/calendar/ngx';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    BarcodeScanner
+    BarcodeScanner,
+    Calendar
   ],
   bootstrap: [AppComponent]
 })
