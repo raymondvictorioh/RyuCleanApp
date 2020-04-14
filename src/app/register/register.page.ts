@@ -5,6 +5,9 @@ import { NgForm } from '@angular/forms';
 import { UtilityService } from '../utility.service';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+
+import { MenuController } from '@ionic/angular';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -21,12 +24,20 @@ export class RegisterPage implements OnInit {
   newCustomer: Customer;
 
   constructor(private router: Router, public utilityService: UtilityService,
-    private customerService: CustomerService) {
+    private customerService: CustomerService, public menuCtrl: MenuController) {
     this.submitted = false;
     this.newCustomer = new Customer();
     this.resultSuccess = false;
     this.resultError = false;
   }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  // ionViewDidLeave() {
+  //   this.menuCtrl.enable(true);
+  // }
 
   ngOnInit() {
   }
@@ -39,8 +50,9 @@ export class RegisterPage implements OnInit {
   register(form: NgForm) {
     this.submitted = true;
     if (form.valid) {
-      this.utilityService.setUsername(this.username);
-      this.utilityService.setPassword(this.password);
+      console.log("Form valid!!!");
+      // this.utilityService.setUsername(this.username);
+      // this.utilityService.setPassword(this.password);
 
       this.customerService.createNewCustomer(this.newCustomer).subscribe(
         response => {
@@ -51,7 +63,7 @@ export class RegisterPage implements OnInit {
 
           this.newCustomer = new Customer();
           this.submitted = false;
-
+          form.reset();
         }, error => {
           this.resultError = true;
           this.resultSuccess = false;
@@ -60,6 +72,10 @@ export class RegisterPage implements OnInit {
         }
       )
     }
+  }
+
+  back() {
+    this.router.navigate(["login"]);
   }
 
 }

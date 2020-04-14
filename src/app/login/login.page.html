@@ -1,19 +1,12 @@
-<ion-header>
-
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="back()">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Login</ion-title>
   </ion-toolbar>
-
-
-
-</ion-header>
-
-
+</ion-header> -->
 
 <ion-content>
 
@@ -30,7 +23,7 @@
           <ion-row color="primary" justify-content-center>
             <ion-col align-self-center>
               <div text-center>
-                <h1>Login</h1>
+                <h1>Welcome to RyuClean</h1>
               </div>
             </ion-col>
           </ion-row>
@@ -46,9 +39,9 @@
         <ion-list>
 
           <ion-item>
-
+            <ion-label fixed>Username</ion-label>
             <ion-input type="text" id="username" name="username" [(ngModel)]="username" minlength="4" maxlength="32"
-              required="true" #inusername="ngModel">Username: </ion-input>
+              required="true" #inusername="ngModel"></ion-input>
           </ion-item>
           <div style="color:red;">
             <div *ngIf="inusername.invalid && (inusername.dirty || inusername.touched || submitted)" class="errorText">
@@ -65,9 +58,9 @@
           </div>
 
           <ion-item>
-
+            <ion-label fixed>Password</ion-label>
             <ion-input type="password" id="password" name="password" [(ngModel)]="password" minlength="4" maxlength="32"
-              required="true" #inpassword="ngModel">Password:</ion-input>
+              required="true" #inpassword="ngModel"></ion-input>
           </ion-item>
           <div style="color:red;">
             <div *ngIf="inpassword.invalid && (inpassword.dirty || inpassword.touched || submitted)" class="errorText">

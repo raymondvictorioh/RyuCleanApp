@@ -6,6 +6,9 @@ import { NgForm } from '@angular/forms';
 import { UtilityService } from '../utility.service';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+import { MenuController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-login',
@@ -22,10 +25,17 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router,
     public utilityService: UtilityService,
-    private customerService: CustomerService) {
+    private customerService: CustomerService, public menuCtrl: MenuController) {
     this.submitted = false;
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  // ionViewDidLeave() {
+  //   this.menuCtrl.enable(true);
+  // }
 
   ngOnInit() {
   }

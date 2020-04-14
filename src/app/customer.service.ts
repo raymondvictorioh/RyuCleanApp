@@ -31,12 +31,11 @@ export class CustomerService {
   }
 
   createNewCustomer(newCustomer: Customer): Observable<any> {
-    let createNewCustomerReq = {
-      "newCustomer": newCustomer
-    }
+    console.log("Easdasd");
+    let createNewCustomerReq = { "newCustomer": newCustomer }
     return this.httpClient.put<any>(this.baseUrl, createNewCustomerReq, httpOptions).pipe(
       catchError(this.handleError)
-    )
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
