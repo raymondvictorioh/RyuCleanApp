@@ -67,10 +67,10 @@ export class LoginPage implements OnInit {
     this.utilityService.setCurrentCustomer(null);
   }
   customerRegister() {
-    this.router.navigate(["/register"])
+    this.router.navigate(["register"])
   }
   back() {
-    this.router.navigate(["/home"]);
+    this.router.navigate(["home"]);
   }
 
 }

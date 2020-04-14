@@ -36,14 +36,13 @@ const routes: Routes = [
 
   { path: 'barcode', loadChildren: './barcode/barcode.module#BarcodePageModule' },
 
-
-
-
-
-
   { path: 'packages', loadChildren: './package/package.module#PackagePageModule' },
 
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+
+  { path: 'map', loadChildren: './systemAdministration/map/map.module#MapPageModule' },
+
+  { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' }
 
 ];
 

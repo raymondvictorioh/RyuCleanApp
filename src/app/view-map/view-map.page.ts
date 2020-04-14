@@ -59,7 +59,7 @@ export class ViewMapPage implements OnInit {
     // create a new map by passing HTMLElement
     const mapEle: HTMLElement = document.getElementById('map');
     // create LatLng object
-    const myLatLng = {lat: 4.658383846282959, lng: -74.09394073486328};
+    const myLatLng = {lat: 1.2966, lng: 103.7764};
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
