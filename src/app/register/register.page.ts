@@ -35,9 +35,7 @@ export class RegisterPage implements OnInit {
     this.menuCtrl.enable(false);
   }
 
-  // ionViewDidLeave() {
-  //   this.menuCtrl.enable(true);
-  // }
+
 
   ngOnInit() {
   }

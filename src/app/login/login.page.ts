@@ -29,15 +29,11 @@ export class LoginPage implements OnInit {
     this.submitted = false;
   }
 
+
+  ngOnInit() { }
+
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
-  }
-
-  // ionViewDidLeave() {
-  //   this.menuCtrl.enable(true);
-  // }
-
-  ngOnInit() {
   }
 
   clear() {
@@ -67,6 +63,8 @@ export class LoginPage implements OnInit {
           this.errorMessage = error
         }
       );
+      this.menuCtrl.enable(true);
+
     } else {
 
     }

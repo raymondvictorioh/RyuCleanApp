@@ -12,10 +12,11 @@ export class SliderPage implements OnInit {
   constructor(private router: Router, public menuCtrl: MenuController, private storage: Storage) { }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
   }
 
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
+
   }
 
   async continueToLogin() {

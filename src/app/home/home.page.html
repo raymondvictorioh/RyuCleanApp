@@ -31,11 +31,18 @@
 		</ion-card-header>
 		<ion-card-content>
 			<h1>yeboii</h1>
-			
+
 		</ion-card-content>
 	</ion-card>
 </ion-content>
 
-<ion-footer>
-	<ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
+<ion-footer *ngIf="utilityService.getIsLogin() == true">
+
+	<ion-toolbar>
+		<ion-button expand="full" (click)="customerLogout()">
+			<ion-icon slot="start" name="exit"></ion-icon>
+			Logout
+		</ion-button>
+	</ion-toolbar>
+
 </ion-footer>

@@ -10,12 +10,10 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'home',
-  //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  // },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [SliderGuard] },
 
   { path: 'createNewOrder', loadChildren: './systemAdministration/create-new-order/create-new-order.module#CreateNewOrderPageModule', canActivate: [AuthGuard] },

@@ -13,6 +13,7 @@ export class SliderGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
     const isComplete = await this.storage.get('slidersComplete');
+    console.log("isComplete : " + isComplete);
     if (!isComplete) {
       this.router.navigateByUrl('/slider');
     }

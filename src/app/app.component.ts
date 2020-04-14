@@ -12,7 +12,7 @@ import { UtilityService } from './utility.service';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  
+
   public appPages = [
     {
       title: 'Home',
@@ -23,33 +23,32 @@ export class AppComponent implements OnInit {
       title: 'Login',
       url: '/login',
       icon: 'home'
-    },
-    {
-      title: 'New Order',
-      url: '/createNewOrder',
-      icon: 'create'
-    },
-    {
-      title: 'View All Order',
-      url: '/viewAllOrders',
-      icon: 'albums'
-    },
-    {
-      title: 'Map',
-      url: '/viewMap',
-      icon: 'albums'
-    },
-    
+    }
+    // },
+    // {
+    //   title: 'New Order',
+    //   url: '/createNewOrder',
+    //   icon: 'create'
+    // },
+    // {
+    //   title: 'View All Order',
+    //   url: '/viewAllOrders',
+    //   icon: 'albums'
+    // },
+    // {
+    //   title: 'Map',
+    //   url: '/viewMap',
+    //   icon: 'albums'
+    // },
+
 
   ];
-
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public utilityService:UtilityService
+    public utilityService: UtilityService
   ) {
     this.initializeApp();
   }
@@ -63,10 +62,47 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('********** AppComponent.ngOnInit()');
-		
+
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+    }
+    this.updateMainMenu();
+  }
+
+  onActivate(componentReference) {
+    console.log('********** AppComponent.onActivate: ' + componentReference.componentType);
+    this.updateMainMenu();
+  }
+
+  updateMainMenu() {
+    if (this.utilityService.getIsLogin()) {
+      console.log(this.utilityService.getIsLogin());
+      this.appPages = [
+        {
+          title: 'Homexxx',
+          url: '/home',
+          icon: 'home'
+        },
+        {
+          title: 'Logout',
+          url: '/login',
+          icon: 'exit'
+        }
+      ]
+    } else {
+      this.appPages = [
+        {
+          title: 'Homeeee',
+          url: '/home',
+          icon: 'home'
+        },
+        {
+          title: 'Login',
+          url: '/login',
+          icon: 'exit'
+        }
+      ]
     }
   }
 }
