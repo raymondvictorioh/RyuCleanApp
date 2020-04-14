@@ -32,7 +32,11 @@ const routes: Routes = [
   
   { path: 'viewMap', loadChildren: './view-map/view-map.module#ViewMapPageModule' },
   
-  { path: 'success', loadChildren:'./success/success.module#SuccessPageModule' }
+  { path: 'success', loadChildren:'./success/success.module#SuccessPageModule' },
+  
+  { path: 'barcode', loadChildren: './barcode/barcode.module#BarcodePageModule' },
+  
+  
   
   
   

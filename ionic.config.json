@@ -1,5 +1,7 @@
 {
   "name": "RyuIonic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
