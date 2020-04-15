@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ViewAllOrders</ion-title>
+    <ion-title>Orders</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Past</ion-label>
 
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="about">
+        <ion-icon name="today"></ion-icon>
+        <ion-label>Scheduled</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
