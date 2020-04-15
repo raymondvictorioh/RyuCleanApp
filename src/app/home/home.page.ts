@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  constructor(private router: Router, public utilityService: UtilityService, public menuCtrl: MenuController) { }
+  constructor(private router: Router, public utilityService: UtilityService, public menuCtrl: MenuController) {
+    this.menuCtrl.enable(true, "custom");
+  }
 
   ngOnInit() {
     console.log('********** HomePage.ngOnInit()');
@@ -18,13 +20,18 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+    console.log("current user is : " + this.utilityService.getCurrentCustomer());
   }
 
   customerLogout(): void {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);
-    this.router.navigateByUrl('login');
-    this.menuCtrl.enable(false);
+    this.menuCtrl.enable(false, 'custom');
+    console.log("is Logged In : " + this.utilityService.getIsLogin())
+    this.router.navigate(["/login"]);
+
   }
+
+
 
 }

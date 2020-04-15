@@ -9,10 +9,12 @@ import { Storage } from '@ionic/storage';
 })
 export class SliderPage implements OnInit {
 
-  constructor(private router: Router, public menuCtrl: MenuController, private storage: Storage) { }
+  constructor(private router: Router, public menuCtrl: MenuController, private storage: Storage) {
+    this.menuCtrl.enable(false, 'custom');
+  }
 
   ngOnInit() {
-    this.menuCtrl.enable(false);
+
   }
 
   ionViewWillEnter() {

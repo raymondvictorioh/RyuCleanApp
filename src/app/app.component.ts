@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UtilityService } from './utility.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public utilityService: UtilityService
+    public utilityService: UtilityService,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
   }
@@ -75,25 +77,30 @@ export class AppComponent implements OnInit {
     this.updateMainMenu();
   }
 
+  ionViewDidEnter() {
+    console.log("IONVIEWDIDENTER")
+    if (this.utilityService.getIsLogin() == false) {
+
+      this.menuCtrl.enable(false);
+    } else {
+      this.menuCtrl.enable(true);
+    }
+  }
+
   updateMainMenu() {
     if (this.utilityService.getIsLogin()) {
       console.log(this.utilityService.getIsLogin());
       this.appPages = [
         {
-          title: 'Homexxx',
+          title: 'Home',
           url: '/home',
           icon: 'home'
         },
-        {
-          title: 'Logout',
-          url: '/login',
-          icon: 'exit'
-        }
       ]
     } else {
       this.appPages = [
         {
-          title: 'Homeeee',
+          title: 'Home',
           url: '/home',
           icon: 'home'
         },
@@ -105,4 +112,6 @@ export class AppComponent implements OnInit {
       ]
     }
   }
+
+
 }

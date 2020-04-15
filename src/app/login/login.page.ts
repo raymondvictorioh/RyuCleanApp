@@ -26,15 +26,13 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     public utilityService: UtilityService,
     private customerService: CustomerService, public menuCtrl: MenuController) {
+    this.menuCtrl.enable(false, 'custom');
     this.submitted = false;
   }
 
 
   ngOnInit() { }
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
 
   clear() {
     this.username = "";
@@ -53,26 +51,29 @@ export class LoginPage implements OnInit {
           if (customer != null) {
             this.utilityService.setIsLogin(true);
             this.utilityService.setCurrentCustomer(customer);
+            console.log(this.utilityService.getCurrentCustomer().firstName);
             this.loginError = false;
           } else {
             this.loginError = true;
           }
+          this.router.navigateByUrl('/home');
         },
         error => {
           this.loginError = true;
           this.errorMessage = error
         }
       );
-      this.menuCtrl.enable(true);
-
     } else {
 
     }
+    this.menuCtrl.enable(true, 'custom');
   }
 
   customerLogout(): void {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);
+    this.menuCtrl.enable(false, 'custom');
+    console.log("is Log out : " + this.utilityService.getIsLogin())
   }
   customerRegister() {
     this.router.navigate(["register"])

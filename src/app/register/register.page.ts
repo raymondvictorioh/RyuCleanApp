@@ -29,11 +29,13 @@ export class RegisterPage implements OnInit {
     this.newCustomer = new Customer();
     this.resultSuccess = false;
     this.resultError = false;
+    this.menuCtrl.enable(false, 'custom');
+    this.submitted = false;
   }
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
+  // ionViewWillEnter() {
+  //   this.menuCtrl.enable(false);
+  // }
 
 
 
