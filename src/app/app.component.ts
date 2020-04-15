@@ -88,29 +88,20 @@ export class AppComponent implements OnInit {
   }
 
   updateMainMenu() {
-    if (this.utilityService.getIsLogin()) {
-      console.log(this.utilityService.getIsLogin());
-      this.appPages = [
-        {
-          title: 'Home',
-          url: '/home',
-          icon: 'home'
-        },
-      ]
-    } else {
-      this.appPages = [
-        {
-          title: 'Home',
-          url: '/home',
-          icon: 'home'
-        },
-        {
-          title: 'Login',
-          url: '/login',
-          icon: 'exit'
-        }
-      ]
-    }
+
+    console.log(this.utilityService.getIsLogin());
+    this.appPages = [
+      {
+        title: 'Home',
+        url: '/home',
+        icon: 'home'
+      },
+      {
+        title: 'Settings',
+        url: '/settings',
+        icon: 'settings'
+      }
+    ]
   }
 
 

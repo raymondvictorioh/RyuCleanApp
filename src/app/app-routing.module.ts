@@ -44,7 +44,11 @@ const routes: Routes = [
 
   { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' },
 
-  { path: 'slider', loadChildren: './slider/slider.module#SliderPageModule' }
+  { path: 'slider', loadChildren: './slider/slider.module#SliderPageModule' },
+  {
+    path: 'settings',
+    loadChildren: './settings/settings.module#SettingsPageModule'
+  }
 
 ];
 
