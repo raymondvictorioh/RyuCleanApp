@@ -56,6 +56,10 @@ const routes: Routes = [
   {
     path: 'scheduled-order',
     loadChildren: () => import('./systemAdministration/scheduled-order/scheduled-order.module').then( m => m.ScheduledOrderPageModule)
+  },
+  {
+    path: 'view-job-details',
+    loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then( m => m.ViewJobDetailsPageModule)
   }
 
 ];

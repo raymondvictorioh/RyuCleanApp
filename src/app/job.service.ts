@@ -35,6 +35,12 @@ export class JobService {
     );
   }
 
+  getJobByJobId(jobId: number) {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + jobId + "?username=" + this.utilityService.getUsername() + "$password=" + this.utilityService.getPassword()).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
 
   private handleError(error: HttpErrorResponse) {

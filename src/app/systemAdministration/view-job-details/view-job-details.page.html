@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>View Job Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div *ngIf="retrieveJobError == true" style="color: red;">
+        Job ID {{jobId}} does not exist!
+      </div>
+
+      <ion-list *ngIf="retrieveJobError==false && jobToView!=null">
+
+        <ion-item>
+          <ion-label>
+            <b>Job ID</b>
+          </ion-label>
+          {{jobToView.jobId}}
+        </ion-item>
+
+        <ion-item>
+          <ion-label><b></b></ion-label>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
