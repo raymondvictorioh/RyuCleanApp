@@ -48,6 +48,14 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: './settings/settings.module#SettingsPageModule'
+  },
+  {
+    path: 'past-order',
+    loadChildren: () => import('./systemAdministration/past-order/past-order.module').then( m => m.PastOrderPageModule)
+  },
+  {
+    path: 'scheduled-order',
+    loadChildren: () => import('./systemAdministration/scheduled-order/scheduled-order.module').then( m => m.ScheduledOrderPageModule)
   }
 
 ];

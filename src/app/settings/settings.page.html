@@ -1,35 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Settings
+    </ion-title>
   </ion-toolbar>
-</ion-header>
 
-<ion-content>
+  <ion-content>
 
-  <!-- Item as a Button -->
-  <ion-item button (click)="buttonClick()">
-    <ion-icon name="pencil" class="settings_icon"></ion-icon>
-    <ion-label>
-      Edit Profile
-    </ion-label>
-  </ion-item>
+    <!-- Item as a Button -->
+    <ion-item button (click)="buttonClick()">
+      <ion-icon name="pencil" class="settings_icon"></ion-icon>
+      <ion-label>
+        Edit Profile
+      </ion-label>
+    </ion-item>
 
-  <ion-item button (click)="buttonClick()">
-    <ion-icon name="person" class="settings_icon"></ion-icon>
-    <ion-label>
-      Account Settings
-    </ion-label>
-  </ion-item>
+    <ion-item button (click)="buttonClick()">
+      <ion-icon name="person" class="settings_icon"></ion-icon>
+      <ion-label>
+        Account Settings
+      </ion-label>
+    </ion-item>
 
-  <ion-item button (click)="presentConfirmation()">
-    <ion-icon name="power" class="settings_icon"></ion-icon>
-    <ion-label>
-      Log Out
-    </ion-label>
-  </ion-item>
-
+    <ion-item button (click)="presentConfirmation()">
+      <ion-icon name="power" class="settings_icon"></ion-icon>
+      <ion-label>
+        Log Out
+      </ion-label>
+    </ion-item>
 
 
 
 
-</ion-content>
+
+  </ion-content>

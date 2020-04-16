@@ -1,24 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Orders</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <!-- <img alt="logo" id="header_logo" height="40" float-left src="assets/ryucleanLogo.png"> -->
+      Orders
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-tabs>
+  <ion-tabs #myTabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
+
+      <ion-tab-button tab="pastOrder">
         <ion-icon name="calendar"></ion-icon>
         <ion-label>Past</ion-label>
 
       </ion-tab-button>
 
 
-      <ion-tab-button tab="about">
+      <ion-tab-button tab="scheduledOrder">
         <ion-icon name="today"></ion-icon>
         <ion-label>Scheduled</ion-label>
         <ion-badge>6</ion-badge>
       </ion-tab-button>
+
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>

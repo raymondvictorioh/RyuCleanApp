@@ -17,4 +17,7 @@ import { ViewAllOrdersPage } from './view-all-orders.page';
   ],
   declarations: [ViewAllOrdersPage]
 })
-export class ViewAllOrdersPageModule {}
+export class ViewAllOrdersPageModule {
+
+
+}

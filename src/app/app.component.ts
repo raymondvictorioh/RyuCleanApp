@@ -16,33 +16,10 @@ export class AppComponent implements OnInit {
 
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
       title: 'Login',
       url: '/login',
       icon: 'home'
     }
-    // },
-    // {
-    //   title: 'New Order',
-    //   url: '/createNewOrder',
-    //   icon: 'create'
-    // },
-    // {
-    //   title: 'View All Order',
-    //   url: '/viewAllOrders',
-    //   icon: 'albums'
-    // },
-    // {
-    //   title: 'Map',
-    //   url: '/viewMap',
-    //   icon: 'albums'
-    // },
-
-
   ];
 
   constructor(
@@ -100,6 +77,12 @@ export class AppComponent implements OnInit {
         title: 'Settings',
         url: '/settings',
         icon: 'settings'
+      },
+      {
+        title: 'Orders',
+        url: '/viewAllOrders',
+        icon: 'list-circle'
+
       }
     ]
   }
