@@ -4,20 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ViewAllOrdersPageRoutingModule } from './view-all-orders-routing.module';
+import { SliderPageRoutingModule } from './slider-routing.module';
 
-import { ViewAllOrdersPage } from './view-all-orders.page';
+import { SliderPage } from './slider.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewAllOrdersPageRoutingModule
+    SliderPageRoutingModule
   ],
-  declarations: [ViewAllOrdersPage]
+  declarations: [SliderPage]
 })
-export class ViewAllOrdersPageModule {
-
-
-}
+export class SliderPageModule { }

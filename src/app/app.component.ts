@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UtilityService } from './utility.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -12,44 +13,21 @@ import { UtilityService } from './utility.service';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  
+
   public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
     {
       title: 'Login',
       url: '/login',
       icon: 'home'
-    },
-    {
-      title: 'New Order',
-      url: '/createNewOrder',
-      icon: 'create'
-    },
-    {
-      title: 'View All Order',
-      url: '/viewAllOrders',
-      icon: 'albums'
-    },
-    {
-      title: 'Map',
-      url: '/viewMap',
-      icon: 'albums'
-    },
-    
-
+    }
   ];
-
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public utilityService:UtilityService
+    public utilityService: UtilityService,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
   }
@@ -63,10 +41,51 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('********** AppComponent.ngOnInit()');
-		
+
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+    this.updateMainMenu();
   }
+
+  onActivate(componentReference) {
+    console.log('********** AppComponent.onActivate: ' + componentReference.componentType);
+    this.updateMainMenu();
+  }
+
+  ionViewDidEnter() {
+    console.log("IONVIEWDIDENTER")
+    if (this.utilityService.getIsLogin() == false) {
+
+      this.menuCtrl.enable(false);
+    } else {
+      this.menuCtrl.enable(true);
+    }
+  }
+
+  updateMainMenu() {
+
+    console.log(this.utilityService.getIsLogin());
+    this.appPages = [
+      {
+        title: 'Home',
+        url: '/home',
+        icon: 'home'
+      },
+      {
+        title: 'Settings',
+        url: '/settings',
+        icon: 'settings'
+      },
+      {
+        title: 'Orders',
+        url: '/viewAllOrders',
+        icon: 'list-circle'
+
+      }
+    ]
+  }
+
+
 }

@@ -4,38 +4,29 @@
 			<ion-menu-button></ion-menu-button>
 		</ion-buttons>
 		<ion-title>
-			RyuClean
+			<img alt="logo" id="header_logo" height="40" float-left src="assets/ryucleanLogo.png">
+			Ryu Clean
 		</ion-title>
 	</ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-	<ion-card *ngIf="utilityService.getIsLogin()==false">
+
+	<ion-card>
 		<ion-card-header>
-			<ion-card-title>Welcome</ion-card-title>
+			<h3>Welcome Back,</h3>
+			<ion-card-title>{{this.utilityService.getCurrentCustomer().firstName}} </ion-card-title>
 		</ion-card-header>
 		<ion-card-content>
-			<p>
-				This version of the RyuClean App is Amazing!
-			</p>
-			<ul style="margin-left:20px;">
-				<li>Awesome meet cleaners yoy</li>
-				<li>Awesome service yow</li>
-			</ul>
-		</ion-card-content>
-	</ion-card>
-	<ion-card *ngIf="utilityService.getIsLogin()==true">
-		<ion-card-header>
-			<ion-card-title>WELCOME HOME YO</ion-card-title>
-		</ion-card-header>
-		<ion-card-content>
-			<h1>yeboii</h1>
-			
+
 		</ion-card-content>
 	</ion-card>
 </ion-content>
 
 <ion-footer>
-	<ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
+
+	<ion-toolbar>
+
+	</ion-toolbar>
+
 </ion-footer>

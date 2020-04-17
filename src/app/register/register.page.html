@@ -1,44 +1,135 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Register</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <form #form="ngForm" (ngSubmit)="register(form)">
-    <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-xs="12">
-          <div text-center>
-            <h3>Create your account!</h3>
-          </div>
-          <div padding>
-            <ion-item>
-              <ion-input name="firstName" id="firstName" type="text" placeholder="First Name" [(ngModel)]="newCustomer.firstName" required="true" #infirstName="ngModel"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="lastName" id="lastName" type="text" placeholder="Last Name" [(ngModel)]="newCustomer.lastName" required="true" #inlastName="ngModel"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="contactNum" id="contactNum" type="text" placeholder="Contact Number" [(ngModel)]="contactNum" minlength="4" maxlength="32"
-              required="true" #incontactNum="ngModel"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="username" id="username" type="text" placeholder="Username" [(ngModel)]="username" minlength="4" maxlength="32"
-              required="true" #inusername="ngModel"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="password" id="password" type="password" placeholder="Password" [(ngModel)]="password" minlength="4" maxlength="32"
-              required="true" #inpassword="ngModel"></ion-input>
-            </ion-item>
+  <ion-card>
+    <ion-card-content padding>
+      <div *ngIf="resultSuccess == true" style="color: blue;">
+        {{message}}
+      </div>
 
-          </div>
-          <div padding>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+      <div *ngIf="resultError == true" style="color: red;">
+        {{message}}
+      </div>
+
+      <form #form="ngForm" (ngSubmit)="register(form)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center>
+              <div text-center>
+                <h1>Create Your Account</h1>
+              </div>
+            </ion-col>
+            <ion-col align-self-center size-xs="12">
+              <div padding>
+
+                <ion-item>
+                  <ion-input name="firstName" id="firstName" type="text" placeholder="First Name"
+                    [(ngModel)]="newCustomer.firstName" required="true" #infirstName="ngModel"></ion-input>
+                </ion-item>
+
+                <div style="color:red;">
+                  <div *ngIf="infirstName.invalid && (infirstName.dirty || infirstName.touched || submitted)"
+                    class="errorText">
+                    <div *ngIf="infirstName.errors.required">
+                      <small>First Name is required</small>
+                    </div>
+                  </div>
+                </div>
+
+
+                <ion-item>
+                  <ion-input name="lastName" id="lastName" type="text" placeholder="Last Name"
+                    [(ngModel)]="newCustomer.lastName" required="true" #inlastName="ngModel"></ion-input>
+                </ion-item>
+
+                <div style="color:red;">
+                  <div *ngIf="inlastName.invalid && (inlastName.dirty || inlastName.touched || submitted)"
+                    class="errorText">
+                    <div *ngIf="inlastName.errors.required">
+                      <small> Last Name is required</small>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <ion-item>
+                  <ion-input name="contactNum" id="contactNum" type="text" placeholder="Contact Number"
+                    [(ngModel)]="newCustomer.contactNum" minlength="4" maxlength="32" required="true"
+                    #incontactNum="ngModel">
+                  </ion-input>
+                </ion-item>
+
+                <div style="color:red;">
+                  <div *ngIf="incontactNum.invalid && (incontactNum.dirty || incontactNum.touched || submitted)"
+                    class="errorText">
+                    <div *ngIf="incontactNum.errors.required">
+                      <small> Contact Number is required.</small>
+                    </div>
+                  </div>
+                </div>
+
+
+                <ion-item>
+                  <ion-input name="username" id="username" type="text" placeholder="Username"
+                    [(ngModel)]="newCustomer.username" minlength="4" maxlength="32" required="true"
+                    #inusername="ngModel">
+                  </ion-input>
+                </ion-item>
+
+                <div style="color:red;">
+                  <div *ngIf="inusername.invalid && (inusername.dirty || inusername.touched || submitted)"
+                    class="errorText">
+                    <div *ngIf="inusername.errors.required">
+                      <small>Username is required.</small>
+                    </div>
+                    <div *ngIf="inusername.errors.minlength">
+                      <small>Username must be at least 4 characters long.</small>
+                    </div>
+                    <div *ngIf="inusername.errors.maxlength">
+                      <small>Username cannot exceed 32 characters.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <ion-item>
+                  <ion-input name="password" id="password" type="password" placeholder="Password"
+                    [(ngModel)]="newCustomer.password" minlength="4" maxlength="32" required="true"
+                    #inpassword="ngModel">
+                  </ion-input>
+                </ion-item>
+                <div style="color:red;">
+                  <div *ngIf="inpassword.invalid && (inpassword.dirty || inpassword.touched || submitted)"
+                    class="errorText">
+                    <div *ngIf="inpassword.errors.required">
+                      <small>Password is Required</small>
+                      <div *ngIf="inpassword.errors.minlength">
+                        <small>Password must be at least 4 characters long.</small>
+                      </div>
+                      <div *ngIf="inpassword.errors.maxlength">
+                        <small>Password cannot exceed 32 characters.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div padding>
+                  <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

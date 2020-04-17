@@ -1,4 +1,4 @@
- import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 import { Calendar } from '@ionic-native/calendar/ngx';
 
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { Calendar } from '@ionic-native/calendar/ngx';
     FormsModule,
     HttpClientModule,
     GMapModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -39,4 +41,4 @@ import { Calendar } from '@ionic-native/calendar/ngx';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

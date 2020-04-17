@@ -6,6 +6,9 @@ import { NgForm } from '@angular/forms';
 import { UtilityService } from '../utility.service';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+import { MenuController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-login',
@@ -22,13 +25,14 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router,
     public utilityService: UtilityService,
-    private customerService: CustomerService) {
+    private customerService: CustomerService, public menuCtrl: MenuController) {
+    this.menuCtrl.enable(false, 'custom');
     this.submitted = false;
   }
 
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
 
   clear() {
     this.username = "";
@@ -47,10 +51,12 @@ export class LoginPage implements OnInit {
           if (customer != null) {
             this.utilityService.setIsLogin(true);
             this.utilityService.setCurrentCustomer(customer);
+            console.log(this.utilityService.getCurrentCustomer().firstName);
             this.loginError = false;
           } else {
             this.loginError = true;
           }
+          this.router.navigateByUrl('/home');
         },
         error => {
           this.loginError = true;
@@ -60,11 +66,14 @@ export class LoginPage implements OnInit {
     } else {
 
     }
+    this.menuCtrl.enable(true, 'custom');
   }
 
   customerLogout(): void {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);
+    this.menuCtrl.enable(false, 'custom');
+    console.log("is Log out : " + this.utilityService.getIsLogin())
   }
   customerRegister() {
     this.router.navigate(["register"])
