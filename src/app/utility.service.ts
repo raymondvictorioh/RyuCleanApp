@@ -67,7 +67,7 @@ export class UtilityService {
 
 	getCurrentOrder(): OrderEntity
 	{
-		return JSON.parse(sessionStorage.currentStaff);
+		return JSON.parse(sessionStorage.currentOrderEntity);
 	}
 
 
