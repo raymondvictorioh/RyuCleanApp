@@ -50,6 +50,7 @@ export class PaymentPage implements OnInit {
       payment(paymentForm: NgForm){
 
         this.router.navigateByUrl('success');
+        console.log(this.newCreditCard.expirationDate);
         this.submitted = true;
         
       }

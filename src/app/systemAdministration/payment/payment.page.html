@@ -37,6 +37,11 @@
               </ion-item>
 
               <ion-item>
+                  <ion-label><b>Expiration Date</b> </ion-label>
+                  <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2040" value="2020-04-07" id="jobDate" name="jobDate" [(ngModel)]="newCreditCard.expirationDate" #jobDate="ngModel"></ion-datetime>
+              </ion-item>
+
+              <ion-item>
                   <ion-button (click)="clear()">
                     Clear
                   </ion-button>

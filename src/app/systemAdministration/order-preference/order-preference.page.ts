@@ -36,7 +36,6 @@ export class OrderPreferencePage implements OnInit {
 
       clear (){
         this.submitted = false;
-        this.newOrder.genderPreference = "";
         this.newOrder.notes = "";
 
       }

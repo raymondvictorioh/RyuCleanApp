@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Customer } from './customer';
+import { OrderEntity } from './order-entity';
 
 @Injectable({
 	providedIn: 'root'
@@ -62,5 +63,19 @@ export class UtilityService {
 	setPassword(password: string): void {
 		sessionStorage.password = password;
 	}
+
+
+	getCurrentOrder(): OrderEntity
+	{
+		return JSON.parse(sessionStorage.currentStaff);
+	}
+
+
+	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void
+	{		 
+		sessionStorage.currentOrderEntity = JSON.stringify(currentOrderEntity);
+	}
+
+	
 
 }
