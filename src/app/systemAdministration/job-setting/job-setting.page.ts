@@ -35,12 +35,8 @@ export class JobSettingPage implements OnInit {
       GenderEnum.MALE, "notes?: string");
     console.log(this.newOrder.freqencyEnum);
 
-    if (this.newOrder.freqencyEnum == FrequencyEnum.DAILY) {
-      numberOfTimes = 1;
-    } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR) {
-      numberOfTimes = 12;
-    } else {
-      numberOfTimes = 24;
+    for (var _i = 0; _i < numberOfTimes; _i++) {
+      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
     }
 
     for (var _i = 0; _i < numberOfTimes; _i++) {

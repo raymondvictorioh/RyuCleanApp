@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, RouterOutlet, ActivationStart } from '@angular/router';
 
 import { NgForm } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import { CreditCard } from 'src/app/credit-card';
 export class PaymentPage implements OnInit {
   
       submitted: boolean;
-      //newOrder: OrderEntity;
+      newOrder: OrderEntity;
       newCreditCard : CreditCard;
 
       resultSuccess: boolean;
@@ -24,19 +24,26 @@ export class PaymentPage implements OnInit {
       message: string;
 
       constructor(private router: Router,
-        private activatedRoute: ActivatedRoute,
+        //private activatedRoute: ActivatedRoute,
         private OrderEntityService: OrderEntityService) { 
           this.submitted = false;
 
           this.resultSuccess = false; 
           this.resultError = false;
           this.newCreditCard = new CreditCard();
+          this.newOrder = this.OrderEntityService.getCurrentOrderEntity();
+          console.log(this.newOrder.notes);
         }
 
-      ngOnInit() {
-        let newOrder = this.activatedRoute.snapshot.paramMap.get('newOrder');
-        console.log(newOrder);
-      }
+        @ViewChild(RouterOutlet, {static: false}) outlet: RouterOutlet;
+
+        ngOnInit(): void {
+          this.router.events.subscribe(e => {
+            if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+              this.outlet.deactivate();
+          });
+        }
+      
 
       goBack(){
         //this.router.navigateByUrl();
@@ -48,7 +55,7 @@ export class PaymentPage implements OnInit {
       }
 
       payment(paymentForm: NgForm){
-
+        this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
         this.router.navigateByUrl('success');
         console.log(this.newCreditCard.expirationDate);
         this.submitted = true;

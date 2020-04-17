@@ -18,10 +18,10 @@ export class OrderEntity {
         genderPreference?: GenderEnum, notes?: string){
         this.orderId = orderId;
         this.plan = plan;
-        this.orderDate = this.orderDate;
+        this.orderDate = orderDate;
         this.jobs = jobs;
         this.freqencyEnum = freqencyEnum;
-        this.zipcode = this.zipcode;
+        this.zipcode = zipcode;
         this.genderPreference = genderPreference;
         this.notes = notes;
         
