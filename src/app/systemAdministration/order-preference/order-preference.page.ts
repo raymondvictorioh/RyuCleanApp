@@ -30,12 +30,9 @@ export class OrderPreferencePage implements OnInit {
         //private activatedRoute: ActivatedRoute,
         private orderEntityService: OrderEntityService) { 
           this.submitted = false;
-          this.newOrder = new OrderEntity ();
+          this.newOrder = orderEntityService.getCurrentOrderEntity();
           this.resultSuccess = false; 
           this.resultError = false;
-          this.orderEntityService.setCurrentOrderEntity(new OrderEntity (1,null, null, null, FrequencyEnum.DAILY, "zipcode?: string",
-        GenderEnum.MALE, "notes?: string"));
-          console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
         }
 
         ngOnInit(): void {

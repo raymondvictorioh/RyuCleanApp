@@ -55,7 +55,7 @@ export class PaymentPage implements OnInit {
       }
 
       payment(paymentForm: NgForm){
-
+        this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
         this.router.navigateByUrl('success');
         console.log(this.newCreditCard.expirationDate);
         this.submitted = true;
