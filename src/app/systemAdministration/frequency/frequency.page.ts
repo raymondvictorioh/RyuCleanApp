@@ -7,6 +7,8 @@ import { AlertController } from '@ionic/angular';
 import { PlanService } from '../../plan.service';
 import { Plan } from '../../plan';
 import { FrequencyEnum } from 'src/app/frequency-enum.enum';
+import { OrderEntityService } from "../../order-entity.service";
+import { OrderEntity } from 'src/app/order-entity';
 
 
 @Component({
@@ -22,6 +24,7 @@ export class FrequencyPage implements OnInit {
   error: boolean;
   errorMessage: string;
   frequencyEnum: FrequencyEnum;
+  newOrder: OrderEntity = new OrderEntity();
   // keys(): Array<string> {
   //   var keys = Object.keys(this.frequencyEnum);
   //   return keys.slice(keys.length / 2);
@@ -29,9 +32,14 @@ export class FrequencyPage implements OnInit {
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private planService: PlanService, public alertControler: AlertController) {
+    private planService: PlanService, 
+    public alertControler: AlertController,
+    public orderEntityService: OrderEntityService) {
+
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);  
     this.retrievePlanError = false;
     this.error = false;
+
   }
 
   ngOnInit() {
@@ -57,6 +65,25 @@ export class FrequencyPage implements OnInit {
     console.log("Can get the plan");
 
   }
+
+  viewMapDaily(event){
+    this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.router.navigateByUrl("viewMap");
+  }
+
+  viewMapRegular(event){
+    this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.router.navigateByUrl("viewMap");
+  }
+
+  viewMapMember(event){
+    this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.router.navigateByUrl("viewMap");
+  }
+
 
   back() {
     this.router.navigate(["packages"]);

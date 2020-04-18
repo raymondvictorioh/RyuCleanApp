@@ -36,7 +36,7 @@
     </ion-item>
     <ion-item>
       <h5>$ {{planToView.dailyPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+      <ion-button size="small" color="secondary" slot="end" (click)="viewMapDaily($event)" >Select</ion-button>
     </ion-item>
   </ion-card>
 
@@ -46,7 +46,7 @@
     </ion-item>
     <ion-item>
       <h5>$ {{planToView.regularPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+      <ion-button size="small" color="secondary" slot="end" (click)="viewMapRegular($event)" >Select</ion-button>
     </ion-item>
   </ion-card>
 
@@ -56,7 +56,7 @@
     </ion-item>
     <ion-item>
       <h5>$ {{planToView.memberPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+      <ion-button size="small" color="secondary" slot="end" (click)="viewMapMember($event)" >Select</ion-button>
     </ion-item>
   </ion-card>
 

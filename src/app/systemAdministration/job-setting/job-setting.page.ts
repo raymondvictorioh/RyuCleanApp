@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Job } from 'src/app/job';
 import { OrderEntity } from 'src/app/order-entity';
+import { OrderEntityService } from "../../order-entity.service";
 import { FrequencyEnum } from 'src/app/frequency-enum.enum';
 import { GenderEnum } from 'src/app/gender-enum.enum';
 
@@ -22,7 +23,8 @@ export class JobSettingPage implements OnInit {
 
 
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private orderEntityService: OrderEntityService) {
 
     this.jobList = new Array();
     this.submitted = false;
@@ -31,28 +33,34 @@ export class JobSettingPage implements OnInit {
 
     let numberOfTimes: number;
     console.log(FrequencyEnum.DAILY);
-    this.newOrder = new OrderEntity(1, null, null, null, FrequencyEnum.DAILY, "zipcode?: string",
-      GenderEnum.MALE, "notes?: string");
+    this.newOrder = orderEntityService.getCurrentOrderEntity();
     console.log(this.newOrder.freqencyEnum);
-
-    for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
+    if(this.newOrder.freqencyEnum == FrequencyEnum.DAILY){
+      numberOfTimes = 1;
+    } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR){
+      numberOfTimes = 6;
+    } else {
+      numberOfTimes = 12;
     }
 
     for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job(_i, null, this.newOrder, new Date()));
+      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
     }
 
   }
 
   clear() {
     this.submitted = false;
-    //this.newJob = new Job();
 
   }
 
   setDate() {
     this.router.navigateByUrl("calendar");
+  }
+
+  setOrderPreference(){
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.router.navigateByUrl("orderPreference");
   }
 
   ngOnInit() {
