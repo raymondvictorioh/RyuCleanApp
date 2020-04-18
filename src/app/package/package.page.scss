@@ -1,0 +1,47 @@
+.card-background-page {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+  
+    .card-title {
+      position: absolute;
+      top: 30%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+  
+    .card-subtitle {
+      font-size: 1.2em;
+        font-weight:bold;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      color: #fff;
+    }
+
+    .card-price{
+        font-size: 1.2em;
+        font-weight:bold;
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        color: #fff;
+      }
+
+      .imgCard{
+        object-fit: cover;
+
+        width: 100%;
+        height: 200px;
+        filter: brightness(80%)
+      }
+      .buttonCard:hover{
+        
+       color:#3880ff;
+      }
+      
+  }

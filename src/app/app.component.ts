@@ -74,15 +74,19 @@ export class AppComponent implements OnInit {
         icon: 'home'
       },
       {
+        title: 'Create Order',
+        url: '/packages',
+        icon: 'happy'
+      },
+      {
+        title: 'Order History',
+        url: '/viewAllOrders',
+        icon: 'list-circle'
+      },
+      {
         title: 'Settings',
         url: '/settings',
         icon: 'settings'
-      },
-      {
-        title: 'Orders',
-        url: '/viewAllOrders',
-        icon: 'list-circle'
-
       }
     ]
   }

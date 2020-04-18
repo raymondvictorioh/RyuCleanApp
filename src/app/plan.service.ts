@@ -5,40 +5,39 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { UtilityService } from './utility.service';
-import {Plan} from './plan';
+import { Plan } from './plan';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class PlanService {
 
-  baseUrl: string;
+	baseUrl: string;
 
-  constructor( private httpClient: HttpClient,
-              private utilityService: UtilityService) 
-              { 
-                this.baseUrl = this.utilityService.getRootPath() + "Plan"; 
-              }
+	constructor(private httpClient: HttpClient,
+		private utilityService: UtilityService) {
+		this.baseUrl = this.utilityService.getRootPath() + "Plan";
+	}
 
-  
-  getPlans(): Observable<any>{
-    return this.httpClient.get<any>(this.baseUrl + "/retrieveAllPlans?username=" + this.utilityService.getUsername()+ "&password=" + this.utilityService.getPassword).pipe(
-      catchError(this.handleError)
-    );
-  }
 
-  getPlanByPlanId(planId: number): Observable<any> {
+	getPlans(): Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl + "/retrieveAllPlans?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
+			catchError(this.handleError)
+		);
+	}
+
+	getPlanByPlanId(planId: number): Observable<any> {
 		return this.httpClient.get<any>(this.baseUrl + "/retrievePlan/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
 			(
 				catchError(this.handleError)
 			);
 	}
 
-  private handleError(error: HttpErrorResponse) {
+	private handleError(error: HttpErrorResponse) {
 		let errorMessage: string = "";
 
 		if (error.error instanceof ErrorEvent) {
