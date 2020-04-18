@@ -9,25 +9,31 @@
     No Past Orders.
   </ion-item>
 
+
+
   <ion-card *ngFor="let job of jobs">
 
-    <ion-item>
-      <ion-card-subtitle>Job ID : {{job.jobId}} </ion-card-subtitle>
-      <ion-card-subtitle>Status : {{job.jobStatusEnum}} </ion-card-subtitle>
-      <ion-button fill="outline" slot="end" (click)="viewJobDetails($event, job)">View</ion-button>
-    </ion-item>
+    <ion-card-header color="primary">
+      Job ID : {{job.jobId}}
+    </ion-card-header>
+    <ion-list>
+      <ion-item lines="full">
+        <ion-icon name="albums" slot="start"></ion-icon>
+        <ion-label color="primary">{{job.order.plan.planName}}</ion-label>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-card-subtitle slot="start">Status : {{job.jobStatusEnum}} </ion-card-subtitle>
+      </ion-item>
 
-    <ion-item class="ion-activated" light>
-      <ion-icon name="albums" slot="start"></ion-icon>
-      <ion-label>{{job.order.plan.planName}}</ion-label>
-    </ion-item>
 
-    <ion-item>
-      <ion-icon name="time" slot="start"></ion-icon>
-      <ion-label>{{parseDate(job.jobDate) | date:'EEE, d/MM/yyyy' }}</ion-label>
-    </ion-item>
 
+      <ion-item lines="full">
+        <ion-icon name="time" slot="start"></ion-icon>
+        <ion-label>{{parseDate(job.jobDate) | date:'EEE, d/MM/yyyy' }}</ion-label>
+      </ion-item>
+    </ion-list>
   </ion-card>
+
 
 
 

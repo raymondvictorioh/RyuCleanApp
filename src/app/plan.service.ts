@@ -30,12 +30,21 @@ export class PlanService {
 		);
 	}
 
+	// getPlanByPlanId(planId: number): Observable<any> {
+	// 	return this.httpClient.get<any>(this.baseUrl + "/retrievePlan/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
+	// 		(
+	// 			catchError(this.handleError)
+	// 		);
+	// }
 	getPlanByPlanId(planId: number): Observable<any> {
 		return this.httpClient.get<any>(this.baseUrl + "/retrievePlan/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
 			(
 				catchError(this.handleError)
 			);
 	}
+
+
+
 
 	private handleError(error: HttpErrorResponse) {
 		let errorMessage: string = "";

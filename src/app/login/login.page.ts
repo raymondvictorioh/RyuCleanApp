@@ -69,6 +69,8 @@ export class LoginPage implements OnInit {
     this.menuCtrl.enable(true, 'custom');
   }
 
+
+
   customerLogout(): void {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);

@@ -14,15 +14,18 @@
 		<ion-row>
 			<ion-col size="6" *ngFor="let plan of plans"> -->
 
-	<ion-card *ngFor="let p of plans">
+	<ion-card *ngFor="let plan of plans">
 		<img class="imgCard" src="assets/pkg_placeholder.jpg" />
 		<div class="card-title">
-			{{p.planName}}
+			{{plan.planName}}
 
 		</div>
-		<div class="card-subtitle">{{p.planDescription}}</div>
-		<div class="card-price">Starting from : ${{p.memberPrice}}</div>
-		<ion-button class="buttonCard" fill="clear">Select Plan<ion-icon slot="end" name="arrow-forward"></ion-icon>
+		<div class="card-subtitle">{{plan.planDescription}}</div>
+		<div class="card-price">Starting from : ${{plan.memberPrice}}</div>
+		<!-- <ion-button class="buttonCard" fill="clear">Select Package<ion-icon slot="end" name="arrow-forward" (click)="selectFrequency($event, plan)"></ion-icon>
+		</ion-button> -->
+		<ion-button class="buttonCard" fill="clear" (click)="selectFrequency($event, plan)">Select Package<ion-icon slot="end"
+			 name="arrow-forward"></ion-icon>
 		</ion-button>
 	</ion-card>
 	<!-- 

@@ -10,9 +10,12 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  // },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard]
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [SliderGuard] },
 
@@ -21,6 +24,8 @@ const routes: Routes = [
   { path: 'address', loadChildren: './systemAdministration/address/address.module#AddressPageModule', canActivate: [AuthGuard] },
 
   { path: 'frequency', loadChildren: './systemAdministration/frequency/frequency.module#FrequencyPageModule', canActivate: [AuthGuard] },
+
+  { path: 'frequency/:planId', loadChildren: './systemAdministration/frequency/frequency.module#FrequencyPageModule', canActivate: [AuthGuard] },
 
   { path: 'jobSetting', loadChildren: './systemAdministration/job-setting/job-setting.module#JobSettingPageModule', canActivate: [AuthGuard] },
 
@@ -51,15 +56,15 @@ const routes: Routes = [
   },
   {
     path: 'past-order',
-    loadChildren: () => import('./systemAdministration/past-order/past-order.module').then( m => m.PastOrderPageModule)
+    loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule'
   },
   {
     path: 'scheduled-order',
-    loadChildren: () => import('./systemAdministration/scheduled-order/scheduled-order.module').then( m => m.ScheduledOrderPageModule)
+    loadChildren: './systemAdministration/scheduled-order/scheduled-order.module#ScheduledOrderPageModule'
   },
   {
     path: 'view-job-details',
-    loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then( m => m.ViewJobDetailsPageModule)
+    loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then(m => m.ViewJobDetailsPageModule)
   }
 
 ];
