@@ -30,7 +30,7 @@ export class OrderPreferencePage implements OnInit {
         //private activatedRoute: ActivatedRoute,
         private orderEntityService: OrderEntityService) { 
           this.submitted = false;
-          this.newOrder = orderEntityService.getCurrentOrderEntity();
+          this.newOrder = new OrderEntity();
           this.resultSuccess = false; 
           this.resultError = false;
         }
