@@ -1,16 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>scheduledOrder</ion-title>
+    <ion-title>Scheduled Order</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item ng-if="jobs.length <=0 || !jobs">
+    No Scheduled Orders.
+  </ion-item>
 
   <ion-card *ngFor="let job of jobs">
 
     <ion-item>
       <ion-card-subtitle>Job ID : {{job.jobId}} ( {{job.jobStatusEnum}} )</ion-card-subtitle>
-      <ion-button fill="outline" slot="end" (click)="viewJobDetails($event, job)">View</ion-button>
+
     </ion-item>
 
     <ion-item class="ion-activated" light>
@@ -20,13 +23,10 @@
 
     <ion-item>
       <ion-icon name="time" slot="start"></ion-icon>
-      <ion-label>{{job.jobDate}}</ion-label>
+      <ion-label>{{parseDate(job.jobDate) | date:'EEE, d/MM/yyyy' }}</ion-label>
     </ion-item>
 
   </ion-card>
-  <ion-item>
-    <ion-button fill="outline" slot="end" (click)="presentModal()">Modal</ion-button>
-  </ion-item>
 
 
 
