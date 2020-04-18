@@ -18,6 +18,7 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 import { Calendar } from '@ionic-native/calendar/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
-    Calendar
+    Calendar,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

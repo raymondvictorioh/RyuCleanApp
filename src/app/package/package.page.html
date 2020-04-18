@@ -6,30 +6,41 @@
 		</ion-buttons>
 		<ion-title>View All Packages</ion-title>
 	</ion-toolbar>
-  
+
 </ion-header>
 
-<ion-content>
+<ion-content class="card-background-page">
+	<!-- <ion-grid>
+		<ion-row>
+			<ion-col size="6" *ngFor="let plan of plans"> -->
 
-	<ion-card>      
-	  
-      <ion-card-content>
-        
-		<ion-list>
-			<ion-button expand="full" *ngFor="let plan of plans" >
-				<ion-icon slot="start" name="arrow-forward"></ion-icon>
-				{{plan.planId}} - {{plan.planName}}
-			</ion-button>
-		</ion-list>
-		
-      </ion-card-content>
-	  
-    </ion-card>	
+	<ion-card *ngFor="let plan of plans">
+		<img class="imgCard" src="assets/pkg_placeholder.jpg" />
+		<div class="card-title">
+			{{plan.planName}}
+
+		</div>
+		<div class="card-subtitle">{{plan.planDescription}}</div>
+		<div class="card-price">Starting from : ${{plan.memberPrice}}</div>
+		<!-- <ion-button class="buttonCard" fill="clear">Select Package<ion-icon slot="end" name="arrow-forward" (click)="selectFrequency($event, plan)"></ion-icon>
+		</ion-button> -->
+		<ion-button class="buttonCard" fill="clear" (click)="selectFrequency($event, plan)">Select Package<ion-icon slot="end"
+			 name="arrow-forward"></ion-icon>
+		</ion-button>
+	</ion-card>
+	<!-- 
+			</ion-col>
+		</ion-row>
+
+	</ion-grid> -->
+
+
+
 
 </ion-content>
 
 <ion-footer>
 
 	<ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
-	
+
 </ion-footer>

@@ -29,6 +29,20 @@ export class JobService {
     );
   }
 
+  getPastJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerBeforeNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getFutureJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerAfterNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+        catchError(this.handleError)
+      );
+  }
+
   getOrderFromJobId(jobId: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "/retrieveOrderByJobId/" + jobId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
       catchError(this.handleError)
@@ -40,6 +54,7 @@ export class JobService {
       catchError(this.handleError)
     );
   }
+
 
 
 

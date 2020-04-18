@@ -96,10 +96,16 @@
 
 </ion-content>
 
+
+
 <ion-footer *ngIf="utilityService.getIsLogin() == true">
 
   <ion-toolbar>
-    <ion-button expand="full" (click)="customerLogout()">
+    <ion-button expand="full" (click)="back()">
+      <ion-icon slot="start" name="happy"></ion-icon>
+      Continue Browsing!
+    </ion-button>
+    <ion-button expand="full" color="light" (click)="customerLogout()">
       <ion-icon slot="start" name="exit"></ion-icon>
       Logout
     </ion-button>
