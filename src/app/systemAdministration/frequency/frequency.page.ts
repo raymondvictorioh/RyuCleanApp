@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 
 import { PlanService } from '../../plan.service';
 import { Plan } from '../../plan';
+import { FrequencyEnum } from 'src/app/frequency-enum.enum';
 
 
 @Component({
@@ -20,6 +21,11 @@ export class FrequencyPage implements OnInit {
   retrievePlanError: boolean;
   error: boolean;
   errorMessage: string;
+  frequencyEnum: FrequencyEnum;
+  // keys(): Array<string> {
+  //   var keys = Object.keys(this.frequencyEnum);
+  //   return keys.slice(keys.length / 2);
+  // }
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,

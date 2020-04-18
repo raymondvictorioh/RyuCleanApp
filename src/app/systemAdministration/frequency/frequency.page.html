@@ -9,24 +9,113 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="retrievePlanError == false && planToView != null">
+<ion-content *ngIf="retrievePlanError == false && planToView != null" class="card-background-page">
+  <ion-card>
     <ion-card-header color="primary">
-      You Selected : {{this.planToView.planName}}
-    </ion-card-header>>
+      <ion-text>
+        <p>You Selected : </p>
+        <h4> {{this.planToView.planName}}</h4>
+      </ion-text>
+    </ion-card-header>
     <ion-list>
       <ion-item lines="full">
-        <ion-icon name="albums" slot="start"></ion-icon>
-        <ion-label color="primary">{{planToView.planName}}</ion-label>
-      </ion-item>
-      <ion-item lines="full">
-        <ion-card-subtitle slot="start">
-
-          {{planToView.planDescription}}
-        </ion-card-subtitle>
+        <ion-text>
+          <p>{{this.planToView.planDescription}}</p>
+        </ion-text>
       </ion-item>
     </ion-list>
   </ion-card>
+
+  <ion-text>
+    <h5 style="text-align:center;">Select Your Package Type - Frequency</h5>
+  </ion-text>
+
+  <ion-card>
+    <ion-item color="secondary">
+      <h4>Daily Cleaning - One Time</h4>
+    </ion-item>
+    <ion-item>
+      <h5>$ {{planToView.dailyPrice }} / day</h5>
+      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="secondary">
+      <h4>Regular Cleaning - 6x Cleaning</h4>
+    </ion-item>
+    <ion-item>
+      <h5>$ {{planToView.regularPrice }} / day</h5>
+      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="secondary">
+      <h4>Member Cleaning - 12x Cleaning</h4>
+    </ion-item>
+    <ion-item>
+      <h5>$ {{planToView.memberPrice }} / day</h5>
+      <ion-button size="small" color="secondary" slot="end">Select</ion-button>
+    </ion-item>
+  </ion-card>
+
+
+
+
+  <!-- <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <ion-text>
+          <h5 style="text-align:center;">Select Your Package Type - Frequency</h5>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-text>
+            <h5 style="text-align:center;">Daily Cleaning</h5>
+          </ion-text>
+          <ion-card-content>
+            DAILY CLEANING
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-text>
+            <h5 style="text-align:center;">Daily Cleaning</h5>
+          </ion-text>
+          <ion-card-content>
+            DAILY CLEANING
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-text>
+            <h5 style="text-align:center;">Daily Cleaning</h5>
+          </ion-text>
+          <ion-card-content>
+            DAILY CLEANING
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+ -->
 
 
 </ion-content>
