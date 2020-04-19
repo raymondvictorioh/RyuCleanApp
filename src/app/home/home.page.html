@@ -3,25 +3,86 @@
 		<ion-buttons slot="start">
 			<ion-menu-button></ion-menu-button>
 		</ion-buttons>
-		<ion-title>
+		<div class="titleicon">
 			<img alt="logo" id="header_logo" height="40" float-left src="assets/ryucleanLogo.png">
-			Ryu Clean
-		</ion-title>
+		</div>
 	</ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+	<ion-item lines="none">
+		<ion-avatar slot="start">
+			<img src="assets/avatar.jpg">
+		</ion-avatar>
+		<h3 style="display: inline; margin-right:5px">Hello, </h3>
+		<h3 class="home_username" style="display: inline"> {{this.utilityService.getCurrentCustomer().firstName}} </h3>
+		<h3 style="display: inline"> ! </h3>
+	</ion-item>
 
-	<ion-card>
-		<ion-card-header>
-			<h3>Welcome Back,</h3>
-			<ion-card-title>{{this.utilityService.getCurrentCustomer().firstName}} </ion-card-title>
-		</ion-card-header>
-		<ion-card-content>
+	<ion-slides pager="true" [options]="slideOpts">
+		<ion-slide>
+			<img class="imgCard" src="../../assets/home_slide_1.jpg">
 
-		</ion-card-content>
-	</ion-card>
+		</ion-slide>
+		<ion-slide>
+			<img class="imgCard" src="../../assets/home_slide_2.png">
+		</ion-slide>
+		<ion-slide>
+			<img class="imgCard" src="../../assets/home_slide_3.jpg">
+		</ion-slide>
+		<ion-slide>
+			<img class="imgCard" src="../../assets/home_slide_4.jpg">
+		</ion-slide>
+	</ion-slides>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<div class="ion-text-center">
+					<h1 style="display: inline">Getting Lazy?</h1>
+					<p>Book expert home cleaners at a moment's notice</p>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-button shape="block" fill="solid" block (click)="directToOrder()">Order Now</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+
+
+	<!-- fab placed in the center of the content with a list on each side -->
+	<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+		<ion-fab-button color="light">
+			<ion-icon name="share"></ion-icon>
+		</ion-fab-button>
+		<ion-fab-list side="top">
+			<ion-fab-button>
+				<ion-icon name="logo-facebook"></ion-icon>
+			</ion-fab-button>
+		</ion-fab-list>
+		<ion-fab-list side="start">
+			<ion-fab-button>
+				<ion-icon name="logo-instagram"></ion-icon>
+			</ion-fab-button>
+		</ion-fab-list>
+		<ion-fab-list side="end">
+			<ion-fab-button>
+				<ion-icon name="logo-twitter"></ion-icon>
+			</ion-fab-button>
+		</ion-fab-list>
+	</ion-fab>
+
 </ion-content>
+
+
+
+
 
 <ion-footer>
 

@@ -32,11 +32,11 @@ export class FrequencyPage implements OnInit {
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private planService: PlanService, 
+    private planService: PlanService,
     public alertControler: AlertController,
     public orderEntityService: OrderEntityService) {
 
-    this.orderEntityService.setCurrentOrderEntity(this.newOrder);  
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.retrievePlanError = false;
     this.error = false;
 
@@ -66,21 +66,25 @@ export class FrequencyPage implements OnInit {
 
   }
 
-  viewMapDaily(event){
+  viewMapDaily(event) {
+
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.newOrder.freqencyEnum);
     this.router.navigateByUrl("viewMap");
   }
 
-  viewMapRegular(event){
+  viewMapRegular(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.newOrder.freqencyEnum);
     this.router.navigateByUrl("viewMap");
   }
 
-  viewMapMember(event){
+  viewMapMember(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.newOrder.freqencyEnum);
     this.router.navigateByUrl("viewMap");
   }
 
