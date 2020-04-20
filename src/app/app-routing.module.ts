@@ -41,7 +41,7 @@ const routes: Routes = [
 
   { path: 'barcode', loadChildren: './barcode/barcode.module#BarcodePageModule' },
 
-  { path: 'packages', loadChildren: './package/package.module#PackagePageModule' },
+  { path: 'packages', loadChildren: './package/package.module#PackagePageModule', canActivate: [AuthGuard] },
 
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
 
@@ -52,11 +52,11 @@ const routes: Routes = [
   { path: 'slider', loadChildren: './slider/slider.module#SliderPageModule' },
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsPageModule'
+    loadChildren: './settings/settings.module#SettingsPageModule', canActivate: [AuthGuard]
   },
   {
     path: 'past-order',
-    loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule'
+    loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule', canActivate: [AuthGuard]
   },
   {
     path: 'scheduled-order',
@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: 'view-job-details',
     loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then(m => m.ViewJobDetailsPageModule)
+  },
+  {
+    path: 'account-settings',
+    loadChildren: './account-settings/account-settings.module#AccountSettingsPageModule'
   }
 
 ];

@@ -24,14 +24,11 @@ export class UtilityService {
 
 	}
 
-	getIsLogin(): boolean
-	{
-		if(sessionStorage.isLogin == "true")
-		{
+	getIsLogin(): boolean {
+		if (sessionStorage.isLogin == "true") {
 			return true;
 		}
-		else
-		{
+		else {
 			return false;
 		}
 	}
@@ -56,6 +53,14 @@ export class UtilityService {
 		sessionStorage.username = username;
 	}
 
+	setCurrentCustomerId(cusId: number): void {
+		sessionStorage.cusId = cusId;
+	}
+
+	getCurrentCustomerId(): number {
+		return sessionStorage.cusId;
+	}
+
 	getPassword(): string {
 		return sessionStorage.password;
 	}
@@ -65,17 +70,15 @@ export class UtilityService {
 	}
 
 
-	getCurrentOrder(): OrderEntity
-	{
+	getCurrentOrder(): OrderEntity {
 		return JSON.parse(sessionStorage.currentOrderEntity);
 	}
 
 
-	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void
-	{		 
+	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void {
 		sessionStorage.currentOrderEntity = JSON.stringify(currentOrderEntity);
 	}
 
-	
+
 
 }
