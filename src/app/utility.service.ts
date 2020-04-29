@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Customer } from './customer';
 import { OrderEntity } from './order-entity';
+import { Job } from './job';
 
 @Injectable({
 	providedIn: 'root'
@@ -74,6 +75,16 @@ export class UtilityService {
 	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void
 	{		 
 		sessionStorage.currentOrderEntity = JSON.stringify(currentOrderEntity);
+	}
+
+	getCurrentJob(): Job 
+	{
+		return JSON.parse(sessionStorage.currentJob);
+	}
+
+	setCurrentJob(currentJob: Job):void
+	{
+		sessionStorage.currentJob = JSON.stringify(currentJob);
 	}
 
 	

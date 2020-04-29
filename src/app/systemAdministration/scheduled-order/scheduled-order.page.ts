@@ -5,6 +5,9 @@ import { Job } from '../../job';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { ViewJobDetailsPage } from '../view-job-details/view-job-details.page';
 import { DatePipe } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+import { BarcodeModalPageModule } from '../barcode-modal/barcode-modal.module';
+import { BarcodeModalPage } from '../barcode-modal/barcode-modal.page';
 
 @Component({
   selector: 'app-scheduled-order',
@@ -14,9 +17,16 @@ import { DatePipe } from '@angular/common';
 export class ScheduledOrderPage implements OnInit {
 
   jobs: Job[];
+  value: number;
 
 
-  constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController) { }
+  constructor(private datepipe: DatePipe, 
+    private router: Router, 
+    private jobService: JobService, 
+    public loadingController: LoadingController, 
+    public modalController: ModalController,
+    public alertController: AlertController,
+    public barcodeModalModule: BarcodeModalPageModule) { }
 
   ngOnInit() {
     this.refreshJobs();
@@ -84,6 +94,31 @@ export class ScheduledOrderPage implements OnInit {
 
   parseDate(d: Date) {
     return d.toString().replace('[UTC]', '');
+  }
+
+  /*async presentAlert(){
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an Alert Message',
+      buttons: ['OK','No']
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }*/
+
+  async presentAlert(event, job){
+    let currentJobId: number = job.jobId;
+    const modal = await this.modalController.create({
+      component: BarcodeModalPage,
+      componentProps: {
+        jobId: currentJobId
+      }
+    });
+    modal.present();
+
   }
 
 

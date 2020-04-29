@@ -19,6 +19,7 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
+import { BarcodeModalPageModule } from './systemAdministration/barcode-modal/barcode-modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +32,8 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     GMapModule,
     NgxQRCodeModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    BarcodeModalPageModule
   ],
   providers: [
     StatusBar,

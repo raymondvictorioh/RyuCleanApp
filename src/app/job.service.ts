@@ -73,5 +73,15 @@ export class JobService {
     return throwError(errorMessage);
   }
 
+  getCurrentJob(): Job
+  {
+    return this.utilityService.getCurrentJob();
+  }
+
+  setCurrentJob(job : Job): void 
+  {
+    this.utilityService.setCurrentJob(job);
+  }
+
 
 }

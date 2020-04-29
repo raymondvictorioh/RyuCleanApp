@@ -50,22 +50,18 @@ const routes: Routes = [
   { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' },
 
   { path: 'slider', loadChildren: './slider/slider.module#SliderPageModule' },
-  {
-    path: 'settings',
-    loadChildren: './settings/settings.module#SettingsPageModule'
-  },
-  {
-    path: 'past-order',
-    loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule'
-  },
-  {
-    path: 'scheduled-order',
-    loadChildren: './systemAdministration/scheduled-order/scheduled-order.module#ScheduledOrderPageModule'
-  },
-  {
-    path: 'view-job-details',
-    loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then(m => m.ViewJobDetailsPageModule)
-  }
+  
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  
+  { path: 'past-order', loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule'},
+  
+  { path: 'scheduled-order', loadChildren: './systemAdministration/scheduled-order/scheduled-order.module#ScheduledOrderPageModule'},
+  
+  { path: 'view-job-details',loadChildren: './systemAdministration/view-job-details/view-job-details.module#ViewJobDetailsPageModule'},
+  
+  { path: 'date-setting', loadChildren: './systemAdministration/date-setting/date-setting.module#DateSettingPageModule' },
+  
+  { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule'}
 
 ];
 

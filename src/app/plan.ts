@@ -7,7 +7,7 @@ export class Plan {
     dailyPrice: number;
     regularPrice: number;
     memberPrice: number;
-    orderList: OrderEntity[];
+    orderList: number [];
     
     constructor(planName?: string,planDescription?: string, dailyPrice?: number,regularPrice?: number,memberPrice?: number){
         this.planName = planName;

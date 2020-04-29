@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Calendar Examples
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-card>      
+  
+          <ion-card-content>
+            
+        <div *ngIf="resultSuccess == true" style="color: blue;">
+          {{message}}
+        </div>
+        
+        <div *ngIf="resultError == true" style="color: red;">
+          {{message}}
+        </div>
+        
+        <form #submitForm="ngForm" (ngSubmit)="submit(submitForm)" >
+            <ion-list>
+
+                <ion-item>
+                    <ion-label>Title</ion-label>
+                    <ion-input type="text" id="jobTitle" name="jobTitle" [(ngModel)]="newJob.jobTitle" #jobTitle="ngModel"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Select Date</ion-label>
+                    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2030" value="2020-04-07" id="jobDate" name="jobDate" [(ngModel)]="newJob.date" #jobDate="ngModel"></ion-datetime>
+                </ion-item>
+                
+                <ion-item>
+                      <ion-label>Start Time</ion-label>
+                      <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" id="jobTime" name="jobTime" [(ngModel)]="newJob.time" #jobTime="ngModel" ></ion-datetime>
+                </ion-item>
+
+                <ion-item>
+                    <ion-button (click)="clear()">
+                      Clear
+                    </ion-button>
+                    <ion-button type="submit" ion-button block>
+                      Done
+                    </ion-button>
+                  </ion-item>
+    
+            </ion-list>
+        </form>
+    
+      </ion-card-content>
+        
+    </ion-card>
+</ion-content>
