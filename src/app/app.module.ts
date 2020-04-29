@@ -19,6 +19,9 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
+import { ViewJobDetailsPageModule } from './systemAdministration/view-job-details/view-job-details.module';
+
+// import { EditContactNumberModule } from './accountSettingsFolder/edit-contact-number/edit-contact-number.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +34,8 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     GMapModule,
     NgxQRCodeModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ViewJobDetailsPageModule
   ],
   providers: [
     StatusBar,

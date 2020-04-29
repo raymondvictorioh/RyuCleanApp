@@ -5,11 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-item ng-if="jobs.length <=0 || !jobs">
+  <ion-item *ngIf="jobs!=null &&jobs.length==0">
     No Past Orders.
   </ion-item>
-
-
 
   <ion-card *ngFor="let job of jobs">
 

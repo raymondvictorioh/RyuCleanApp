@@ -69,6 +69,22 @@ const routes: Routes = [
   {
     path: 'account-settings',
     loadChildren: './account-settings/account-settings.module#AccountSettingsPageModule'
+  },
+  {
+    path: 'edit-name',
+    loadChildren: () => import('./accountSettingsFolder/edit-name/edit-name.module').then( m => m.EditNamePageModule)
+  },
+  {
+    path: 'edit-password',
+    loadChildren: () => import('./accountSettingsFolder/edit-password/edit-password.module').then( m => m.EditPasswordPageModule)
+  },
+  {
+    path: 'edit-contact-number',
+    loadChildren: () => import('./accountSettingsFolder/edit-contact-number/edit-contact-number.module').then( m => m.EditContactNumberPageModule)
+  },
+  {
+    path: 'edit-credit-card',
+    loadChildren: () => import('./accountSettingsFolder/edit-credit-card/edit-credit-card.module').then( m => m.EditCreditCardPageModule)
   }
 
 ];

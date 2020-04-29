@@ -4,6 +4,8 @@ import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
 import { UtilityService } from '../utility.service';
 import { CreditCard } from '../credit-card';
+import { ModalController } from '@ionic/angular';
+import { ViewJobDetailsPage } from '../systemAdministration/view-job-details/view-job-details.page';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.page.html',
@@ -18,9 +20,16 @@ export class AccountSettingsPage implements OnInit {
   errorMessage: string;
   customerCreditCards: CreditCard[];
 
-  constructor(private router: Router, private customerService: CustomerService, public utilityService: UtilityService) {
+  constructor(private router: Router, private customerService: CustomerService, public utilityService: UtilityService, public modalController: ModalController) {
     this.retrieveCustomerError = false;
     this.error = false;
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ViewJobDetailsPage
+    });
+    return await modal.present();
   }
 
   ngOnInit() {

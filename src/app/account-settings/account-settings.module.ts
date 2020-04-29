@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AccountSettingsPageRoutingModule } from './account-settings-routing.module';
 
 import { AccountSettingsPage } from './account-settings.page';
+import { ViewJobDetailsPage } from '../systemAdministration/view-job-details/view-job-details.page';
 
 @NgModule({
   imports: [
@@ -16,5 +17,6 @@ import { AccountSettingsPage } from './account-settings.page';
     AccountSettingsPageRoutingModule
   ],
   declarations: [AccountSettingsPage]
+
 })
-export class AccountSettingsPageModule {}
+export class AccountSettingsPageModule { }

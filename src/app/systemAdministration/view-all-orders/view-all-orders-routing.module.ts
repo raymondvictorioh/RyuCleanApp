@@ -11,7 +11,7 @@ const routes: Routes = [
       [
         {
           path: '',
-          redirectTo: '../past-order/past-order.module#PastOrderPageModule',
+          redirectTo: '/viewAllOrders/pastOrder',
           pathMatch: 'full'
         },
         {

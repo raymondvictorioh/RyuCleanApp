@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-item ng-if="jobs.length <=0 || !jobs">
+
+  <ion-item *ngIf="jobs!=null &&jobs.length==0">
     No Scheduled Orders.
   </ion-item>
 
