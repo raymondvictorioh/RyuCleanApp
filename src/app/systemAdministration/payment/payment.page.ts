@@ -6,6 +6,8 @@ import { NgForm } from '@angular/forms';
 import { OrderEntity } from 'src/app/order-entity';
 import { OrderEntityService } from "../../order-entity.service";
 import { CreditCard } from 'src/app/credit-card';
+import { UtilityService } from 'src/app/utility.service';
+import { JobService } from 'src/app/job.service';
 
 
 @Component({
@@ -25,7 +27,9 @@ export class PaymentPage implements OnInit {
 
       constructor(private router: Router,
         //private activatedRoute: ActivatedRoute,
-        private OrderEntityService: OrderEntityService) { 
+        private OrderEntityService: OrderEntityService,
+        private utilityService: UtilityService,
+        private jobService: JobService) { 
           this.submitted = false;
 
           this.resultSuccess = false; 
@@ -56,10 +60,43 @@ export class PaymentPage implements OnInit {
 
       payment(paymentForm: NgForm){
         this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
+        this.createNewOrder();
         this.router.navigateByUrl('success');
         console.log(this.newCreditCard.expirationDate);
         this.submitted = true;
         
+      }
+
+      createNewOrder() {
+        this.submitted = true;
+        
+          let username = this.utilityService.getUsername();
+          let password = this.utilityService.getPassword();
+          let planId = this.newOrder.planId;
+          let customerId = this.utilityService.getCurrentCustomer().cusId;
+          let jobs = this.jobService.getCurrentJobList();
+
+
+
+          this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
+            response => {
+              let orderEntityNumber: number = response.orderEntityId;
+              this.resultSuccess = true;
+              this.resultError = false;
+              this.message = "New product " + orderEntityNumber + " created successfully";
+					
+
+            },
+            error => {
+              this.resultError = true;
+              this.resultSuccess = false;
+              this.message =  "An error has occurred while creating the new product: " + error;
+					
+              console.log('********** CreateNewProductPage.ts: ' + error);
+            }
+            
+          );
+      
       }
 
 }

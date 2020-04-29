@@ -33,22 +33,9 @@ export class JobSettingPage implements OnInit {
     this.resultSuccess = false;
     this.resultError = false;
 
-    let numberOfTimes: number;
-    console.log(FrequencyEnum.DAILY);
-    this.newOrder = orderEntityService.getCurrentOrderEntity();
-    console.log(this.newOrder.freqencyEnum);
+    this.jobList = jobService.getCurrentJobList();
+    console.log(this.jobList[0].jobDate);
 
-    if(this.newOrder.freqencyEnum == FrequencyEnum.DAILY){
-      numberOfTimes = 1;
-    } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR){
-      numberOfTimes = 6;
-    } else {
-      numberOfTimes = 12;
-    }
-
-    for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
-    }
 
   }
 
@@ -59,11 +46,12 @@ export class JobSettingPage implements OnInit {
 
   setDate(event, job) {
     this.jobService.setCurrentJob(job);
-    this.router.navigateByUrl("dateSetting");
+    this.router.navigateByUrl("date-setting");
   }
 
   setOrderPreference(){
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.jobService.setCurrentJobList(this.jobList);
     this.router.navigateByUrl("orderPreference");
   }
 

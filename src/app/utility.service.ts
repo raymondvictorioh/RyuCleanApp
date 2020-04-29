@@ -87,6 +87,16 @@ export class UtilityService {
 		sessionStorage.currentJob = JSON.stringify(currentJob);
 	}
 
+	setCurrentJobList(jobList: Job[])
+	{
+		sessionStorage.currentJobList = JSON.stringify(jobList);
+	}
+
+	getCurrentJobList(): Job [] 
+	{
+		return JSON.parse(sessionStorage.currentJobList);
+	}	
+
 	
 
 }

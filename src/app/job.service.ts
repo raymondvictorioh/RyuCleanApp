@@ -83,5 +83,15 @@ export class JobService {
     this.utilityService.setCurrentJob(job);
   }
 
+  setCurrentJobList(jobList: Job[]): void
+  {
+    this.utilityService.setCurrentJobList(jobList);
+  }
+
+  getCurrentJobList(): Job []
+  {
+    return this.utilityService.getCurrentJobList();
+  }
+
 
 }
