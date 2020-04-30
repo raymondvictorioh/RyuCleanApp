@@ -69,6 +69,7 @@ export class FrequencyPage implements OnInit {
   viewMapDaily(event){
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
+    console.log(this.newOrder.planId + "gfgfgfgfgfgfgf");
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.router.navigateByUrl("address");
   }

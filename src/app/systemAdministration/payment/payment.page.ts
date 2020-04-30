@@ -75,8 +75,8 @@ export class PaymentPage implements OnInit {
           let planId = this.newOrder.planId;
           let customerId = this.utilityService.getCurrentCustomer().cusId;
           let jobs = this.jobService.getCurrentJobList();
-
-
+          console.log(this.newOrder.planId)
+          console.log(this.newOrder.freqencyEnum)
 
           this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
             response => {
