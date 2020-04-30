@@ -20,10 +20,10 @@ export class ScheduledOrderPage implements OnInit {
   value: number;
 
 
-  constructor(private datepipe: DatePipe, 
-    private router: Router, 
-    private jobService: JobService, 
-    public loadingController: LoadingController, 
+  constructor(private datepipe: DatePipe,
+    private router: Router,
+    private jobService: JobService,
+    public loadingController: LoadingController,
     public modalController: ModalController,
     public alertController: AlertController,
     public barcodeModalModule: BarcodeModalPageModule) { }
@@ -78,7 +78,7 @@ export class ScheduledOrderPage implements OnInit {
   }
 
   refreshJobs() {
-    this.jobService.getFutureJobs().subscribe(
+    this.jobService.getAcceptedJobs().subscribe(
       response => {
         this.jobs = response.jobs;
       },
@@ -109,7 +109,7 @@ export class ScheduledOrderPage implements OnInit {
     console.log(result);
   }*/
 
-  async presentAlert(event, job){
+  async presentAlert(event, job) {
     let currentJobId: number = job.jobId;
     const modal = await this.modalController.create({
       component: BarcodeModalPage,
