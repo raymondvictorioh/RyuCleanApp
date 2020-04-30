@@ -1,5 +1,5 @@
 export enum FrequencyEnum {
-    DAILY,
-    REGULAR,
-    MEMBER
+    DAILY = 'DAILY',
+    REGULAR = 'REGULAR',
+    MEMBER = 'MEMBER'
 }
