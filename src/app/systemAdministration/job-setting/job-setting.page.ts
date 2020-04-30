@@ -50,9 +50,12 @@ export class JobSettingPage implements OnInit {
   }
 
   setOrderPreference() {
-    this.orderEntityService.getCurrentOrderEntity().planId;
-    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    // console.log(this.orderEntityService.getCurrentOrderEntity().planId);
+    // this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.jobService.setCurrentJobList(this.jobList);
+    console.log(this.orderEntityService.getCurrentOrderEntity().planId);
+    console.log("*** jobs list length : " + this.jobService.getCurrentJobList().length);
+
     this.router.navigateByUrl("orderPreference");
   }
 

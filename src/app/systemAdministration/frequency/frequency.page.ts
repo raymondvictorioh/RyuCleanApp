@@ -48,7 +48,6 @@ export class FrequencyPage implements OnInit {
   }
 
   refreshPlan() {
-    console.log("REFRESH PLAN");
     this.planService.getPlanByPlanId(this.planId).subscribe(
       response => {
         this.planToView = response.plan;
@@ -64,17 +63,20 @@ export class FrequencyPage implements OnInit {
   viewMapDaily(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
-    console.log(this.newOrder.planId + "gfgfgfgfgfgfgf");
+
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 
   viewMapRegular(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
     this.newOrder.planId = this.planId;
+
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 
@@ -82,7 +84,8 @@ export class FrequencyPage implements OnInit {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 

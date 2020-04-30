@@ -39,13 +39,10 @@ export class PackagePage implements OnInit {
     );
   }
 
-  test() {
-    console.log("HOHOHO")
-  }
 
   selectFrequency(event, plan) {
 
-    console.log("plan Id " + plan.planId);
+    console.log("*******plan Id****** " + plan.planId);
 
     this.router.navigate(['/frequency/' + plan.planId]);
   }

@@ -8,6 +8,9 @@ import { OrderEntityService } from "../../order-entity.service";
 import { CreditCard } from 'src/app/credit-card';
 import { UtilityService } from 'src/app/utility.service';
 import { JobService } from 'src/app/job.service';
+import { FrequencyEnum } from 'src/app/frequency-enum.enum';
+import { GenderEnum } from 'src/app/gender-enum.enum';
+
 
 
 @Component({
@@ -76,16 +79,11 @@ export class PaymentPage implements OnInit {
     console.log(this.newOrder.freqencyEnum);
     console.log(this.newOrder.genderPreference);
 
-
-
-
     let username = this.utilityService.getUsername();
     let password = this.utilityService.getPassword();
     let planId = 1;
     let customerId = this.utilityService.getCurrentCustomer().cusId;
     let jobs = this.jobService.getCurrentJobList();
-
-
 
     this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
       response => {

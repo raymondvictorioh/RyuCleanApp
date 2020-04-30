@@ -30,7 +30,9 @@ export class OrderPreferencePage implements OnInit {
     //private activatedRoute: ActivatedRoute,
     private orderEntityService: OrderEntityService) {
     this.submitted = false;
-    this.newOrder = new OrderEntity();
+    // this.newOrder = new OrderEntity();
+
+    this.newOrder = orderEntityService.getCurrentOrderEntity();
     this.resultSuccess = false;
     this.resultError = false;
   }
@@ -59,6 +61,9 @@ export class OrderPreferencePage implements OnInit {
 
   preference(preferenceForm: NgForm) {
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    // console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("*** " + this.newOrder.freqencyEnum);
+    console.log("***" + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     let dataString = JSON.stringify(this.newOrder);
     this.router.navigate(['payment', dataString]);
 

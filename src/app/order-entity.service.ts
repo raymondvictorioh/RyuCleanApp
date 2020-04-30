@@ -36,7 +36,6 @@ export class OrderEntityService {
   }
 
   createNewOrder(username: string, password: string, planId: number, customerId: number, jobs: Job[], newOrder: OrderEntity): Observable<any> {
-    console.log("Easdasd");
     let createNewOrderReq = { "username": username, "password": password, "planId": planId, "customerId": customerId, "jobs": jobs, "newOrder": newOrder }
     return this.httpClient.put<any>(this.baseUrl, createNewOrderReq, httpOptions).pipe(
       catchError(this.handleError)
