@@ -61,7 +61,7 @@ export class OrderPreferencePage implements OnInit {
 
   preference(preferenceForm: NgForm) {
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    // console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log(this.orderEntityService.getCurrentOrderEntity().genderPreference);
     console.log("*** FREQUENCY ENUM from this.newOrder" + this.newOrder.freqencyEnum);
     console.log("*** FREQUENCY ENUM from orderEntityService: " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     let dataString = JSON.stringify(this.newOrder);
