@@ -5,6 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <p-gmap #gmap [style]="{'width':'100%','height':'320px', 'margin-bottom': '1em'}"></p-gmap>
+    <ion-item>
+        <ion-input name="address" id="address" type="text" placeholder="address"
+          [(ngModel)]="newOrder.zipcode" required="true" #inZipcode="ngModel"></ion-input>
+      </ion-item>
 
+      <ion-button size="large" color="secondary" (click)="setAddress()" expand="full" ion-icon="right-arrow">
+          Next
+      </ion-button>
 </ion-content>

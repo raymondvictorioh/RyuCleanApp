@@ -69,23 +69,23 @@ export class FrequencyPage implements OnInit {
   viewMapDaily(event) {
 
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
+    this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.newOrder.freqencyEnum);
-    this.router.navigateByUrl("viewMap");
+    this.router.navigateByUrl("address");
   }
 
   viewMapRegular(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
+    this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.newOrder.freqencyEnum);
-    this.router.navigateByUrl("viewMap");
+    this.router.navigateByUrl("address");
   }
 
   viewMapMember(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
+    this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-    console.log(this.newOrder.freqencyEnum);
-    this.router.navigateByUrl("viewMap");
+    this.router.navigateByUrl("address");
   }
 
 

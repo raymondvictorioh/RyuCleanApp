@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Barcode</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    
+    
+    <ion-card *ngIf="createCode">
+      <ngx-qrcode [qrc-value] = 'createdCode' large ></ngx-qrcode>
+      <ion-card-content>
+        <p> Please leave a feedback and rating!</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand ="block" ion-button full icon-left (click)="presentAlert()" >Rate Job</ion-button> 
+    <ion-button expand = "block" ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+    </ion-button> 
+
+  </ion-content>
+  

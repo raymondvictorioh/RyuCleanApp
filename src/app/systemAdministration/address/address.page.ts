@@ -3,6 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {GMapModule} from 'primeng/gmap';
 
 import { AlertController } from '@ionic/angular';
+import { OrderEntity } from 'src/app/order-entity';
+import { OrderEntityService } from 'src/app/order-entity.service';
+import { FrequencyEnum } from 'src/app/frequency-enum.enum';
+import { Job } from 'src/app/job';
+import { JobService } from 'src/app/job.service';
+
 
 @Component({
   selector: 'app-address',
@@ -17,14 +23,48 @@ export class AddressPage implements OnInit {
 
   ngOnInit() {
   }*/
+  //<p-gmap #gmap [style]="{'width':'100%','height':'320px', 'margin-bottom': '1em'}"></p-gmap>
 
+  newOrder: OrderEntity;
+  address: string;
+  retrievePlanError: boolean;
+  error: boolean;
+  jobList: Job [] = new Array();
+  
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,				
     public alertController: AlertController,
-    public gmap: GMapModule) { 
-    
+    public gmap: GMapModule,
+    private orderEntityService: OrderEntityService,
+    private jobService: JobService) { 
+      
+    this.newOrder = orderEntityService.getCurrentOrderEntity();
+    this.retrievePlanError = false;
+    this.error = false;
      
     }
+
+    setAddress(event){
+      this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+      console.log(this.orderEntityService.getCurrentOrderEntity().zipcode);
+      
+      let numberOfTimes: number;
+        
+
+      if(this.newOrder.freqencyEnum == FrequencyEnum.DAILY){
+        numberOfTimes = 1;
+      } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR){
+        numberOfTimes = 6;
+      } else {
+        numberOfTimes = 12;
+      }
+
+      for (var _i = 0; _i < numberOfTimes; _i++) {
+        this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
+      }
+      this.jobService.setCurrentJobList(this.jobList);
+      this.router.navigateByUrl("jobSetting"); 
+      }
 
     options: any;
 

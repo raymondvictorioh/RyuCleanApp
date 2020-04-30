@@ -11,7 +11,7 @@
         <ion-card-content>
           
       <ion-list>
-        <ion-button expand="full" *ngFor="let job of jobList" (click)="viewProductDetails($event, product)">
+        <ion-button expand="full" *ngFor="let job of jobList" (click)="setDate($event, job)">
           {{job.jobId}} 
           <ion-icon slot="start" name="arrow-forward"></ion-icon>
         </ion-button>

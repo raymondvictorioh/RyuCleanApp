@@ -62,30 +62,42 @@ const routes: Routes = [
     path: 'scheduled-order',
     loadChildren: './systemAdministration/scheduled-order/scheduled-order.module#ScheduledOrderPageModule'
   },
-  {
-    path: 'view-job-details',
-    loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then(m => m.ViewJobDetailsPageModule)
-  },
+  // {
+  //   path: 'view-job-details',
+  //   loadChildren: () => import('./systemAdministration/view-job-details/view-job-details.module').then(m => m.ViewJobDetailsPageModule)
+  // },
   {
     path: 'account-settings',
     loadChildren: './account-settings/account-settings.module#AccountSettingsPageModule'
   },
   {
     path: 'edit-name',
-    loadChildren: () => import('./accountSettingsFolder/edit-name/edit-name.module').then( m => m.EditNamePageModule)
+    loadChildren: () => import('./accountSettingsFolder/edit-name/edit-name.module').then(m => m.EditNamePageModule)
   },
   {
     path: 'edit-password',
-    loadChildren: () => import('./accountSettingsFolder/edit-password/edit-password.module').then( m => m.EditPasswordPageModule)
+    loadChildren: () => import('./accountSettingsFolder/edit-password/edit-password.module').then(m => m.EditPasswordPageModule)
   },
   {
     path: 'edit-contact-number',
-    loadChildren: () => import('./accountSettingsFolder/edit-contact-number/edit-contact-number.module').then( m => m.EditContactNumberPageModule)
+    loadChildren: () => import('./accountSettingsFolder/edit-contact-number/edit-contact-number.module').then(m => m.EditContactNumberPageModule)
   },
   {
     path: 'edit-credit-card',
-    loadChildren: () => import('./accountSettingsFolder/edit-credit-card/edit-credit-card.module').then( m => m.EditCreditCardPageModule)
-  }
+    loadChildren: () => import('./accountSettingsFolder/edit-credit-card/edit-credit-card.module').then(m => m.EditCreditCardPageModule)
+  },
+
+  // { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+
+  // { path: 'past-order', loadChildren: './systemAdministration/past-order/past-order.module#PastOrderPageModule'},
+
+  // { path: 'scheduled-order', loadChildren: './systemAdministration/scheduled-order/scheduled-order.module#ScheduledOrderPageModule' },
+
+  { path: 'view-job-details', loadChildren: './systemAdministration/view-job-details/view-job-details.module#ViewJobDetailsPageModule' },
+
+  { path: 'date-setting', loadChildren: './systemAdministration/date-setting/date-setting.module#DateSettingPageModule' },
+
+  { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule' }
 
 ];
 

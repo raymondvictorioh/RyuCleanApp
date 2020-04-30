@@ -7,6 +7,7 @@ export class OrderEntity {
 
     orderId: number;
     plan: Plan;
+    planId:number;
     orderDate: Date;
     jobs: Job[];
     freqencyEnum: FrequencyEnum;
@@ -15,7 +16,7 @@ export class OrderEntity {
     notes: string;
 
     constructor(orderId?: number, plan?: Plan, orderDate?: Date, jobs?: Job[], freqencyEnum?: FrequencyEnum, zipcode?: string,
-        genderPreference?: GenderEnum, notes?: string){
+        genderPreference?: GenderEnum, notes?: string, planId?: number){
         this.orderId = orderId;
         this.plan = plan;
         this.orderDate = orderDate;
@@ -24,6 +25,7 @@ export class OrderEntity {
         this.zipcode = zipcode;
         this.genderPreference = genderPreference;
         this.notes = notes;
+        this.planId = planId;
         
     }
 
