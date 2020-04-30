@@ -29,19 +29,51 @@ export class JobService {
     );
   }
 
-  getPastJobs(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerBeforeNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
-      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+  getCompletedJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsByJobStatusEnumForCustomers?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=COMPLETED").pipe(
         catchError(this.handleError)
       );
   }
 
-  getFutureJobs(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerAfterNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
-      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+  getAcceptedJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsByJobStatusEnumForCustomers?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=ACCEPTED").pipe(
         catchError(this.handleError)
       );
   }
+
+
+  getPendingJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsByJobStatusEnumForCustomers?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=PENDING").pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getInProgressJobs(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsByJobStatusEnumForCustomers?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=CLEANING_IN_PROGRESS").pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+
+  // getPastJobs(): Observable<any> {
+  //   return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerBeforeNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+  //     + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+  //       catchError(this.handleError)
+  //     );
+  // }
+
+  // getFutureJobs(): Observable<any> {
+  //   return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsFromCustomerAfterNow?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
+  //     + "&cusId=" + this.utilityService.getCurrentCustomer().cusId).pipe(
+  //       catchError(this.handleError)
+  //     );
+  // }
 
   getOrderFromJobId(jobId: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "/retrieveOrderByJobId/" + jobId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
@@ -73,23 +105,19 @@ export class JobService {
     return throwError(errorMessage);
   }
 
-  getCurrentJob(): Job
-  {
+  getCurrentJob(): Job {
     return this.utilityService.getCurrentJob();
   }
 
-  setCurrentJob(job : Job): void 
-  {
+  setCurrentJob(job: Job): void {
     this.utilityService.setCurrentJob(job);
   }
 
-  setCurrentJobList(jobList: Job[]): void
-  {
+  setCurrentJobList(jobList: Job[]): void {
     this.utilityService.setCurrentJobList(jobList);
   }
 
-  getCurrentJobList(): Job []
-  {
+  getCurrentJobList(): Job[] {
     return this.utilityService.getCurrentJobList();
   }
 

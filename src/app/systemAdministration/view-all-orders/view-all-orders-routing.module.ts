@@ -31,6 +31,15 @@ const routes: Routes = [
               loadChildren: '../scheduled-order/scheduled-order.module#ScheduledOrderPageModule'
             }
           ]
+        },
+        {
+          path: 'pendingOrder',
+          children: [
+            {
+              path: '',
+              loadChildren: '../pending-order/pending-order.module#PendingOrderPageModule'
+            }
+          ]
         }
       ]
   }

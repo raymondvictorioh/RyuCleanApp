@@ -97,7 +97,11 @@ const routes: Routes = [
 
   { path: 'date-setting', loadChildren: './systemAdministration/date-setting/date-setting.module#DateSettingPageModule' },
 
-  { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule' }
+  { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule' },
+  {
+    path: 'pending-order',
+    loadChildren: () => import('./systemAdministration/pending-order/pending-order.module').then( m => m.PendingOrderPageModule)
+  }
 
 ];
 

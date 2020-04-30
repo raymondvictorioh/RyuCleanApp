@@ -5,6 +5,7 @@ import { Job } from '../../job';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { ViewJobDetailsPage } from '../view-job-details/view-job-details.page';
 import { DatePipe } from '@angular/common';
+// import { JobStatusEnum } from '../../job-status-enum.enum';
 
 @Component({
   selector: 'app-past-order',
@@ -12,10 +13,12 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./past-order.page.scss'],
 })
 export class PastOrderPage implements OnInit {
+
   jobs: Job[];
 
 
-  constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController, public loadingCtrl: LoadingController) { }
+  constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController, public loadingCtrl: LoadingController) {
+  }
 
   ngOnInit() {
     this.refreshJobs();
@@ -54,7 +57,7 @@ export class PastOrderPage implements OnInit {
   // }
 
   refreshJobs() {
-    this.jobService.getPastJobs().subscribe(
+    this.jobService.getCompletedJobs().subscribe(
       response => {
         this.jobs = response.jobs;
       },
