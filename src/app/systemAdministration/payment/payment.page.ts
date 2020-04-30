@@ -76,8 +76,10 @@ export class PaymentPage implements OnInit {
 
 
     console.log(this.newOrder.planId);
-    console.log(this.newOrder.freqencyEnum);
-    console.log(this.newOrder.genderPreference);
+    console.log("frequency enum type: " + typeof this.newOrder.genderPreference);
+    console.log("frequency enum: " + this.newOrder.freqencyEnum);
+    console.log("gender enum type: " + typeof this.newOrder.genderPreference);
+    console.log("gender enum: " + this.newOrder.genderPreference);
 
     let username = this.utilityService.getUsername();
     let password = this.utilityService.getPassword();
