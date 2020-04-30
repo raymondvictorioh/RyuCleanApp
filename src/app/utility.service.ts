@@ -80,6 +80,10 @@ export class UtilityService {
 		sessionStorage.currentOrderEntity = JSON.stringify(currentOrderEntity);
 	}
 
+	// getCurrentPlanIdInNewOrder():number{
+	// 	return JSON.parse()
+	// }
+
 	getCurrentJob(): Job {
 		return JSON.parse(sessionStorage.currentJob);
 	}

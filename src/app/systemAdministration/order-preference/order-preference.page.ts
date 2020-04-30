@@ -17,46 +17,51 @@ import { GenderEnum } from 'src/app/gender-enum.enum';
 })
 export class OrderPreferencePage implements OnInit {
 
-      submitted: boolean;
-      newOrder: OrderEntity;
+  submitted: boolean;
+  newOrder: OrderEntity;
 
-      resultSuccess: boolean;
-      resultError: boolean;
-      message: string;
+  resultSuccess: boolean;
+  resultError: boolean;
+  message: string;
 
-      @ViewChild(RouterOutlet, {static:false}) outlet: RouterOutlet;
+  @ViewChild(RouterOutlet, { static: false }) outlet: RouterOutlet;
 
-      constructor(private router: Router,
-        //private activatedRoute: ActivatedRoute,
-        private orderEntityService: OrderEntityService) { 
-          this.submitted = false;
-          this.newOrder = new OrderEntity();
-          this.resultSuccess = false; 
-          this.resultError = false;
-        }
+  constructor(private router: Router,
+    //private activatedRoute: ActivatedRoute,
+    private orderEntityService: OrderEntityService) {
+    this.submitted = false;
+    this.newOrder = new OrderEntity();
+    this.resultSuccess = false;
+    this.resultError = false;
+  }
 
-        ngOnInit(): void {
-          this.router.events.subscribe(e => {
-            if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
-              this.outlet.deactivate();
-          });
-        }
+  ionViewDidEnter() {
 
-      clear (){
-        this.submitted = false;
-        this.newOrder.notes = "";
+  }
 
-      }
+  ngOnInit(): void {
 
-      goBack(){
-        //this.router.navigateByUrl();
-      }
+    this.router.events.subscribe(e => {
+      if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+        this.outlet.deactivate();
+    });
+  }
 
-      preference(preferenceForm: NgForm){
-        this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-        let dataString = JSON.stringify(this.newOrder);
-        this.router.navigate(['payment', dataString]);
+  clear() {
+    this.submitted = false;
+    this.newOrder.notes = "";
 
-      }
+  }
+
+  goBack() {
+    //this.router.navigateByUrl();
+  }
+
+  preference(preferenceForm: NgForm) {
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    let dataString = JSON.stringify(this.newOrder);
+    this.router.navigate(['payment', dataString]);
+
+  }
 
 }

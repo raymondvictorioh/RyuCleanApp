@@ -49,7 +49,8 @@ export class JobSettingPage implements OnInit {
     this.router.navigateByUrl("date-setting");
   }
 
-  setOrderPreference(){
+  setOrderPreference() {
+    this.orderEntityService.getCurrentOrderEntity().planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.jobService.setCurrentJobList(this.jobList);
     this.router.navigateByUrl("orderPreference");

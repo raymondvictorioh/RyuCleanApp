@@ -16,87 +16,93 @@ import { JobService } from 'src/app/job.service';
   styleUrls: ['./payment.page.scss'],
 })
 export class PaymentPage implements OnInit {
-  
-      submitted: boolean;
-      newOrder: OrderEntity;
-      newCreditCard : CreditCard;
 
-      resultSuccess: boolean;
-      resultError: boolean;
-      message: string;
+  submitted: boolean;
+  newOrder: OrderEntity;
+  newCreditCard: CreditCard;
 
-      constructor(private router: Router,
-        //private activatedRoute: ActivatedRoute,
-        private OrderEntityService: OrderEntityService,
-        private utilityService: UtilityService,
-        private jobService: JobService) { 
-          this.submitted = false;
+  resultSuccess: boolean;
+  resultError: boolean;
+  message: string;
 
-          this.resultSuccess = false; 
-          this.resultError = false;
-          this.newCreditCard = new CreditCard();
-          this.newOrder = this.OrderEntityService.getCurrentOrderEntity();
-          console.log(this.newOrder.notes);
-        }
+  constructor(private router: Router,
+    //private activatedRoute: ActivatedRoute,
+    private OrderEntityService: OrderEntityService,
+    private utilityService: UtilityService,
+    private jobService: JobService) {
+    this.submitted = false;
 
-        @ViewChild(RouterOutlet, {static: false}) outlet: RouterOutlet;
+    this.resultSuccess = false;
+    this.resultError = false;
+    this.newCreditCard = new CreditCard();
+    this.newOrder = this.OrderEntityService.getCurrentOrderEntity();
+    console.log(this.newOrder.notes);
+  }
 
-        ngOnInit(): void {
-          this.router.events.subscribe(e => {
-            if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
-              this.outlet.deactivate();
-          });
-        }
-      
+  @ViewChild(RouterOutlet, { static: false }) outlet: RouterOutlet;
 
-      goBack(){
-        //this.router.navigateByUrl();
+  ngOnInit(): void {
+    this.router.events.subscribe(e => {
+      if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+        this.outlet.deactivate();
+    });
+  }
+
+
+  goBack() {
+    //this.router.navigateByUrl();
+  }
+
+  clear() {
+    this.submitted = false;
+    this.newCreditCard = new CreditCard();
+  }
+
+  payment(paymentForm: NgForm) {
+
+    this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
+    this.createNewOrder();
+    this.router.navigateByUrl('success');
+    console.log(this.newCreditCard.expirationDate);
+    this.submitted = true;
+
+  }
+
+  createNewOrder() {
+    this.submitted = true;
+
+
+    console.log(this.newOrder.planId);
+    console.log(this.newOrder.freqencyEnum);
+    console.log(this.newOrder.genderPreference);
+
+    let username = this.utilityService.getUsername();
+    let password = this.utilityService.getPassword();
+    let planId = 1;
+    let customerId = this.utilityService.getCurrentCustomer().cusId;
+    let jobs = this.jobService.getCurrentJobList();
+
+
+
+    this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
+      response => {
+        let orderEntityNumber: number = response.orderEntityId;
+        this.resultSuccess = true;
+        this.resultError = false;
+        this.message = "New product " + orderEntityNumber + " created successfully";
+
+
+      },
+      error => {
+        this.resultError = true;
+        this.resultSuccess = false;
+        this.message = "An error has occurred while creating the new product: " + error;
+
+        console.log('********** CreateNewProductPage.ts: ' + error);
       }
 
-      clear(){
-        this.submitted = false;
-        this.newCreditCard = new CreditCard();
-      }
+    );
 
-      payment(paymentForm: NgForm){
-        this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
-        this.createNewOrder();
-        this.router.navigateByUrl('success');
-        console.log(this.newCreditCard.expirationDate);
-        this.submitted = true;
-        
-      }
-
-      createNewOrder() {
-        this.submitted = true;
-        
-          let username = this.utilityService.getUsername();
-          let password = this.utilityService.getPassword();
-          let planId = this.newOrder.planId;
-          let customerId = this.utilityService.getCurrentCustomer().cusId;
-          let jobs = this.jobService.getCurrentJobList();
-
-
-
-          this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
-            response => {
-              let orderEntityNumber: number = response.orderEntityId;
-              this.resultSuccess = true;
-              this.resultError = false;
-              this.message = "New product " + orderEntityNumber + " created successfully";
-					
-
-            },
-            error => {
-              this.resultError = true;
-              this.resultSuccess = false;
-              this.message =  "An error has occurred while creating the new product: " + error;
-					
-              console.log('********** CreateNewProductPage.ts: ' + error);
-            }
-            
-          );
-      
-      }
+  }
 
 }

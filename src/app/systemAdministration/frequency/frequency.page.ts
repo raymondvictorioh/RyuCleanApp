@@ -25,10 +25,6 @@ export class FrequencyPage implements OnInit {
   errorMessage: string;
   frequencyEnum: FrequencyEnum;
   newOrder: OrderEntity = new OrderEntity();
-  // keys(): Array<string> {
-  //   var keys = Object.keys(this.frequencyEnum);
-  //   return keys.slice(keys.length / 2);
-  // }
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -39,13 +35,12 @@ export class FrequencyPage implements OnInit {
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.retrievePlanError = false;
     this.error = false;
-
   }
 
   ngOnInit() {
     this.planId = parseInt(this.activatedRoute.snapshot.paramMap.get('planId'));
     this.refreshPlan();
-    console.log("test I AM AT FREQUENCY PAGE " + this.planId);
+    console.log("test... i selected plan ID : " + this.planId);
   }
 
   ionViewWillEnter() {
@@ -67,10 +62,10 @@ export class FrequencyPage implements OnInit {
   }
 
   viewMapDaily(event) {
-
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     this.router.navigateByUrl("address");
   }
 
@@ -78,6 +73,7 @@ export class FrequencyPage implements OnInit {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     this.router.navigateByUrl("address");
   }
 
@@ -85,6 +81,7 @@ export class FrequencyPage implements OnInit {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     this.router.navigateByUrl("address");
   }
 

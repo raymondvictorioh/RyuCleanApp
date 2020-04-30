@@ -44,9 +44,9 @@ export class PackagePage implements OnInit {
   }
 
   selectFrequency(event, plan) {
-    console.log("testttt");
+
     console.log("plan Id " + plan.planId);
-    
+
     this.router.navigate(['/frequency/' + plan.planId]);
   }
 
