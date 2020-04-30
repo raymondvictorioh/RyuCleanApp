@@ -38,6 +38,14 @@ export class CustomerService {
     );
   }
 
+  retrieveCustomerByCustomerId(cusId: number): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveCustomer/" + cusId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage: string = "";
 

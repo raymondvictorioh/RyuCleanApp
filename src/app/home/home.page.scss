@@ -3,3 +3,46 @@
      align-items: center;
       
   }
+
+  .titleicon {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align:center;
+}
+
+@media only screen and (min-width: 1200px){
+    .imgCard{
+        object-fit: cover;
+        width: 100%;
+        height: 400px;
+        filter: brightness(80%)
+      }
+    
+}
+
+    .imgCard{
+        object-fit: cover;
+        width: 100%;
+        height: 240px;
+        filter: brightness(80%)
+      }
+
+
+
+
+  .home_username{
+      font-weight: bold;
+      color: #3880ff;
+  }
+
+  ion-slides {
+    --bullet-background: rgba(215, 215, 215, 0.913);
+    --bullet-background-active: white;
+}
+
+.home_text{
+    text-align:center;
+}
+

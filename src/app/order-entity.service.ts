@@ -9,7 +9,7 @@ import { OrderEntity } from './order-entity';
 import { Job } from './job';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
 @Injectable({
@@ -19,27 +19,24 @@ export class OrderEntityService {
 
   baseUrl: string;
 
-  
 
-  constructor (private httpClient: HttpClient,
-              private utilityService: UtilityService) { 
-                this.baseUrl = this.utilityService.getRootPath() + "Order"; 
-              }
 
-  
-  getCurrentOrderEntity(): OrderEntity
-  {
+  constructor(private httpClient: HttpClient,
+    private utilityService: UtilityService) {
+    this.baseUrl = this.utilityService.getRootPath() + "Order";
+  }
+
+
+  getCurrentOrderEntity(): OrderEntity {
     return this.utilityService.getCurrentOrder();
   }
 
-  setCurrentOrderEntity(orderEntityToBeSet: OrderEntity): void
-  {
+  setCurrentOrderEntity(orderEntityToBeSet: OrderEntity): void {
     this.utilityService.setCurrentOrderEntity(orderEntityToBeSet);
   }
 
-  createNewOrder(username: string, password: string, planId: number, customerId: number, jobs: Job[],newOrder: OrderEntity ): Observable<any> {
-    console.log("Easdasd");
-    let createNewOrderReq = { "username": username, "password": password, "planId":planId, "customerId": customerId, "jobs": jobs, "newOrder": newOrder }
+  createNewOrder(username: string, password: string, planId: number, customerId: number, jobs: Job[], newOrder: OrderEntity): Observable<any> {
+    let createNewOrderReq = { "username": username, "password": password, "planId": planId, "customerId": customerId, "jobs": jobs, "newOrder": newOrder }
     return this.httpClient.put<any>(this.baseUrl, createNewOrderReq, httpOptions).pipe(
       catchError(this.handleError)
     );
@@ -56,6 +53,6 @@ export class OrderEntityService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-  
-  
+
+
 }

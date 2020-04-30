@@ -17,46 +17,56 @@ import { GenderEnum } from 'src/app/gender-enum.enum';
 })
 export class OrderPreferencePage implements OnInit {
 
-      submitted: boolean;
-      newOrder: OrderEntity;
+  submitted: boolean;
+  newOrder: OrderEntity;
 
-      resultSuccess: boolean;
-      resultError: boolean;
-      message: string;
+  resultSuccess: boolean;
+  resultError: boolean;
+  message: string;
 
-      @ViewChild(RouterOutlet, {static:false}) outlet: RouterOutlet;
+  @ViewChild(RouterOutlet, { static: false }) outlet: RouterOutlet;
 
-      constructor(private router: Router,
-        //private activatedRoute: ActivatedRoute,
-        private orderEntityService: OrderEntityService) { 
-          this.submitted = false;
-          this.newOrder = new OrderEntity();
-          this.resultSuccess = false; 
-          this.resultError = false;
-        }
+  constructor(private router: Router,
+    //private activatedRoute: ActivatedRoute,
+    private orderEntityService: OrderEntityService) {
+    this.submitted = false;
+    // this.newOrder = new OrderEntity();
 
-        ngOnInit(): void {
-          this.router.events.subscribe(e => {
-            if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
-              this.outlet.deactivate();
-          });
-        }
+    this.newOrder = orderEntityService.getCurrentOrderEntity();
+    this.resultSuccess = false;
+    this.resultError = false;
+  }
 
-      clear (){
-        this.submitted = false;
-        this.newOrder.notes = "";
+  ionViewDidEnter() {
 
-      }
+  }
 
-      goBack(){
-        //this.router.navigateByUrl();
-      }
+  ngOnInit(): void {
 
-      preference(preferenceForm: NgForm){
-        this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-        let dataString = JSON.stringify(this.newOrder);
-        this.router.navigate(['payment', dataString]);
+    this.router.events.subscribe(e => {
+      if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+        this.outlet.deactivate();
+    });
+  }
 
-      }
+  clear() {
+    this.submitted = false;
+    this.newOrder.notes = "";
+
+  }
+
+  goBack() {
+    //this.router.navigateByUrl();
+  }
+
+  preference(preferenceForm: NgForm) {
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    // console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("*** FREQUENCY ENUM from this.newOrder" + this.newOrder.freqencyEnum);
+    console.log("*** FREQUENCY ENUM from orderEntityService: " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    let dataString = JSON.stringify(this.newOrder);
+    this.router.navigate(['payment', dataString]);
+
+  }
 
 }

@@ -17,4 +17,4 @@ import { ViewJobDetailsPage } from './view-job-details.page';
   ],
   declarations: [ViewJobDetailsPage]
 })
-export class ViewJobDetailsPageModule {}
+export class ViewJobDetailsPageModule { }

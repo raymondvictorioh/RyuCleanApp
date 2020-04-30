@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
   password: string;
   loginError: boolean;
   errorMessage: string;
+  cusId: number;
 
   constructor(private router: Router,
     public utilityService: UtilityService,
@@ -52,6 +53,7 @@ export class LoginPage implements OnInit {
             this.utilityService.setIsLogin(true);
             this.utilityService.setCurrentCustomer(customer);
             console.log(this.utilityService.getCurrentCustomer().firstName);
+            console.log(this.utilityService.getCurrentCustomer().cusId);
             this.loginError = false;
           } else {
             this.loginError = true;
@@ -63,9 +65,11 @@ export class LoginPage implements OnInit {
           this.errorMessage = error
         }
       );
+      // this.router.navigate(["home"]);
     } else {
 
     }
+
     this.menuCtrl.enable(true, 'custom');
   }
 

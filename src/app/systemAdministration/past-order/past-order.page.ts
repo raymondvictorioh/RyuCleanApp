@@ -15,30 +15,43 @@ export class PastOrderPage implements OnInit {
   jobs: Job[];
 
 
-  constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController) { }
+  constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController, public loadingCtrl: LoadingController) { }
 
   ngOnInit() {
     this.refreshJobs();
   }
 
 
-  async presentModal() {
-    console.log("asdsasd");
-    const modal = await this.modalController.create({
-      component: ViewJobDetailsPage,
-      componentProps: {
-        'firstName': 'Douglas',
-        'lastName': 'Adams',
-        'middleInitial': 'N'
-      }
-    });
-    return await modal.present();
-  }
+  // async presentModal() {
+
+  //   console.log("asdsasd");
+  //   const modal = await this.modalController.create({
+  //     component: ViewJobDetailsPage,
+  //     componentProps: {
+  //       'firstName': 'Douglas',
+  //       'lastName': 'Adams',
+  //       'middleInitial': 'N'
+  //     }
+  //   });
+  //   return await modal.present();
+  // }
 
   ionViewWillEnter() {
     this.refreshJobs();
     console.log("asdasd");
   }
+
+  // presentLoadingDefault() {
+  //   let loading = this.loadingCtrl.create({
+  //     content: 'Please wait...'
+  //   });
+
+  //   loading.present();
+
+  //   setTimeout(() => {
+  //     loading.dismiss();
+  //   }, 5000);
+  // }
 
   refreshJobs() {
     this.jobService.getPastJobs().subscribe(
@@ -51,9 +64,9 @@ export class PastOrderPage implements OnInit {
     )
   }
 
-  viewJobDetails(event, job) {
-    this.router.navigate(["/systemAdministration/viewJobDetails/"] + job.jobId)
-  }
+  // viewJobDetails(event, job) {
+  //   this.router.navigate(["/systemAdministration/viewJobDetails/"] + job.jobId)
+  // }
 
   parseDate(d: Date) {
     return d.toString().replace('[UTC]', '');

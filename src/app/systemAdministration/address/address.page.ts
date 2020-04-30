@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {GMapModule} from 'primeng/gmap';
+import { GMapModule } from 'primeng/gmap';
 
 import { AlertController } from '@ionic/angular';
 import { OrderEntity } from 'src/app/order-entity';
@@ -29,52 +29,65 @@ export class AddressPage implements OnInit {
   address: string;
   retrievePlanError: boolean;
   error: boolean;
-  jobList: Job [] = new Array();
-  
+  jobList: Job[] = new Array();
+
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute,				
+    private activatedRoute: ActivatedRoute,
     public alertController: AlertController,
     public gmap: GMapModule,
     private orderEntityService: OrderEntityService,
-    private jobService: JobService) { 
-      
+    private jobService: JobService) {
+
     this.newOrder = orderEntityService.getCurrentOrderEntity();
     this.retrievePlanError = false;
     this.error = false;
-     
+
+  }
+
+  setAddress(event) {
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log(this.orderEntityService.getCurrentOrderEntity().zipcode);
+
+    let numberOfTimes: number;
+
+
+    if (this.newOrder.freqencyEnum == FrequencyEnum.DAILY) {
+      numberOfTimes = 1;
+    } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR) {
+      numberOfTimes = 6;
+    } else {
+      numberOfTimes = 12;
     }
 
-    setAddress(event){
-      this.orderEntityService.setCurrentOrderEntity(this.newOrder);
-      console.log(this.orderEntityService.getCurrentOrderEntity().zipcode);
-      
-      let numberOfTimes: number;
-        
-
-      if(this.newOrder.freqencyEnum == FrequencyEnum.DAILY){
-        numberOfTimes = 1;
-      } else if (this.newOrder.freqencyEnum == FrequencyEnum.REGULAR){
-        numberOfTimes = 6;
-      } else {
-        numberOfTimes = 12;
-      }
-
-      for (var _i = 0; _i < numberOfTimes; _i++) {
-        this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
-      }
-      this.jobService.setCurrentJobList(this.jobList);
-      this.router.navigateByUrl("jobSetting"); 
-      }
-
-    options: any;
-
-    overlays: any[];
-
-    ngOnInit() {
-        this.options = {
-            center: {lat: 36.890257, lng: 30.707417},
-            zoom: 12
-        };
+    for (var _i = 0; _i < numberOfTimes; _i++) {
+      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
     }
+    this.jobService.setCurrentJobList(this.jobList);
+
+
+    this.router.navigateByUrl("jobSetting");
+
+  }
+
+  ionViewDidLeave() {
+    console.log("**********");
+    console.log("current order plan : " + this.orderEntityService.getCurrentOrderEntity().planId);
+    console.log("current order address : " + this.orderEntityService.getCurrentOrderEntity().zipcode);
+    console.log("current order freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+    console.log("current number of jobs: " + this.orderEntityService.getCurrentOrderEntity().jobs);
+  }
+
+
+
+  options: any;
+
+  overlays: any[];
+
+  ngOnInit() {
+    this.options = {
+      center: { lat: 36.890257, lng: 30.707417 },
+      zoom: 12
+    };
+  }
 
 }

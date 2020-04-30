@@ -25,27 +25,22 @@ export class FrequencyPage implements OnInit {
   errorMessage: string;
   frequencyEnum: FrequencyEnum;
   newOrder: OrderEntity = new OrderEntity();
-  // keys(): Array<string> {
-  //   var keys = Object.keys(this.frequencyEnum);
-  //   return keys.slice(keys.length / 2);
-  // }
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private planService: PlanService, 
+    private planService: PlanService,
     public alertControler: AlertController,
     public orderEntityService: OrderEntityService) {
 
-    this.orderEntityService.setCurrentOrderEntity(this.newOrder);  
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.retrievePlanError = false;
     this.error = false;
-
   }
 
   ngOnInit() {
     this.planId = parseInt(this.activatedRoute.snapshot.paramMap.get('planId'));
     this.refreshPlan();
-    console.log("test I AM AT FREQUENCY PAGE " + this.planId);
+    console.log("test... i selected plan ID : " + this.planId);
   }
 
   ionViewWillEnter() {
@@ -53,7 +48,6 @@ export class FrequencyPage implements OnInit {
   }
 
   refreshPlan() {
-    console.log("REFRESH PLAN");
     this.planService.getPlanByPlanId(this.planId).subscribe(
       response => {
         this.planToView = response.plan;
@@ -66,26 +60,37 @@ export class FrequencyPage implements OnInit {
 
   }
 
-  viewMapDaily(event){
+  viewMapDaily(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
+<<<<<<< HEAD
     console.log(this.newOrder.freqencyEnum);
     console.log(this.newOrder.planId + "gfgfgfgfgfgfgf");
+=======
+
+>>>>>>> 5fda31f47441507974329955ec2fed2f4da55763
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 
-  viewMapRegular(event){
+  viewMapRegular(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
     this.newOrder.planId = this.planId;
+
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 
-  viewMapMember(event){
+  viewMapMember(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+    console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
+    console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
     this.router.navigateByUrl("address");
   }
 

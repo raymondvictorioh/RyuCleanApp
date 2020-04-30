@@ -25,14 +25,11 @@ export class UtilityService {
 
 	}
 
-	getIsLogin(): boolean
-	{
-		if(sessionStorage.isLogin == "true")
-		{
+	getIsLogin(): boolean {
+		if (sessionStorage.isLogin == "true") {
 			return true;
 		}
-		else
-		{
+		else {
 			return false;
 		}
 	}
@@ -57,6 +54,14 @@ export class UtilityService {
 		sessionStorage.username = username;
 	}
 
+	setCurrentCustomerId(cusId: number): void {
+		sessionStorage.cusId = cusId;
+	}
+
+	getCurrentCustomerId(): number {
+		return sessionStorage.cusId;
+	}
+
 	getPassword(): string {
 		return sessionStorage.password;
 	}
@@ -66,37 +71,35 @@ export class UtilityService {
 	}
 
 
-	getCurrentOrder(): OrderEntity
-	{
+	getCurrentOrder(): OrderEntity {
 		return JSON.parse(sessionStorage.currentOrderEntity);
 	}
 
 
-	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void
-	{		 
+	setCurrentOrderEntity(currentOrderEntity: OrderEntity): void {
 		sessionStorage.currentOrderEntity = JSON.stringify(currentOrderEntity);
 	}
 
-	getCurrentJob(): Job 
-	{
+	// getCurrentPlanIdInNewOrder():number{
+	// 	return JSON.parse()
+	// }
+
+	getCurrentJob(): Job {
 		return JSON.parse(sessionStorage.currentJob);
 	}
 
-	setCurrentJob(currentJob: Job):void
-	{
+	setCurrentJob(currentJob: Job): void {
 		sessionStorage.currentJob = JSON.stringify(currentJob);
 	}
 
-	setCurrentJobList(jobList: Job[])
-	{
+	setCurrentJobList(jobList: Job[]) {
 		sessionStorage.currentJobList = JSON.stringify(jobList);
 	}
 
-	getCurrentJobList(): Job [] 
-	{
+	getCurrentJobList(): Job[] {
 		return JSON.parse(sessionStorage.currentJobList);
-	}	
+	}
 
-	
+
 
 }

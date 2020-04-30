@@ -32,6 +32,10 @@ export class HomePage implements OnInit {
 
   }
 
+  directToOrder() {
+    this.router.navigate(["/packages"]);
+  }
+
 
 
 }

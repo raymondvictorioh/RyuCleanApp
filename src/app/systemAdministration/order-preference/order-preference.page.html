@@ -6,55 +6,56 @@
 
 <ion-content>
 
-	<ion-card>      
-	  
-      <ion-card-content>
-        
-		<div *ngIf="resultSuccess == true" style="color: blue;">
-			{{message}}
-		</div>
-		
-		<div *ngIf="resultError == true" style="color: red;">
-			{{message}}
-    </div>
-    
-    <form #preferenceForm="ngForm" (ngSubmit)="preference(preferenceForm)" >
-        <ion-list>
-						
-            <ion-item>
-                <ion-label><b>Gender</b></ion-label>
-                <ion-select placeholder="Select One" id="genderPreference" name="genderPreference" [(ngModel)]="newOrder.genderPreference" #genderPreference="ngModel" required="true">
-                  <ion-select-option value = "GenderEnum.FEMALE">Female</ion-select-option>
-                  <ion-select-option value = "MALE">Male</ion-select-option>
-                  <ion-select-option value = "NO_PREFERENCE">No Preference</ion-select-option>
-                </ion-select>
-            </ion-item>
-            
-            <ion-item>
-              <ion-label><b>Notes</b></ion-label>
-              <ion-input type="text" id="notes" name="notes" [(ngModel)]="newOrder.notes" #notes="ngModel"></ion-input>
-            </ion-item>
+  <ion-card>
 
-            <ion-item>
-                <ion-button (click)="clear()">
-                  Clear
-                </ion-button>
-                <ion-button type="submit" ion-button block>
-                  Payment
-                </ion-button>
-              </ion-item>
+    <ion-card-content>
+
+      <div *ngIf="resultSuccess == true" style="color: blue;">
+        {{message}}
+      </div>
+
+      <div *ngIf="resultError == true" style="color: red;">
+        {{message}}
+      </div>
+
+      <form #preferenceForm="ngForm" (ngSubmit)="preference(preferenceForm)">
+        <ion-list>
+
+          <ion-item>
+            <ion-label><b>Gender</b></ion-label>
+            <ion-select placeholder="Select One" id="genderPreference" name="genderPreference" [(ngModel)]="newOrder.genderPreference"
+              #genderPreference="ngModel" required="true">
+              <ion-select-option value="FEMALE">Female</ion-select-option>
+              <ion-select-option value="MALE">Male</ion-select-option>
+              <ion-select-option value="NO_PREFERENCE">No Preference</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label><b>Notes</b></ion-label>
+            <ion-input type="text" id="notes" name="notes" [(ngModel)]="newOrder.notes" #notes="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-button (click)="clear()">
+              Clear
+            </ion-button>
+            <ion-button type="submit" ion-button block>
+              Payment
+            </ion-button>
+          </ion-item>
 
         </ion-list>
-    </form>
+      </form>
 
-  </ion-card-content>
-	  
-</ion-card>
+    </ion-card-content>
+
+  </ion-card>
 
 </ion-content>
 
 <ion-footer>
 
-    <ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
-    
-  </ion-footer>
+  <ion-title size="small">&copy; 2020 IS3106. All rights reserved.</ion-title>
+
+</ion-footer>

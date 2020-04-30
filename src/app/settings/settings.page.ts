@@ -19,6 +19,10 @@ export class SettingsPage implements OnInit {
 
   }
 
+  buttonClick() {
+    this.router.navigate(["/account-settings"]);
+  }
+
   async presentConfirmation() {
     console.log("alert!");
     const alert = await this.alertController.create({
