@@ -34,7 +34,6 @@ export class JobSettingPage implements OnInit {
     this.resultError = false;
 
     this.jobList = jobService.getCurrentJobList();
-    console.log(this.jobList[0].jobDate);
 
 
   }
@@ -60,6 +59,8 @@ export class JobSettingPage implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log("****** first job date" + this.jobList[0].jobDate);
   }
 
 }

@@ -58,6 +58,8 @@ export class DateSettingPage implements OnInit {
       }
 
       submit(submitForm : NgForm){
+        this.jobService.setCurrentJob(this.newJob);
+        console.log(this.jobService.getCurrentJob().jobDate);
         this.router.navigateByUrl('jobSetting');
       }
 

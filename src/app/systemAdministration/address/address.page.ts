@@ -60,7 +60,7 @@ export class AddressPage implements OnInit {
     }
 
     for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job(_i, null, this.newOrder, new Date(), new Date()));
+      this.jobList.push(new Job(_i, null, this.newOrder, null, null));
     }
     this.jobService.setCurrentJobList(this.jobList);
 
