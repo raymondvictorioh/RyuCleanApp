@@ -63,12 +63,8 @@ export class FrequencyPage implements OnInit {
   viewMapDaily(event) {
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
-<<<<<<< HEAD
     console.log(this.newOrder.freqencyEnum);
     console.log(this.newOrder.planId + "gfgfgfgfgfgfgf");
-=======
-
->>>>>>> 5fda31f47441507974329955ec2fed2f4da55763
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     console.log("****** freq enum : " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum + " ******");
     console.log("****** planId : " + this.orderEntityService.getCurrentOrderEntity().planId + " ******");
