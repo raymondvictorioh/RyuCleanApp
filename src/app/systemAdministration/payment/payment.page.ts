@@ -78,6 +78,7 @@ export class PaymentPage implements OnInit {
 
 
 
+
     let username = this.utilityService.getUsername();
     let password = this.utilityService.getPassword();
     let planId = 1;
