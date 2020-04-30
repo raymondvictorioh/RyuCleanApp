@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pending Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="jobs!=null &&jobs.length==0">
+    No Pending Orders.
+  </ion-item>
+
+  <ion-card *ngFor="let job of jobs">
+
+    <ion-card-header color="primary">
+      Job ID : {{job.jobId}}
+    </ion-card-header>
+    <ion-list>
+      <ion-item lines="full">
+        <ion-icon name="albums" slot="start"></ion-icon>
+        <ion-label color="primary">{{job.order.plan.planName}}</ion-label>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-card-subtitle slot="start">Status : {{job.jobStatusEnum}} </ion-card-subtitle>
+      </ion-item>
+
+
+
+      <ion-item lines="full">
+        <ion-icon name="time" slot="start"></ion-icon>
+        <ion-label>{{parseDate(job.jobDate) | date:'EEE, d/MM/yyyy' }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+
+
+
+
+</ion-content>
