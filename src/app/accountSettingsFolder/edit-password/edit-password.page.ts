@@ -22,7 +22,9 @@ export class EditPasswordPage implements OnInit {
   ngOnInit() {
     console.log("asd");
     this.customerToUpdate = this.utilityService.getCurrentCustomer();
+    console.log(this.utilityService.getPassword());
     console.log(this.customerToUpdate);
+    console.log(this.customerToUpdate.username);
     console.log(this.customerToUpdate.password);
     console.log(this.customerToUpdate.firstName);
   }

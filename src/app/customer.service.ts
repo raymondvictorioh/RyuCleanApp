@@ -47,7 +47,7 @@ export class CustomerService {
   updateCustomer(): Observable<any> {
     let updateCustomerReq = {
       "username": this.utilityService.getCurrentCustomer().username,
-      "password": this.utilityService.getCurrentCustomer().password,
+      "password": this.utilityService.getPassword(),
       "customer": this.utilityService.getCurrentCustomer()
 
     };

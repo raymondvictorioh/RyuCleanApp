@@ -15,15 +15,14 @@ export class EditFullNamePage implements OnInit {
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
+  errorMessage: string;
   constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) { }
 
   ngOnInit() {
     console.log("EDIT FULLNAME");
     console.log("asd");
-    this.customerToUpdate = this.utilityService.getCurrentCustomer();
-    console.log(this.customerToUpdate);
-    console.log(this.customerToUpdate.lastName);
-    console.log(this.customerToUpdate.firstName);
+    this.refreshCustomerDetails();
+
   }
 
   async closeModal() {
@@ -48,5 +47,20 @@ export class EditFullNamePage implements OnInit {
         }
       )
     }
+  }
+
+  refreshCustomerDetails() {
+    console.log("refresh Customer Details");
+    this.customerService.retrieveCustomerByCustomerId(this.utilityService.getCurrentCustomer().cusId).subscribe(
+      response => {
+        this.customerToUpdate = response.customer;
+      },
+      error => {
+        this.errorMessage = error;
+      }
+    )
+    // console.log(this.customerToUpdate);
+    // console.log(this.customerToUpdate.lastName);
+    // console.log(this.customerToUpdate.firstName);
   }
 }
