@@ -29,7 +29,7 @@ export class OrderEntity {
         this.genderPreference = genderPreference;
         this.notes = notes;
         this.planId = planId;
-        this.orderStatusEnum = OrderStatusEnum.PENDING;
+        //this.orderStatusEnum = OrderStatusEnum.PENDING;
         
     }
 

@@ -23,18 +23,54 @@
               <ion-label><b>Credit Card Details</b></ion-label>
               <ion-item>
                 <ion-label><b>Card Number </b></ion-label>
-                <ion-input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="newCreditCard.cardNumber" required="true" #cardNumber="ngModel"></ion-input>
+                <ion-input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="newCreditCard.cardNumber" required="true" #cardNumber="ngModel" required = true minlength="16" maxlength = "16"></ion-input>
               </ion-item>
+              <div style="color:red;">
+                  <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched || submitted)" class="errorText">
+                    <div *ngIf="cardNumber.errors.required">
+                      Card Number is required.
+                    </div>
+                    <div *ngIf="cardNumber.errors.minlength">
+                        Card Number must be at least 16 characters long.
+                    </div>
+                    <div *ngIf="cardNumber.errors.maxlength">
+                        Card Number cannot exceed 16 characters.
+                    </div>
+                  </div>
+                </div>
               
               <ion-item>
                 <ion-label><b>Security Code</b></ion-label>
-                <ion-input type="text" id="securityCode" name="securityCode" [(ngModel)]="newCreditCard.securityCode" #securityCode="ngModel"></ion-input>
+                <ion-input type="text" id="securityCode" name="securityCode" [(ngModel)]="newCreditCard.securityCode" #securityCode="ngModel" required = true minlength="3" maxlength = "4"></ion-input>
               </ion-item>
+
+              <div style="color:red;">
+                  <div *ngIf="securityCode.invalid && (securityCode.dirty || securityCode.touched || submitted)" class="errorText">
+                    <div *ngIf="securityCode.errors.required">
+                      Card Number is required.
+                    </div>
+                    <div *ngIf="securityCode.errors.minlength">
+                        Card Number must be at least 3 characters long.
+                    </div>
+                    <div *ngIf="securityCode.errors.maxlength">
+                        Card Number cannot exceed 4 characters.
+                    </div>
+                  </div>
+                </div>
 
               <ion-item>
                   <ion-label><b>Expiration Date</b> </ion-label>
-                  <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2040" value="2020-04-07" id="jobDate" name="jobDate" [(ngModel)]="newCreditCard.expirationDate" #jobDate="ngModel"></ion-datetime>
+                  <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2021" max="2040" value="2020-04-07" id="jobDate" name="jobDate" [(ngModel)]="newCreditCard.expirationDate" #jobDate="ngModel" required = true></ion-datetime>
               </ion-item>
+
+              <div style="color:red;">
+                  <div *ngIf="jobDate.invalid && (jobDate.dirty || jobDate.touched || submitted)" class="errorText">
+                    <div *ngIf="jobDate.errors.required">
+                      Expiration Date is required.
+                    </div>
+                  </div>
+              </div>
+                   
 
               <ion-item>
                   <ion-button (click)="clear()">

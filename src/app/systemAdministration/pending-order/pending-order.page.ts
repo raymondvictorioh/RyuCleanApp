@@ -17,6 +17,9 @@ import { DateSettingModalPage } from "../date-setting-modal/date-setting-modal.p
 export class PendingOrderPage implements OnInit {
 
   jobs: Job[];
+  jobId: number;
+  message: string;
+  numberOfJobs: number;
   constructor(private datepipe: DatePipe, private router: Router, private jobService: JobService, public loadingController: LoadingController, public modalController: ModalController, public loadingCtrl: LoadingController) {
   }
 
@@ -34,6 +37,8 @@ export class PendingOrderPage implements OnInit {
     this.jobService.getPendingJobs().subscribe(
       response => {
         this.jobs = response.jobs;
+        console.log(this.jobs.length);
+        this.numberOfJobs = this.jobs.length;
       },
       error => {
         console.log('********* ViewScheduledOrdePage ' + error);
@@ -44,11 +49,13 @@ export class PendingOrderPage implements OnInit {
 
   async presentAlert(event, job) {
     console.log('********************* '+job.jobId);
-    let currentJobId: number = job.jobId;
+    this.jobId = job.jobId;
+    this.jobService.setCurrentJob(job);
+    console.log(job.jobId);
     const modal = await this.modalController.create({
       component: DateSettingModalPage,
       componentProps: {
-        jobId: currentJobId
+        jobId: this.jobId
       }
     });
     modal.present();
