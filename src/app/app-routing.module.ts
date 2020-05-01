@@ -39,6 +39,9 @@ const routes: Routes = [
 
   { path: 'success', loadChildren: './success/success.module#SuccessPageModule' },
 
+
+  { path: 'success/:orderId', loadChildren: './success/success.module#SuccessPageModule' },
+
   { path: 'barcode', loadChildren: './barcode/barcode.module#BarcodePageModule' },
 
   { path: 'packages', loadChildren: './package/package.module#PackagePageModule', canActivate: [AuthGuard] },
@@ -100,7 +103,11 @@ const routes: Routes = [
   { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule' },
   {
     path: 'pending-order',
-    loadChildren: () => import('./systemAdministration/pending-order/pending-order.module').then( m => m.PendingOrderPageModule)
+    loadChildren: () => import('./systemAdministration/pending-order/pending-order.module').then(m => m.PendingOrderPageModule)
+  },
+  {
+    path: 'edit-full-name',
+    loadChildren: () => import('./accountSettingsFolder/edit-full-name/edit-full-name.module').then( m => m.EditFullNamePageModule)
   }
 
 ];

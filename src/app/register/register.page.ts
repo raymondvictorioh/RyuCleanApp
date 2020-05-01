@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
 
       this.customerService.createNewCustomer(this.newCustomer).subscribe(
         response => {
-          let newCustomerId: number = response.cusId;
+          let newCustomerId: number = response.newCustomerId;
           this.resultSuccess = true;
           this.resultError = false;
           this.message = "New Account " + newCustomerId + " created successfully";

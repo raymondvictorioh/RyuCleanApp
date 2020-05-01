@@ -21,8 +21,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { ViewJobDetailsPageModule } from './systemAdministration/view-job-details/view-job-details.module';
 
+
+
 // import { EditContactNumberModule } from './accountSettingsFolder/edit-contact-number/edit-contact-number.module';
 import { BarcodeModalPageModule } from './systemAdministration/barcode-modal/barcode-modal.module';
+import { EditNamePageModule } from './accountSettingsFolder/edit-name/edit-name.module';
+import { EditCreditCardPageModule } from './accountSettingsFolder/edit-credit-card/edit-credit-card.module';
+import { EditPasswordPageModule } from './accountSettingsFolder/edit-password/edit-password.module';
+import { EditContactNumberPageModule } from './accountSettingsFolder/edit-contact-number/edit-contact-number.module';
+import { EditFullNamePageModule } from './accountSettingsFolder/edit-full-name/edit-full-name.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,16 +44,23 @@ import { BarcodeModalPageModule } from './systemAdministration/barcode-modal/bar
     NgxQRCodeModule,
     IonicStorageModule.forRoot(),
     ViewJobDetailsPageModule,
-    BarcodeModalPageModule
+    BarcodeModalPageModule,
+    EditNamePageModule,
+    EditCreditCardPageModule,
+    EditPasswordPageModule,
+    EditContactNumberPageModule,
+    EditFullNamePageModule
   ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    BarcodeScanner,
-    Calendar,
-    DatePipe
-  ],
-  bootstrap: [AppComponent]
+
+
+    providers: [
+      StatusBar,
+      SplashScreen,
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      BarcodeScanner,
+      Calendar,
+      DatePipe
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

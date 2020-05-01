@@ -1,9 +1,44 @@
 <ion-header>
+
   <ion-toolbar>
-    <ion-title>editName</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Edit Username
+    </ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <form #updateCustomerForm="ngForm" (ngSubmit)="update(updateCustomerForm)">
+
+    <!-- <div style="color: red;">
+          <div *ngIf="category.invalid && (category.dirty || category.touched || submitted)" class="errorText">
+            <div *ngIf="category.errors.required">
+              Category is required.
+            </div>
+          </div>
+        </div> -->
+
+    <ion-list>
+      <ion-item>
+        <ion-label><b>Username</b></ion-label>
+        <ion-input type="text" id="username" name="password" [(ngModel)]="customerToUpdate.username" required="true"
+          #name="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-button type="submit" ion-button block>
+          Update
+        </ion-button>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
 </ion-content>

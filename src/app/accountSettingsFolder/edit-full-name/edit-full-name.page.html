@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Edit Full Name
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+
+
+  <div *ngIf="resultSuccess == true" style="color: blue;">
+    {{message}}
+  </div>
+
+  <div *ngIf="resultError == true" style="color: red;">
+    {{message}}
+  </div>
+
+  <form #updateCustomerForm="ngForm" (ngSubmit)="update(updateCustomerForm)">
+
+    <div style="color: red;">
+      <div *ngIf=" (firstName.dirty || firstName.touched || submitted)" class="errorText">
+        <div *ngIf="firstName.errors.required">
+          First Name is Required
+        </div>
+      </div>
+
+      <div *ngIf="(lastName.dirty || lastName.touched || submitted)" class="errorText">
+        <div *ngIf="lastName.errors.required">
+          Last Name is Required
+        </div>
+      </div>
+    </div>
+
+
+
+    <ion-list>
+      <ion-item>
+        <ion-label><b>First Name</b></ion-label>
+        <ion-input type="text" id="firstName" name="firstName" [(ngModel)]="customerToUpdate.firstName" required="true"
+          #firstName="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><b>Last Name</b></ion-label>
+        <ion-input type="text" id="lastName" name="lastName" [(ngModel)]="customerToUpdate.lastName" required="true"
+          #lastName="ngModel"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-button type="submit" ion-button block>
+          Update
+        </ion-button>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+</ion-content>

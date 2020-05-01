@@ -6,6 +6,12 @@ import { UtilityService } from '../utility.service';
 import { CreditCard } from '../credit-card';
 import { ModalController } from '@ionic/angular';
 import { ViewJobDetailsPage } from '../systemAdministration/view-job-details/view-job-details.page';
+import { EditContactNumberPage } from '../accountSettingsFolder/edit-contact-number/edit-contact-number.page';
+import { EditNamePage } from '../accountSettingsFolder/edit-name/edit-name.page';
+import { EditCreditCardPage } from '../accountSettingsFolder/edit-credit-card/edit-credit-card.page';
+import { EditPasswordPage } from '../accountSettingsFolder/edit-password/edit-password.page';
+import { EditFullNamePage } from '../accountSettingsFolder/edit-full-name/edit-full-name.page';
+
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.page.html',
@@ -25,12 +31,45 @@ export class AccountSettingsPage implements OnInit {
     this.error = false;
   }
 
-  async presentModal() {
+
+  async presentModalFullName() {
     const modal = await this.modalController.create({
-      component: ViewJobDetailsPage
+      component: EditFullNamePage
     });
     return await modal.present();
   }
+
+  async presentModalUsername() {
+    const modal = await this.modalController.create({
+      component: EditNamePage
+    });
+    return await modal.present();
+  }
+
+  async presentModalPassword() {
+    const modal = await this.modalController.create({
+      component: EditPasswordPage
+    });
+    return await modal.present();
+  }
+
+  async presentContactNum() {
+    const modal = await this.modalController.create({
+      component: EditContactNumberPage
+    });
+    return await modal.present();
+  }
+
+  async presentModalCreditCard() {
+    const modal = await this.modalController.create({
+      component: EditCreditCardPage
+    });
+    return await modal.present();
+  }
+
+
+
+
 
   ngOnInit() {
     console.log("Initialised")

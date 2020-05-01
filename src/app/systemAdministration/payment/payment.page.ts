@@ -28,6 +28,8 @@ export class PaymentPage implements OnInit {
   resultError: boolean;
   message: string;
 
+  persistedOrderId: number;
+
   constructor(private router: Router,
     //private activatedRoute: ActivatedRoute,
     private OrderEntityService: OrderEntityService,
@@ -65,9 +67,7 @@ export class PaymentPage implements OnInit {
 
     this.OrderEntityService.setCurrentOrderEntity(this.newOrder);
     this.createNewOrder();
-    this.router.navigateByUrl('success');
-    console.log(this.newCreditCard.expirationDate);
-    this.submitted = true;
+
 
   }
 
@@ -89,10 +89,18 @@ export class PaymentPage implements OnInit {
 
     this.OrderEntityService.createNewOrder(username, password, planId, customerId, jobs, this.newOrder).subscribe(
       response => {
-        let orderEntityNumber: number = response.orderEntityId;
+        let orderEntityId: number = response.newOrderId;
+        this.persistedOrderId = orderEntityId;
         this.resultSuccess = true;
         this.resultError = false;
-        this.message = "New product " + orderEntityNumber + " created successfully";
+        this.message = "New Order " + orderEntityId + " created successfully";
+        console.log(this.message);
+
+        this.router.navigate(['/success/' + orderEntityId]);
+        // this.router.navigateByUrl('success');
+
+        console.log(this.newCreditCard.expirationDate);
+        this.submitted = true;
 
 
       },

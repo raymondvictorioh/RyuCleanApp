@@ -44,6 +44,18 @@ export class CustomerService {
     );
   }
 
+  updateCustomer(): Observable<any> {
+    let updateCustomerReq = {
+      "username": this.utilityService.getCurrentCustomer().username,
+      "password": this.utilityService.getCurrentCustomer().password,
+      "customer": this.utilityService.getCurrentCustomer()
+
+    };
+    return this.httpClient.post<any>(this.baseUrl, updateCustomerReq, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
 
   private handleError(error: HttpErrorResponse) {
