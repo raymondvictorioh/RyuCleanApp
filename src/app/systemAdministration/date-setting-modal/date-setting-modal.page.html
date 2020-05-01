@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Calendar Examples
+      Date Setting
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -19,7 +19,7 @@
           {{message}}
         </div>
         
-        <form #submitForm="ngForm" (ngSubmit)="submit(submitForm)" >
+        <form  #submitForm="ngForm" (ngSubmit)="submit(submitForm)" >
             <ion-list>
 
                 <ion-item>
@@ -29,18 +29,20 @@
 
                 <ion-item>
                     <ion-label>Select Date</ion-label>
-                    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2030" value="2020-04-07" id="jobDate" name="jobDate" [(ngModel)]="newJob.date" #jobDate="ngModel"></ion-datetime>
+                    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2030" id="jobDate" name="jobDate" [(ngModel)]="newJob.date" #jobDate="ngModel"></ion-datetime>
                 </ion-item>
                 
                 <ion-item>
-                      <ion-label>Start Time</ion-label>
-                      <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" id="jobTime" name="jobTime" [(ngModel)]="newJob.time" #jobTime="ngModel" ></ion-datetime>
+                  <ion-label>Start Time</ion-label>
+                  <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" id="jobTime" name="jobTime" [(ngModel)]="newJob.time" #jobTime="ngModel" ></ion-datetime>
                 </ion-item>
-                
+
                 <ion-item>
-                  <ion-label>Time</ion-label>
-                <ion-datetime displayFormat="h:mm A" pickerFormat="h:mm:A" hourValues="07,08,09,10,11,12,13,14,15,16,17,18,19,20"></ion-datetime>
-              </ion-item>
+                  <ion-label>start time</ion-label>
+                <ion-datetime displayFormat= "DD/MMM/YYYY HH:mm"
+                  pickerFormat="DD/MMM/YYYY HH:mm"
+                  [(ngModel)]="value"></ion-datetime>
+                </ion-item>
 
                 <ion-item>
                     <ion-button (click)="clear()">

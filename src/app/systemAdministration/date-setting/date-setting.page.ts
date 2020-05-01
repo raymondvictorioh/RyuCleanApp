@@ -36,7 +36,7 @@ export class DateSettingPage implements OnInit {
               }]
             }
 
-            this.newJob = this.jobService.getCurrentJob();
+            //this.newJob = this.jobService.getCurrentJob();
             this.submitted = false;
             this.resultSuccess = false; 
             this.resultError = false;

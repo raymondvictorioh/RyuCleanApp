@@ -82,6 +82,8 @@ export class JobService {
   }
 
   getJobByJobId(jobId: number) {
+    console.log(this.utilityService.getUsername());
+    console.log(this.utilityService.getPassword());
     return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + jobId + "?username=" + this.utilityService.getUsername() + "$password=" + this.utilityService.getPassword()).pipe(
       catchError(this.handleError)
     );
@@ -119,6 +121,21 @@ export class JobService {
 
   getCurrentJobList(): Job[] {
     return this.utilityService.getCurrentJobList();
+  }
+
+  updateJob(jobToUpdate: Job): Observable<any>
+  {
+    let updateJobReq = {
+      "username": this.utilityService.getUsername(),
+      "password": this.utilityService.getPassword(),
+      "job": jobToUpdate
+    };
+
+    return this.httpClient.post<any>(this.baseUrl, updateJobReq, httpOptions).pipe
+		(
+			catchError(this.handleError)
+		);
+
   }
 
 

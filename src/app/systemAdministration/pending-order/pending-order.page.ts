@@ -5,6 +5,8 @@ import { Job } from '../../job';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { ViewJobDetailsPage } from '../view-job-details/view-job-details.page';
 import { DatePipe } from '@angular/common';
+import { DateSettingModalPage } from "../date-setting-modal/date-setting-modal.page";
+
 // import { JobStatusEnum } from '../../job-status-enum.enum';
 
 @Component({
@@ -28,18 +30,6 @@ export class PendingOrderPage implements OnInit {
     console.log("asdasd");
   }
 
-  // presentLoadingDefault() {
-  //   let loading = this.loadingCtrl.create({
-  //     content: 'Please wait...'
-  //   });
-
-  //   loading.present();
-
-  //   setTimeout(() => {
-  //     loading.dismiss();
-  //   }, 5000);
-  // }
-
   refreshJobs() {
     this.jobService.getPendingJobs().subscribe(
       response => {
@@ -51,11 +41,37 @@ export class PendingOrderPage implements OnInit {
     )
   }
 
-  // viewJobDetails(event, job) {
-  //   this.router.navigate(["/systemAdministration/viewJobDetails/"] + job.jobId)
-  // }
+
+  async presentAlert(event, job) {
+    console.log('********************* '+job.jobId);
+    let currentJobId: number = job.jobId;
+    const modal = await this.modalController.create({
+      component: DateSettingModalPage,
+      componentProps: {
+        jobId: currentJobId
+      }
+    });
+    modal.present();
+
+  }
 
   parseDate(d: Date) {
     return d.toString().replace('[UTC]', '');
   }
+
+  // viewJobDetails(event, job) {
+  //   this.router.navigate(["/systemAdministration/viewJobDetails/"] + job.jobId)
+  // }
+
+    // presentLoadingDefault() {
+  //   let loading = this.loadingCtrl.create({
+  //     content: 'Please wait...'
+  //   });
+
+  //   loading.present();
+
+  //   setTimeout(() => {
+  //     loading.dismiss();
+  //   }, 5000);
+  // }
 }

@@ -98,10 +98,10 @@ const routes: Routes = [
   { path: 'date-setting', loadChildren: './systemAdministration/date-setting/date-setting.module#DateSettingPageModule' },
 
   { path: 'barcode-modal/:jobId', loadChildren: './systemAdministration/barcode-modal/barcode-modal.module#BarcodeModalPageModule' },
-  {
-    path: 'pending-order',
-    loadChildren: () => import('./systemAdministration/pending-order/pending-order.module').then( m => m.PendingOrderPageModule)
-  }
+  
+  { path: 'pending-order', loadChildren: './systemAdministration/pending-order/pending-order.module#PendingOrderPageModule'},
+  
+  { path: 'date-setting-modal/:jobId', loadChildren: './systemAdministration/date-setting-modal/date-setting-modal.module#DateSettingModalPageModule'}
 
 ];
 

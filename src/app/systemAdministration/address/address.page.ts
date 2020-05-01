@@ -65,7 +65,7 @@ export class AddressPage implements OnInit {
     this.jobService.setCurrentJobList(this.jobList);
 
 
-    this.router.navigateByUrl("jobSetting");
+    this.router.navigateByUrl("orderPreference");
 
   }
 

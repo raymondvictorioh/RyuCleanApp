@@ -20,6 +20,7 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { ViewJobDetailsPageModule } from './systemAdministration/view-job-details/view-job-details.module';
+import { DateSettingModalPageModule} from "./systemAdministration/date-setting-modal/date-setting-modal.module";
 
 // import { EditContactNumberModule } from './accountSettingsFolder/edit-contact-number/edit-contact-number.module';
 import { BarcodeModalPageModule } from './systemAdministration/barcode-modal/barcode-modal.module';
@@ -37,7 +38,8 @@ import { BarcodeModalPageModule } from './systemAdministration/barcode-modal/bar
     NgxQRCodeModule,
     IonicStorageModule.forRoot(),
     ViewJobDetailsPageModule,
-    BarcodeModalPageModule
+    BarcodeModalPageModule,
+    DateSettingModalPageModule
   ],
   providers: [
     StatusBar,
