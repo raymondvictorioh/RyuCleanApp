@@ -42,6 +42,22 @@ export class OrderEntityService {
     );
   }
 
+  getOrderByOrderId(orderId: number): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveOrder/" + orderId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
+      (
+        catchError(this.handleError)
+      );
+  }
+
+  // getPlanByPlanId(planId: number): Observable<any> {
+  // 	return this.httpClient.get<any>(this.baseUrl + "/retrievePlan/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
+  // 		(
+  // 			catchError(this.handleError)
+  // 		);
+  // }
+
+  // http://localhost:8080/RyuCleanRws/webresources/Order/retrieveOrder/1?username=username&password=password
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage: string = "";
 

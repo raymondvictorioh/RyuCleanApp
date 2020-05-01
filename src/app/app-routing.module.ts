@@ -39,6 +39,9 @@ const routes: Routes = [
 
   { path: 'success', loadChildren: './success/success.module#SuccessPageModule' },
 
+
+  { path: 'success/:orderId', loadChildren: './success/success.module#SuccessPageModule' },
+
   { path: 'barcode', loadChildren: './barcode/barcode.module#BarcodePageModule' },
 
   { path: 'packages', loadChildren: './package/package.module#PackagePageModule', canActivate: [AuthGuard] },
@@ -101,7 +104,11 @@ const routes: Routes = [
   
   { path: 'pending-order', loadChildren: './systemAdministration/pending-order/pending-order.module#PendingOrderPageModule'},
   
-  { path: 'date-setting-modal/:jobId', loadChildren: './systemAdministration/date-setting-modal/date-setting-modal.module#DateSettingModalPageModule'}
+  { path: 'date-setting-modal/:jobId', loadChildren: './systemAdministration/date-setting-modal/date-setting-modal.module#DateSettingModalPageModule'},
+  
+  { path: 'pending-order', loadChildren: './systemAdministration/pending-order/pending-order.module#PendingOrderPageModule' },
+  
+  { path: 'edit-full-name', loadChildren: './accountSettingsFolder/edit-full-name/edit-full-name.module#EditFullNamePageModule'}
 
 ];
 

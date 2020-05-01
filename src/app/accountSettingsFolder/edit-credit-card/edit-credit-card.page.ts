@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController, NavParams } from '@ionic/angular';
 @Component({
   selector: 'app-edit-credit-card',
   templateUrl: './edit-credit-card.page.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditCreditCardPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController, private navParams: NavParams) { }
 
   ngOnInit() {
+  }
+
+  async closeModal() {
+    const onClosedData: string = "Wrapped Up!";
+    await this.modalController.dismiss(onClosedData);
   }
 
 }

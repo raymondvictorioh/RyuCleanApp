@@ -4,45 +4,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div class="bg">
-  
-        <div class="card">
-          
-          <span class="card__success"><i class="ion-checkmark"></i></span>
-          
-          <h1 class="card__msg">Payment Complete</h1>
-          <h2 class="card__submsg">Thank you for your transfer</h2>
-          
-          <div class="card__body">
-            
-            <img src="https://image.freepik.com/free-vector/cleaning-staff-character-set_48866-711.jpg" class="card__avatar">
-            <div class="card__recipient-info">
-              <p class="card__recipient">Nath Green</p>
-              <p class="card__email">hello@nathgreen.co.uk</p>
-            </div>
-            
-            <h1 class="card__price"><span>£</span>20<span>.00</span></h1>
-            
-            <p class="card__method">Payment method</p>
-            <div class="card__payment">
-              <img src="https://seeklogo.com/images/V/VISA-logo-F3440F512B-seeklogo.com.png" class="card__credit-card">
-              <div class="card__card-details">
-                <p class="card__card-type">Credit / debit card</p>
-                <p class="card__card-number">Visa ending in **89</p>          
-              </div>
-            </div>
-            
-          </div>
-          
-          <div class="card__tags">
-              <span class="card__tag">completed</span>
-              <span class="card__tag">#123456789</span>        
-          </div>
-          
+<ion-content *ngIf="orderToView !=null">
+
+  <img src="../../assets/checkmark.png" class="checkmark">
+
+  <div class="ion-text-center">
+    <h1 style="display: inline">Order Success</h1>
+    <p style="margin: 0px 20px">Your order with payment of total ${{orderToView.totalPrice}} SGD has been placed
+      successfuly!</p>
+  </div>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-button shape="block" fill="solid" block (click)="directToUnassignedJobs()">Schedule Your Orders</ion-button>
+
+      </ion-col>
+      <ion-col col-6>
+        <ion-button shape="block" fill="solid" block color="light" (click)="home()">Go To Home</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+  <!-- <div class="bg">
+
+    <div class="card">
+
+      <span class="card__success"><i class="ion-checkmark"></i></span>
+
+      <h1 class="card__msg">Payment Complete</h1>
+      <h2 class="card__submsg">Thank you for your transfer</h2>
+
+      <div class="card__body">
+
+        <img src="https://image.freepik.com/free-vector/cleaning-staff-character-set_48866-711.jpg" class="card__avatar">
+        <div class="card__recipient-info">
+          <p class="card__recipient">Nath Green</p>
+          <p class="card__email">hello@nathgreen.co.uk</p>
         </div>
-        
+
+        <h1 class="card__price"><span>£</span>{{this.orderToView.totalPrice}}<span>.00</span></h1>
+
+        <p class="card__method">Payment method</p>
+        <div class="card__payment">
+          <img src="https://seeklogo.com/images/V/VISA-logo-F3440F512B-seeklogo.com.png" class="card__credit-card">
+          <div class="card__card-details">
+            <p class="card__card-type">Credit / debit card</p>
+            <p class="card__card-number">Visa ending in **89</p>
+          </div>
+        </div>
+
       </div>
-  Success
+
+      <div class="card__tags">
+        <span class="card__tag">completed</span>
+        <span class="card__tag">#123456789</span>
+      </div>
+      <ion-item>
+
+        <ion-button size="small" color="secondary" slot="end" (click)="test()">Select</ion-button>
+      </ion-item>
+
+    </div>
+
+  </div>
+  Success -->
 
 </ion-content>

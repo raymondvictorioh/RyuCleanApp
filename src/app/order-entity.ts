@@ -15,7 +15,8 @@ export class OrderEntity {
     zipcode: string;
     genderPreference: GenderEnum;
     notes: string;
-    orderStatusEnum: OrderStatusEnum;
+    // orderStatusEnum: OrderStatusEnum;
+    totalPrice: number;
 
     constructor(orderId?: number, plan?: Plan, orderDate?: Date, jobs?: Job[], freqencyEnum?: FrequencyEnum, zipcode?: string,
         genderPreference?: GenderEnum, notes?: string, planId?: number){
