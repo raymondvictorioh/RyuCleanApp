@@ -31,6 +31,11 @@ export class AddressPage implements OnInit {
   retrievePlanError: boolean;
   error: boolean;
   jobList: Job[] = new Array();
+  roadname: string = "";
+  unitNumber: string = "";
+  postalCode: string = "";
+  buildingName: string = "";
+
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -46,7 +51,10 @@ export class AddressPage implements OnInit {
   }
 
   setAddress(event) {
+    this.newOrder.zipcode = this.unitNumber+ " " +this.buildingName+" " +this.roadname+" " +this.postalCode;
+    console.log(this.newOrder.zipcode);
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
+
     console.log(this.orderEntityService.getCurrentOrderEntity().zipcode);
 
     let numberOfTimes: number;

@@ -6,6 +6,7 @@ import { JobService } from 'src/app/job.service';
 import { NgForm } from '@angular/forms';
 import { JobStatusEnum } from 'src/app/job-status-enum.enum';
 import { DatePipe } from '@angular/common';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class DateSettingModalPage implements OnInit {
   private modalController: ModalController,
   private router: Router,
   private jobService: JobService,
-  private datepipe: DatePipe) { 
+  private datepipe: DatePipe,
+  private toastController: ToastController) { 
     this.jobId = Number(this.navParams.get("jobId"));
     console.log(this.jobId);
 
@@ -77,6 +79,15 @@ export class DateSettingModalPage implements OnInit {
 
   closeModal(){
     this.modalController.dismiss();
+    this.presentToast();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your job has been successfully assigned!',
+      duration: 2000
+    });
+    toast.present();
   }
 
 

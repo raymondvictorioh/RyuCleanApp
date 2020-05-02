@@ -110,7 +110,9 @@ const routes: Routes = [
   
   { path: 'edit-full-name', loadChildren: './accountSettingsFolder/edit-full-name/edit-full-name.module#EditFullNamePageModule'},
   
-  { path: 'autocomplete-map', loadChildren: './systemAdministration/autocomplete-map/autocomplete-map.module#AutocompleteMapPageModule'}
+  { path: 'autocomplete-map', loadChildren: './systemAdministration/autocomplete-map/autocomplete-map.module#AutocompleteMapPageModule'},
+  
+  { path: 'popover', loadChildren: './systemAdministration/popover/popover.module#PopoverPageModule' }
 
 ];
 
