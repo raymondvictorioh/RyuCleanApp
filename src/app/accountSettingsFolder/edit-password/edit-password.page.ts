@@ -12,22 +12,28 @@ import { UtilityService } from '../../utility.service';
 })
 export class EditPasswordPage implements OnInit {
 
+  submitted: boolean;
   resultSuccess: boolean;
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
+  retrieveCustomerError: boolean
+  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) {
+    this.submitted = false;
+    this.retrieveCustomerError = false;
+    this.resultSuccess = false;
+    this.resultError;
+  }
 
-  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) { }
 
   ngOnInit() {
     console.log("asd");
     this.customerToUpdate = this.utilityService.getCurrentCustomer();
-    console.log(this.utilityService.getPassword());
     console.log(this.customerToUpdate);
-    console.log(this.customerToUpdate.username);
     console.log(this.customerToUpdate.password);
     console.log(this.customerToUpdate.firstName);
   }
+
 
   async closeModal() {
     const onClosedData: string = "Wrapped Up!";
@@ -35,13 +41,19 @@ export class EditPasswordPage implements OnInit {
   }
 
 
+
   update(updateCustomerForm: NgForm) {
     if (updateCustomerForm.valid) {
-      this.customerService.updateCustomer().subscribe(
+      this.customerService.updateCustomer(this.customerToUpdate).subscribe(
         response => {
           this.resultSuccess = true;
           this.resultError = false;
-          this.message = "Password updated successfully";
+          this.message = "New password updated successfully";
+          let editedCustomer: Customer = response.customer;
+          this.utilityService.setCurrentCustomer(editedCustomer);
+          this.utilityService.setUsername(editedCustomer.username);
+          this.utilityService.setPassword(editedCustomer.password);
+          console.log(this.utilityService.getCurrentCustomer());
         },
         error => {
           this.resultError = true;
@@ -53,6 +65,4 @@ export class EditPasswordPage implements OnInit {
       )
     }
   }
-
-
 }

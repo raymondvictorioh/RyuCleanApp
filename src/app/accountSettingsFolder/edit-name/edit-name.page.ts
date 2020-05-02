@@ -10,12 +10,18 @@ import { UtilityService } from '../../utility.service';
   styleUrls: ['./edit-name.page.scss'],
 })
 export class EditNamePage implements OnInit {
-
+  submitted: boolean;
   resultSuccess: boolean;
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
-  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) { }
+  retrieveCustomerError: boolean
+  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) {
+    this.submitted = false;
+    this.retrieveCustomerError = false;
+    this.resultSuccess = false;
+    this.resultError;
+  }
 
   ngOnInit() {
     console.log("asd");
@@ -32,11 +38,16 @@ export class EditNamePage implements OnInit {
 
   update(updateCustomerForm: NgForm) {
     if (updateCustomerForm.valid) {
-      this.customerService.updateCustomer().subscribe(
+      this.customerService.updateCustomer(this.customerToUpdate).subscribe(
         response => {
           this.resultSuccess = true;
           this.resultError = false;
-          this.message = "Password updated successfully";
+          this.message = "New username updated successfully";
+          let editedCustomer: Customer = response.customer;
+          this.utilityService.setCurrentCustomer(editedCustomer);
+          this.utilityService.setUsername(editedCustomer.username);
+          this.utilityService.setPassword(editedCustomer.password);
+          console.log(this.utilityService.getCurrentCustomer());
         },
         error => {
           this.resultError = true;

@@ -13,7 +13,7 @@ export class PackagePage implements OnInit {
 
   plans: Plan[];
   errorMessage: string;
-
+  imageSrc = "assets/pkg_placeholder.jpg";
   constructor(private router: Router, private planService: PlanService) {
 
   }

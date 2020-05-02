@@ -15,7 +15,17 @@
 
 
 <ion-content>
-  <form #updateCustomerForm="ngForm" (ngSubmit)="update(updateCustomerForm)">
+
+
+  <div *ngIf="resultSuccess == true" style="color: blue;">
+    {{message}}
+  </div>
+
+  <div *ngIf="resultError == true" style="color: red;">
+    {{message}}
+  </div>
+
+  <form *ngIf="customerToUpdate!=null" #updateCustomerForm="ngForm" (ngSubmit)="update(updateCustomerForm)">
 
     <!-- <div style="color: red;">
           <div *ngIf="category.invalid && (category.dirty || category.touched || submitted)" class="errorText">
@@ -28,7 +38,7 @@
     <ion-list>
       <ion-item>
         <ion-label><b>Username</b></ion-label>
-        <ion-input type="text" id="username" name="password" [(ngModel)]="customerToUpdate.username" required="true"
+        <ion-input type="text" id="username" name="username" [(ngModel)]="customerToUpdate.username" required="true"
           #name="ngModel"></ion-input>
       </ion-item>
 

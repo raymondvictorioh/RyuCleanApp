@@ -43,7 +43,7 @@ export class PaymentPage implements OnInit {
     this.resultError = false;
     this.newCreditCard = new CreditCard();
     this.newOrder = this.OrderEntityService.getCurrentOrderEntity();
-    
+
     console.log(this.newOrder.notes);
   }
 

@@ -44,11 +44,11 @@ export class CustomerService {
     );
   }
 
-  updateCustomer(): Observable<any> {
+  updateCustomer(customerToUpdate: Customer): Observable<any> {
     let updateCustomerReq = {
       "username": this.utilityService.getCurrentCustomer().username,
       "password": this.utilityService.getPassword(),
-      "customer": this.utilityService.getCurrentCustomer()
+      "customer": customerToUpdate
 
     };
     return this.httpClient.post<any>(this.baseUrl, updateCustomerReq, httpOptions).pipe(

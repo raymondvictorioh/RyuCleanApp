@@ -81,7 +81,7 @@ export class AccountSettingsPage implements OnInit {
     console.log(this.customer.password);
     console.log(this.customer.contactNum);
 
-    this.refreshCustomerDetails();
+    // this.refreshCustomerDetails();
 
   }
 
@@ -100,6 +100,7 @@ export class AccountSettingsPage implements OnInit {
     this.customerService.retrieveCustomerByCustomerId(this.utilityService.getCurrentCustomer().cusId).subscribe(
       response => {
         this.customer = response.customer;
+        this.utilityService.setCurrentCustomer(response.customer);
       },
       error => {
         this.errorMessage = error;

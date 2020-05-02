@@ -11,18 +11,24 @@ import { UtilityService } from '../../utility.service';
 })
 export class EditFullNamePage implements OnInit {
 
+  submitted: boolean;
   resultSuccess: boolean;
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
-  errorMessage: string;
-  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) { }
-
+  retrieveCustomerError: boolean
+  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) {
+    this.submitted = false;
+    this.retrieveCustomerError = false;
+    this.resultSuccess = false;
+    this.resultError;
+  }
   ngOnInit() {
-    console.log("EDIT FULLNAME");
     console.log("asd");
-    this.refreshCustomerDetails();
-
+    this.customerToUpdate = this.utilityService.getCurrentCustomer();
+    console.log(this.customerToUpdate);
+    console.log(this.customerToUpdate.password);
+    console.log(this.customerToUpdate.firstName);
   }
 
   async closeModal() {
@@ -32,11 +38,16 @@ export class EditFullNamePage implements OnInit {
 
   update(updateCustomerForm: NgForm) {
     if (updateCustomerForm.valid) {
-      this.customerService.updateCustomer().subscribe(
+      this.customerService.updateCustomer(this.customerToUpdate).subscribe(
         response => {
           this.resultSuccess = true;
           this.resultError = false;
-          this.message = "Password updated successfully";
+          this.message = "Your name is updated successfully";
+          let editedCustomer: Customer = response.customer;
+          this.utilityService.setCurrentCustomer(editedCustomer);
+          this.utilityService.setUsername(editedCustomer.username);
+          this.utilityService.setPassword(editedCustomer.password);
+          console.log(this.utilityService.getCurrentCustomer());
         },
         error => {
           this.resultError = true;
@@ -47,20 +58,5 @@ export class EditFullNamePage implements OnInit {
         }
       )
     }
-  }
-
-  refreshCustomerDetails() {
-    console.log("refresh Customer Details");
-    this.customerService.retrieveCustomerByCustomerId(this.utilityService.getCurrentCustomer().cusId).subscribe(
-      response => {
-        this.customerToUpdate = response.customer;
-      },
-      error => {
-        this.errorMessage = error;
-      }
-    )
-    // console.log(this.customerToUpdate);
-    // console.log(this.customerToUpdate.lastName);
-    // console.log(this.customerToUpdate.firstName);
   }
 }

@@ -1,28 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { ModalController, NavParams } from '@ionic/angular';
-// @Component({
-//   selector: 'app-edit-contact-number',
-//   templateUrl: './edit-contact-number.page.html',
-//   styleUrls: ['./edit-contact-number.page.scss'],
-// })
-// export class EditContactNumberPage implements OnInit {
-
-//   constructor(private modalController: ModalController, private navParams: NavParams) { }
-
-//   ngOnInit() {
-//   }
-
-//   async closeModal() {
-//     const onClosedData: string = "Wrapped Up!";
-//     await this.modalController.dismiss(onClosedData);
-//   }
-
-
-
-
-// }
-
-
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { CustomerService } from '../../customer.service';
@@ -35,12 +10,18 @@ import { UtilityService } from '../../utility.service';
   styleUrls: ['./edit-contact-number.page.scss'],
 })
 export class EditContactNumberPage implements OnInit {
-
+  submitted: boolean;
   resultSuccess: boolean;
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
-  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) { }
+  retrieveCustomerError: boolean
+  constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) {
+    this.submitted = false;
+    this.retrieveCustomerError = false;
+    this.resultSuccess = false;
+    this.resultError;
+  }
 
   ngOnInit() {
     console.log("asd");
@@ -51,17 +32,20 @@ export class EditContactNumberPage implements OnInit {
   }
 
   async closeModal() {
-    const onClosedData: string = "Wrapped Up!";
-    await this.modalController.dismiss(onClosedData);
+    await this.modalController.dismiss(this.customerToUpdate);
+
   }
 
   update(updateCustomerForm: NgForm) {
     if (updateCustomerForm.valid) {
-      this.customerService.updateCustomer().subscribe(
+      this.customerService.updateCustomer(this.customerToUpdate).subscribe(
         response => {
           this.resultSuccess = true;
           this.resultError = false;
-          this.message = "Password updated successfully";
+          this.message = "New contact number updated successfully";
+          let editedCustomer: Customer = response.customer;
+          this.utilityService.setCurrentCustomer(editedCustomer);
+          console.log(this.utilityService.getCurrentCustomer());
         },
         error => {
           this.resultError = true;
