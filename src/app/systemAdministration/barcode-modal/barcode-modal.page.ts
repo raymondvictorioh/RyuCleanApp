@@ -4,6 +4,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 import { BarcodeScannerOptions, BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-barcode-modal',
   templateUrl: './barcode-modal.page.html',
@@ -69,6 +70,7 @@ export class BarcodeModalPage implements OnInit {
    closeModal(){
      this.modalController.dismiss();
      console.log(this.resolveRec);
+     
    }
 
    resolveRec(rating: number, feedbackString : string){
@@ -79,5 +81,5 @@ export class BarcodeModalPage implements OnInit {
     console.log(this.feedback);
    }
 
-  
+   
 }

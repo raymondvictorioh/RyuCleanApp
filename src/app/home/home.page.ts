@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilityService } from '../utility.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, PopoverController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { PopoverPage } from '../systemAdministration/popover/popover.page'
+import { PopoverPageModule } from '../systemAdministration/popover/popover.module';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  constructor(private router: Router, public utilityService: UtilityService, public menuCtrl: MenuController) {
+  constructor(private router: Router, public utilityService: UtilityService, public menuCtrl: MenuController,
+    private popoverController: PopoverController) {
     this.menuCtrl.enable(true, "custom");
   }
 
@@ -34,6 +37,15 @@ export class HomePage implements OnInit {
 
   directToOrder() {
     this.router.navigate(["/packages"]);
+  }
+
+  async openPopOver(ev: Event){
+    const popover = await this.popoverController.create({
+      component: PopoverPage,
+      event: ev,
+      translucent: true
+    });
+    popover.present();
   }
 
 

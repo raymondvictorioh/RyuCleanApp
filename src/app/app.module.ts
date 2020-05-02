@@ -35,6 +35,7 @@ import { EditFullNamePageModule } from './accountSettingsFolder/edit-full-name/e
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { GoogleMaps } from '@ionic-native/google-maps'
+import { PopoverPageModule } from './systemAdministration/popover/popover.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,7 +56,8 @@ import { GoogleMaps } from '@ionic-native/google-maps'
     EditCreditCardPageModule,
     EditPasswordPageModule,
     EditContactNumberPageModule,
-    EditFullNamePageModule
+    EditFullNamePageModule,
+    PopoverPageModule
   ],
 
 
