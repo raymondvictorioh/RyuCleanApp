@@ -36,6 +36,9 @@ export class AccountSettingsPage implements OnInit {
     const modal = await this.modalController.create({
       component: EditFullNamePage
     });
+
+
+
     return await modal.present();
   }
 
