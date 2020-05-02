@@ -45,7 +45,7 @@ export class EditNamePage implements OnInit {
           this.message = "New username updated successfully";
           let editedCustomer: Customer = response.customer;
           this.utilityService.setCurrentCustomer(editedCustomer);
-          this.utilityService.setUsername(editedCustomer.username);
+          this.utilityService.setUsername(editedCustomer.username)
           this.utilityService.setPassword(editedCustomer.password);
           console.log(this.utilityService.getCurrentCustomer());
         },
