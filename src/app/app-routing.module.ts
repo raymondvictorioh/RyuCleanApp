@@ -108,7 +108,9 @@ const routes: Routes = [
   
   { path: 'pending-order', loadChildren: './systemAdministration/pending-order/pending-order.module#PendingOrderPageModule' },
   
-  { path: 'edit-full-name', loadChildren: './accountSettingsFolder/edit-full-name/edit-full-name.module#EditFullNamePageModule'}
+  { path: 'edit-full-name', loadChildren: './accountSettingsFolder/edit-full-name/edit-full-name.module#EditFullNamePageModule'},
+  
+  { path: 'autocomplete-map', loadChildren: './systemAdministration/autocomplete-map/autocomplete-map.module#AutocompleteMapPageModule'}
 
 ];
 

@@ -8,6 +8,7 @@ import { OrderEntityService } from 'src/app/order-entity.service';
 import { FrequencyEnum } from 'src/app/frequency-enum.enum';
 import { Job } from 'src/app/job';
 import { JobService } from 'src/app/job.service';
+import { JobStatusEnum } from 'src/app/job-status-enum.enum';
 
 
 @Component({
@@ -60,7 +61,7 @@ export class AddressPage implements OnInit {
     }
 
     for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job(_i, null, this.newOrder, null, null));
+      this.jobList.push(new Job (null, null, null, new Date (), new Date ()));//new Job(_i, null, this.newOrder, null, null));
     }
     this.jobService.setCurrentJobList(this.jobList);
 

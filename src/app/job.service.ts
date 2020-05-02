@@ -81,15 +81,18 @@ export class JobService {
     );
   }
 
-  getJobByJobId(jobId: number) {
-    console.log(this.utilityService.getUsername());
-    console.log(this.utilityService.getPassword());
-    return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + jobId + "?username=" + this.utilityService.getUsername() + "$password=" + this.utilityService.getPassword()).pipe(
+  getJobByJobId(jobId: number): Observable<any>{
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + jobId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
       catchError(this.handleError)
     );
   }
 
-
+  getPlanByPlanId(planId: number): Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
+			(
+				catchError(this.handleError)
+			);
+	}
 
 
   private handleError(error: HttpErrorResponse) {

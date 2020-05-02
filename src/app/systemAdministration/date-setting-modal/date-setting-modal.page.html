@@ -18,30 +18,25 @@
         <div *ngIf="resultError == true" style="color: red;">
           {{message}}
         </div>
+
+        <ion-content *ngIf="newJob != null" class="card-background-page"></ion-content>
         
         <form  #submitForm="ngForm" (ngSubmit)="submit(submitForm)" >
             <ion-list>
 
                 <ion-item>
-                    <ion-label>Title</ion-label>
-                    <ion-input type="text" id="jobTitle" name="jobTitle" [(ngModel)]="newJob.jobTitle" #jobTitle="ngModel" placeholder = "{{newJob.Title}}"></ion-input>
+                    <ion-label>Job ID</ion-label>
+                    {{jobId}}
                 </ion-item>
 
                 <ion-item>
                     <ion-label>Select Date</ion-label>
-                    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2030" id="jobDate" name="jobDate" [(ngModel)]="newJob.date" #jobDate="ngModel"></ion-datetime>
-                </ion-item>
-                
-                <ion-item>
-                  <ion-label>Start Time</ion-label>
-                  <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" id="jobTime" name="jobTime" [(ngModel)]="newJob.time" #jobTime="ngModel" ></ion-datetime>
+                    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2020" max="2030" id="jobDate" name="jobDate" [(ngModel)]="newJob.jobDate" #jobDate="ngModel"></ion-datetime>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>start time</ion-label>
-                <ion-datetime displayFormat= "DD/MMM/YYYY HH:mm"
-                  pickerFormat="DD/MMM/YYYY HH:mm"
-                  [(ngModel)]="value"></ion-datetime>
+                  <ion-label>Start Time</ion-label>
+                  <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" id="jobTime" name="jobTime" [(ngModel)]="newJob.jobTime" #jobTime="ngModel" ></ion-datetime>
                 </ion-item>
 
                 <ion-item>

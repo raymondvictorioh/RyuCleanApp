@@ -32,6 +32,10 @@ import { EditPasswordPageModule } from './accountSettingsFolder/edit-password/ed
 import { EditContactNumberPageModule } from './accountSettingsFolder/edit-contact-number/edit-contact-number.module';
 import { EditFullNamePageModule } from './accountSettingsFolder/edit-full-name/edit-full-name.module';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { GoogleMaps } from '@ionic-native/google-maps'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -61,7 +65,10 @@ import { EditFullNamePageModule } from './accountSettingsFolder/edit-full-name/e
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       BarcodeScanner,
       Calendar,
-      DatePipe
+      DatePipe,
+      Geolocation,    
+      NativeGeocoder,
+      GoogleMaps
     ],
     bootstrap: [AppComponent]
 })

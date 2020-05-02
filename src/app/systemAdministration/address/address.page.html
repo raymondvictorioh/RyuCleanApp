@@ -7,7 +7,7 @@
 <ion-content>
     <ion-item>
         <ion-input name="address" id="address" type="text" placeholder="address"
-          [(ngModel)]="newOrder.zipcode" required="true" #inZipcode="ngModel"></ion-input>
+          [(ngModel)]="newOrder.zipcode" required="true" #inZipcode="ngModel" minlength="8" required="true"></ion-input>
       </ion-item>
 
       <ion-button size="large" color="secondary" (click)="setAddress()" expand="full" ion-icon="right-arrow">

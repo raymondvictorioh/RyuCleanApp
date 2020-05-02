@@ -10,6 +10,7 @@ import { UtilityService } from 'src/app/utility.service';
 import { JobService } from 'src/app/job.service';
 import { FrequencyEnum } from 'src/app/frequency-enum.enum';
 import { GenderEnum } from 'src/app/gender-enum.enum';
+import { Customer } from 'src/app/customer';
 
 
 
@@ -23,6 +24,7 @@ export class PaymentPage implements OnInit {
   submitted: boolean;
   newOrder: OrderEntity;
   newCreditCard: CreditCard;
+  currentCustomer: Customer;
 
   resultSuccess: boolean;
   resultError: boolean;
@@ -41,6 +43,7 @@ export class PaymentPage implements OnInit {
     this.resultError = false;
     this.newCreditCard = new CreditCard();
     this.newOrder = this.OrderEntityService.getCurrentOrderEntity();
+    
     console.log(this.newOrder.notes);
   }
 

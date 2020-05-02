@@ -4,6 +4,9 @@ import { NavParams, ModalController } from "@ionic/angular";
 import { Job } from 'src/app/job';
 import { JobService } from 'src/app/job.service';
 import { NgForm } from '@angular/forms';
+import { JobStatusEnum } from 'src/app/job-status-enum.enum';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-date-setting-modal',
@@ -18,31 +21,36 @@ export class DateSettingModalPage implements OnInit {
 
   resultSuccess: boolean;
 	resultError: boolean;
-	message: string;
+  message: string;
+  time: Date;
 
   constructor(private navParams: NavParams,
   private modalController: ModalController,
   private router: Router,
-  private jobService: JobService) { 
+  private jobService: JobService,
+  private datepipe: DatePipe) { 
+    this.jobId = Number(this.navParams.get("jobId"));
+    console.log(this.jobId);
+
+    this.newJob = jobService.getCurrentJob();
+    console.log("******************" + this.newJob.jobStatusEnum);
+    console.log("***************"+ this.newJob.jobDate);
+
   }
 
   ngOnInit() {
-    this.jobId = this.navParams.get("jobId");
-    
-    console.log('hi********************' + this.jobId);
-    this.jobService.getJobByJobId(this.jobId).subscribe(
-      response => {
-        this.newJob = response.jobEntity;
-      },
-      error => {
-        console.log('***************** DateSettingModalPage' + error);
-      }
-    )
   }
 
   submit(submitForm : NgForm){
 
-    console.log(this.newJob.jobId + ' ' + this.newJob.jobDate)
+    console.log("******************" + this.newJob.jobStatusEnum);
+    //this.newJob.jobDate = (this.newJob.jobDate).toDateString();
+    //myDate.setMinutes(myDate.getMinutes() - myDate.getTimezoneOffset());
+    console.log("***************"+ this.newJob.jobDate);
+    console.log("***************"+this.newJob.jobTime);
+    
+   
+    this.newJob.jobStatusEnum = JobStatusEnum.ACCEPTED;
     
     if (submitForm.valid){
 
@@ -51,6 +59,7 @@ export class DateSettingModalPage implements OnInit {
           this.resultSuccess = true;
           this.resultError = false;
           this.message = "Job successfully set";
+          console.log("Job successfully set");
         },
         error => {
 					this.resultError = true;
@@ -62,6 +71,7 @@ export class DateSettingModalPage implements OnInit {
 
       );
     }
+    this.closeModal();
 
   }
 
