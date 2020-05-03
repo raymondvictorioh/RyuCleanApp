@@ -24,7 +24,7 @@ export class AutocompleteMapPage implements OnInit {
   location: any;
   placeid: any;
   GoogleAutocomplete: any;
-
+  passAdress: string
  
   constructor(
     private geolocation: Geolocation,
