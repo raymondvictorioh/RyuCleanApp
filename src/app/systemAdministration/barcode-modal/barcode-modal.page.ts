@@ -15,7 +15,7 @@ export class BarcodeModalPage implements OnInit {
   createdCode = null;
   scannedCode = null;
   passedId = null;
-  feedback: String = null;
+  feedback: String = " ";
   feedbackRating: number; 
 
 
@@ -35,7 +35,7 @@ export class BarcodeModalPage implements OnInit {
   }
 
   createCode(rating: number, feedbackString: String){
-    this.qrData = this.qrData + " " + rating.toString() + " " + feedbackString;
+    this.qrData = this.qrData + "," + rating.toString() + "," + feedbackString;
     this.createdCode = this.qrData;
   }
 
