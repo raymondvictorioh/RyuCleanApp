@@ -117,7 +117,14 @@ export class ScheduledOrderPage implements OnInit {
         jobId: currentJobId
       }
     });
-    modal.present();
+
+    modal.onDidDismiss().then((event) => {
+      console.log('********** modal dismiss');
+			this.refreshJobs();
+		});
+
+
+    return await modal.present();
 
   }
 
