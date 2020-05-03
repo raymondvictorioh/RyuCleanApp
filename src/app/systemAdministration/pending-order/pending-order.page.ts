@@ -48,7 +48,7 @@ export class PendingOrderPage implements OnInit {
 
 
   async presentAlert(event, job) {
-    console.log('********************* '+job.jobId);
+    console.log('********************* ' + job.jobId);
     this.jobId = job.jobId;
     this.jobService.setCurrentJob(job);
     console.log(job.jobId);
@@ -66,19 +66,5 @@ export class PendingOrderPage implements OnInit {
     return d.toString().replace('[UTC]', '');
   }
 
-  // viewJobDetails(event, job) {
-  //   this.router.navigate(["/systemAdministration/viewJobDetails/"] + job.jobId)
-  // }
 
-    // presentLoadingDefault() {
-  //   let loading = this.loadingCtrl.create({
-  //     content: 'Please wait...'
-  //   });
-
-  //   loading.present();
-
-  //   setTimeout(() => {
-  //     loading.dismiss();
-  //   }, 5000);
-  // }
 }

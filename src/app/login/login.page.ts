@@ -49,6 +49,7 @@ export class LoginPage implements OnInit {
       this.customerService.customerLogin(this.username, this.password).subscribe(
         response => {
           let customer: Customer = response.customer;
+          console.log(customer + "loginpage.ts");
           if (customer != null) {
             this.utilityService.setIsLogin(true);
             this.utilityService.setCurrentCustomer(customer);
@@ -79,7 +80,7 @@ export class LoginPage implements OnInit {
     this.utilityService.setIsLogin(false);
     this.utilityService.setCurrentCustomer(null);
     this.menuCtrl.enable(false, 'custom');
-    console.log("is Log out : " + this.utilityService.getIsLogin())
+    console.log(this.utilityService.getIsLogin());
   }
   customerRegister() {
     this.router.navigate(["register"])

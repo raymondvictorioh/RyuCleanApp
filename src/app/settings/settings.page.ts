@@ -38,9 +38,11 @@ export class SettingsPage implements OnInit {
           text: 'OK',
           handler: () => {
             console.log('Let"s log out');
+
             this.utilityService.setIsLogin(false);
             this.utilityService.setCurrentCustomer(null);
             this.menuCtrl.enable(false, 'custom');
+            console.log(this.utilityService.getIsLogin());
             this.router.navigate(["/login"]);
           }
         }
