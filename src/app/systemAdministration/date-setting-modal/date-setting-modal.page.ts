@@ -16,45 +16,45 @@ import { ToastController } from '@ionic/angular';
 })
 export class DateSettingModalPage implements OnInit {
 
-  jobId : number;
+  jobId: number;
   newJob: Job;
   submitted: boolean;
 
   resultSuccess: boolean;
-	resultError: boolean;
+  resultError: boolean;
   message: string;
   time: Date;
 
   constructor(private navParams: NavParams,
-  private modalController: ModalController,
-  private router: Router,
-  private jobService: JobService,
-  private datepipe: DatePipe,
-  private toastController: ToastController) { 
+    private modalController: ModalController,
+    private router: Router,
+    private jobService: JobService,
+    private datepipe: DatePipe,
+    private toastController: ToastController) {
     this.jobId = Number(this.navParams.get("jobId"));
     console.log(this.jobId);
 
     this.newJob = jobService.getCurrentJob();
     console.log("******************" + this.newJob.jobStatusEnum);
-    console.log("***************"+ this.newJob.jobDate);
+    console.log("***************" + this.newJob.jobDate);
 
   }
 
   ngOnInit() {
   }
 
-  submit(submitForm : NgForm){
+  submit(submitForm: NgForm) {
 
     console.log("******************" + this.newJob.jobStatusEnum);
     //this.newJob.jobDate = (this.newJob.jobDate).toDateString();
     //myDate.setMinutes(myDate.getMinutes() - myDate.getTimezoneOffset());
-    console.log("***************"+ this.newJob.jobDate);
-    console.log("***************"+this.newJob.jobTime);
-    
-   
+    console.log("***************" + this.newJob.jobDate);
+    console.log("***************" + this.newJob.jobTime);
+
+
     this.newJob.jobStatusEnum = JobStatusEnum.ACCEPTED;
-    
-    if (submitForm.valid){
+
+    if (submitForm.valid) {
 
       this.jobService.updateJob(this.newJob).subscribe(
         response => {
@@ -64,12 +64,12 @@ export class DateSettingModalPage implements OnInit {
           console.log("Job successfully set");
         },
         error => {
-					this.resultError = true;
-					this.resultSuccess = false;
-					this.message = "An error has occurred while updating the product: " + error;
-					
-					console.log('********** UpdateProductComponent.ts: ' + error);
-				}
+          this.resultError = true;
+          this.resultSuccess = false;
+          this.message = "An error has occurred while updating the product: " + error;
+
+          console.log('********** UpdateProductComponent.ts: ' + error);
+        }
 
       );
     }
@@ -77,7 +77,7 @@ export class DateSettingModalPage implements OnInit {
 
   }
 
-  closeModal(){
+  closeModal() {
     this.modalController.dismiss();
     this.presentToast();
   }
