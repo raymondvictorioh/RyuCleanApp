@@ -48,6 +48,7 @@ export class HomePage implements OnInit {
       event: ev,
       translucent: true
     });
+    popover.style.cssText = '--min-width: 350px; --max-width: 370px;';
     popover.present();
   }
 

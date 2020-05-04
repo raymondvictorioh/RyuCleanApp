@@ -32,13 +32,12 @@
               <div padding>
 
                 <ion-item>
-                  <ion-input name="firstName" id="firstName" type="text" placeholder="First Name"
-                    [(ngModel)]="newCustomer.firstName" required="true" #infirstName="ngModel"></ion-input>
+                  <ion-input name="firstName" id="firstName" type="text" placeholder="First Name" [(ngModel)]="newCustomer.firstName"
+                    required="true" #infirstName="ngModel"></ion-input>
                 </ion-item>
 
                 <div style="color:red;">
-                  <div *ngIf="infirstName.invalid && (infirstName.dirty || infirstName.touched || submitted)"
-                    class="errorText">
+                  <div *ngIf="infirstName.invalid && (infirstName.dirty || infirstName.touched || submitted)" class="errorText">
                     <div *ngIf="infirstName.errors.required">
                       <small>First Name is required</small>
                     </div>
@@ -47,13 +46,12 @@
 
 
                 <ion-item>
-                  <ion-input name="lastName" id="lastName" type="text" placeholder="Last Name"
-                    [(ngModel)]="newCustomer.lastName" required="true" #inlastName="ngModel"></ion-input>
+                  <ion-input name="lastName" id="lastName" type="text" placeholder="Last Name" [(ngModel)]="newCustomer.lastName"
+                    required="true" #inlastName="ngModel"></ion-input>
                 </ion-item>
 
                 <div style="color:red;">
-                  <div *ngIf="inlastName.invalid && (inlastName.dirty || inlastName.touched || submitted)"
-                    class="errorText">
+                  <div *ngIf="inlastName.invalid && (inlastName.dirty || inlastName.touched || submitted)" class="errorText">
                     <div *ngIf="inlastName.errors.required">
                       <small> Last Name is required</small>
                     </div>
@@ -63,15 +61,13 @@
 
 
                 <ion-item>
-                  <ion-input name="contactNum" id="contactNum" type="text" placeholder="Contact Number"
-                    [(ngModel)]="newCustomer.contactNum" minlength="4" maxlength="32" required="true"
-                    #incontactNum="ngModel">
+                  <ion-input name="contactNum" id="contactNum" type="text" placeholder="Contact Number" [(ngModel)]="newCustomer.contactNum"
+                    minlength="4" maxlength="32" required="true" #incontactNum="ngModel">
                   </ion-input>
                 </ion-item>
 
                 <div style="color:red;">
-                  <div *ngIf="incontactNum.invalid && (incontactNum.dirty || incontactNum.touched || submitted)"
-                    class="errorText">
+                  <div *ngIf="incontactNum.invalid && (incontactNum.dirty || incontactNum.touched || submitted)" class="errorText">
                     <div *ngIf="incontactNum.errors.required">
                       <small> Contact Number is required.</small>
                     </div>
@@ -80,15 +76,13 @@
 
 
                 <ion-item>
-                  <ion-input name="username" id="username" type="text" placeholder="Username"
-                    [(ngModel)]="newCustomer.username" minlength="4" maxlength="32" required="true"
-                    #inusername="ngModel">
+                  <ion-input name="username" id="username" type="text" placeholder="Username" [(ngModel)]="newCustomer.username"
+                    minlength="4" maxlength="32" required="true" #inusername="ngModel">
                   </ion-input>
                 </ion-item>
 
                 <div style="color:red;">
-                  <div *ngIf="inusername.invalid && (inusername.dirty || inusername.touched || submitted)"
-                    class="errorText">
+                  <div *ngIf="inusername.invalid && (inusername.dirty || inusername.touched || submitted)" class="errorText">
                     <div *ngIf="inusername.errors.required">
                       <small>Username is required.</small>
                     </div>
@@ -102,14 +96,12 @@
                 </div>
 
                 <ion-item>
-                  <ion-input name="password" id="password" type="password" placeholder="Password"
-                    [(ngModel)]="newCustomer.password" minlength="4" maxlength="32" required="true"
-                    #inpassword="ngModel">
+                  <ion-input name="password" id="password" type="password" placeholder="Password" [(ngModel)]="newCustomer.password"
+                    minlength="4" maxlength="32" required="true" #inpassword="ngModel">
                   </ion-input>
                 </ion-item>
                 <div style="color:red;">
-                  <div *ngIf="inpassword.invalid && (inpassword.dirty || inpassword.touched || submitted)"
-                    class="errorText">
+                  <div *ngIf="inpassword.invalid && (inpassword.dirty || inpassword.touched || submitted)" class="errorText">
                     <div *ngIf="inpassword.errors.required">
                       <small>Password is Required</small>
                       <div *ngIf="inpassword.errors.minlength">
