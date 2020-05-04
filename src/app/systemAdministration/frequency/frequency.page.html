@@ -27,99 +27,69 @@
   </ion-card>
 
   <ion-text>
-    <h5 style="text-align:center;">Select Your Package Type - Frequency</h5>
+    <h2 style="text-align:center;">Total Price : $ {{priceToShow}}</h2>
   </ion-text>
 
-  <ion-card>
-    <ion-item color="secondary">
-      <h4>Daily Cleaning - One Time</h4>
-    </ion-item>
-    <ion-item>
-      <h5>$ {{planToView.dailyPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end" (click)="viewMapDaily($event)">Select</ion-button>
-    </ion-item>
-  </ion-card>
 
-  <ion-card>
-    <ion-item color="secondary">
-      <h4>Regular Cleaning - 6x Cleaning</h4>
-    </ion-item>
-    <ion-item>
-      <h5>$ {{planToView.regularPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end" (click)="viewMapRegular($event)">Select</ion-button>
-    </ion-item>
-  </ion-card>
+  <ion-radio-group value="daily" (ionChange)="freq($event)">
+    <ion-card>
+      <ion-item color="secondary">
+        <h4>Daily Cleaning - One Time</h4>
+      </ion-item>
+      <!-- <ion-item>
+        <h5>$ {{planToView.dailyPrice }} / day</h5>
+        <ion-button size="small" color="secondary" slot="end" (click)="viewMapDaily($event)">Select</ion-button>
+      </ion-item> -->
 
-  <ion-card>
-    <ion-item color="secondary">
-      <h4>Member Cleaning - 12x Cleaning</h4>
-    </ion-item>
-    <ion-item>
-      <h5>$ {{planToView.memberPrice }} / day</h5>
-      <ion-button size="small" color="secondary" slot="end" (click)="viewMapMember($event)">Select</ion-button>
-    </ion-item>
-  </ion-card>
+      <ion-item>
+        <ion-label>{{planToView.dailyPrice}} / day</ion-label>
+        <ion-radio slot="end" color="tertiary" value="daily"></ion-radio>
+      </ion-item>
 
 
+    </ion-card>
+
+    <ion-card>
+      <ion-item color="secondary">
+        <h4>Regular Cleaning - 6x Cleaning</h4>
+      </ion-item>
+      <!-- <ion-item>
+        <h5>$ {{planToView.regularPrice }} / day</h5>
+        <ion-button size="small" color="secondary" slot="end" (click)="viewMapRegular($event)">Select</ion-button>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label>{{planToView.regularPrice}} / day</ion-label>
+        <ion-radio slot="end" color="tertiary" value="regular"></ion-radio>
+      </ion-item>
 
 
+    </ion-card>
 
+    <ion-card>
+      <ion-item color="secondary">
+        <h4>Member Cleaning - 12x Cleaning</h4>
+      </ion-item>
+      <!-- <ion-item>
+        <h5>$ {{planToView.memberPrice }} / day</h5>
+        <ion-button size="small" color="secondary" slot="end" (click)="viewMapMember($event)">Select</ion-button>
+      </ion-item> -->
 
+      <ion-item>
+        <ion-label>{{planToView.memberPrice}} / day</ion-label>
+        <ion-radio slot="end" color="tertiary" value="member"></ion-radio>
+      </ion-item>
+    </ion-card>
 
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button icon="home " shape="block" fill="solid" (click)="proceed()" block>Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <!-- <ion-grid>
-    
-    <ion-row>
-      <ion-col>
-        <ion-text>
-          <h5 style="text-align:center;">Select Your Package Type - Frequency</h5>
-        </ion-text>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col size="6">
-        <ion-card>
-          <ion-text>
-            <h5 style="text-align:center;">Daily Cleaning</h5>
-          </ion-text>
-          <ion-card-content>
-            DAILY CLEANING
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card>
-          <ion-text>
-            <h5 style="text-align:center;">Daily Cleaning</h5>
-          </ion-text>
-          <ion-card-content>
-            DAILY CLEANING
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col size="3"></ion-col>
-      <ion-col size="6">
-        <ion-card>
-          <ion-text>
-            <h5 style="text-align:center;">Daily Cleaning</h5>
-          </ion-text>
-          <ion-card-content>
-            DAILY CLEANING
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="3"></ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-
-
- -->
-
+  </ion-radio-group>
 
 </ion-content>

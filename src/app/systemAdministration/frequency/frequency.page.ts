@@ -25,6 +25,9 @@ export class FrequencyPage implements OnInit {
   errorMessage: string;
   frequencyEnum: FrequencyEnum;
   newOrder: OrderEntity = new OrderEntity();
+
+  selectedFreq: string;
+  priceToShow: number;
   // keys(): Array<string> {
   //   var keys = Object.keys(this.frequencyEnum);
   //   return keys.slice(keys.length / 2);
@@ -32,11 +35,11 @@ export class FrequencyPage implements OnInit {
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private planService: PlanService, 
+    private planService: PlanService,
     public alertControler: AlertController,
     public orderEntityService: OrderEntityService) {
 
-    this.orderEntityService.setCurrentOrderEntity(this.newOrder);  
+    this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.retrievePlanError = false;
     this.error = false;
 
@@ -46,6 +49,7 @@ export class FrequencyPage implements OnInit {
     this.planId = parseInt(this.activatedRoute.snapshot.paramMap.get('planId'));
     this.refreshPlan();
     console.log("test I AM AT FREQUENCY PAGE " + this.planId);
+    this.selectedFreq = "daily";
   }
 
   ionViewWillEnter() {
@@ -57,6 +61,8 @@ export class FrequencyPage implements OnInit {
     this.planService.getPlanByPlanId(this.planId).subscribe(
       response => {
         this.planToView = response.plan;
+        this.priceToShow = this.planToView.dailyPrice;
+
       }, error => {
         this.retrievePlanError = true;
         console.log("******* Frequency (View Plan) + error");
@@ -66,7 +72,7 @@ export class FrequencyPage implements OnInit {
 
   }
 
-  viewMapDaily(event){
+  viewMapDaily() {
     this.newOrder.freqencyEnum = FrequencyEnum.DAILY;
     this.newOrder.planId = this.planId;
     console.log(this.newOrder.planId + "gfgfgfgfgfgfgf");
@@ -74,26 +80,62 @@ export class FrequencyPage implements OnInit {
     this.router.navigateByUrl("address");
   }
 
-  viewMapRegular(event){
+  viewMapRegular() {
     this.newOrder.freqencyEnum = FrequencyEnum.REGULAR;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.router.navigateByUrl("address");
   }
 
-  viewMapMember(event){
+  viewMapMember() {
     this.newOrder.freqencyEnum = FrequencyEnum.MEMBER;
     this.newOrder.planId = this.planId;
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     this.router.navigateByUrl("address");
   }
 
+  proceed() {
+    let selection = this.selectedFreq;
+    if (selection == "daily") {
+      this.viewMapDaily();
+    } else if (selection == "regular") {
+      this.viewMapRegular();
+    } else if (selection == "member") {
+      this.viewMapMember();
+    }
+  }
+
+  frequencySelect(value) {
+    console.log("frequency selected : " + value);
+  }
 
   back() {
     this.router.navigate(["packages"]);
     console.log(this.planToView.dailyPrice)
     console.log(this.planToView.planName);
   }
+
+
+
+  freq(event) {
+    console.log(event.target.value + "!!!");
+    let selection = event.target.value;
+
+    this.selectedFreq = selection;
+    console.log(this.selectedFreq);
+
+    if (selection == "daily") {
+      this.priceToShow = this.planToView.dailyPrice;
+      console.log(this.planToView.dailyPrice);
+    } else if (selection == "regular") {
+      this.priceToShow = this.planToView.regularPrice * 6;
+      console.log(this.planToView.regularPrice);
+    } else if (selection == "member") {
+      this.priceToShow = this.planToView.memberPrice * 12;
+      console.log(this.planToView.memberPrice);
+    }
+  }
+
 
 
 }
