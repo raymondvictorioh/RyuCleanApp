@@ -65,6 +65,7 @@ export class AppComponent implements OnInit {
   }
 
   updateMainMenu() {
+    console.log("utilt get is login() : " + this.utilityService.getIsLogin());
 
     console.log(this.utilityService.getIsLogin());
     this.appPages = [
@@ -89,6 +90,11 @@ export class AppComponent implements OnInit {
         icon: 'settings'
       }
     ]
+
+
+
+
+
   }
 
 

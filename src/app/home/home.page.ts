@@ -18,6 +18,9 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    if (this.utilityService.getCurrentCustomer() != null) {
+      this.utilityService.setIsLogin(true);
+    }
     console.log('********** HomePage.ngOnInit()');
   }
 
@@ -39,7 +42,7 @@ export class HomePage implements OnInit {
     this.router.navigate(["/packages"]);
   }
 
-  async openPopOver(ev: Event){
+  async openPopOver(ev: Event) {
     const popover = await this.popoverController.create({
       component: PopoverPage,
       event: ev,

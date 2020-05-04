@@ -16,7 +16,7 @@
 
 	<ion-card *ngFor="let plan of plans">
 		<img *ngIf="plan.image==null" class="imgCard" src="{{imageSrc}}" />
-		<!-- <img *ngIf="plan.image!=null" class="imgCard" [src]="/Users/raymond/Desktop/sample.png" /> -->
+		<img *ngIf="plan.image!=null" class="imgCard" src="../../assets/{{plan.image}}" />
 		{{plan.image}}
 		<div class="card-title">
 			{{plan.planName}}

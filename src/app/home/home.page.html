@@ -48,11 +48,12 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<ion-button shape="block" fill="solid" block (click)="directToOrder()">Order Now</ion-button>
+				<ion-button shape="block" color="warning" fill="solid" block (click)="directToOrder()">Order Now</ion-button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
-	<ion-button shape="block" fill="solid" block ion-icon="cart-outline" (click)="openPopOver($ev)">Scheldued and Pending Jobs</ion-button>
+	<ion-button shape="block" fill="solid" block ion-icon="cart-outline" (click)="openPopOver($ev)">Scheldued and Pending
+		Jobs</ion-button>
 
 
 
@@ -88,7 +89,10 @@
 <ion-footer>
 
 	<ion-toolbar>
-
+		<ion-button icon="home " color="light" shape="block" fill="solid" block>Call HQ @
+			<ion-icon slot="start" name="call-outline"></ion-icon>
+			<a style="color:black" href="tel:1-847-555-5555">+65 8555123</a>
+		</ion-button>
 	</ion-toolbar>
 
 </ion-footer>

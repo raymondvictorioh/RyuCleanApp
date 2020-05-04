@@ -2,7 +2,7 @@
 
   <ion-card *ngIf="utilityService.getIsLogin() == false">
 
-    <ion-card-content padding>
+    <ion-card-content padding color="primary">
 
       <div *ngIf="loginError == true" style="color: red;">
         {{errorMessage}}
@@ -12,8 +12,12 @@
         <ion-grid>
           <ion-row color="primary" justify-content-center>
             <ion-col align-self-center>
-              <div text-center>
-                <h1>Welcome to RyuClean</h1>
+              <div text-center style="text-align:center">
+                <img style="margin:auto" class="imgCard" src="../../assets/ryucleanmark.png">
+              </div>
+              <div class="ion-text-center">
+                <h1 style="display: inline" class="title">RYUCLEAN</h1>
+                <p>Book expert home cleaners at a moment's notice</p>
               </div>
             </ion-col>
           </ion-row>
@@ -67,11 +71,11 @@
           </div>
 
 
-          <ion-button size="large" color="primary" type="submit" expand="full">
+          <ion-button size="large" color="primary" type="submit" expand="block">
             Login
           </ion-button>
           <p text-center>Don't have a account?</p>
-          <ion-button size="large" color="secondary" (click)="customerRegister()" expand="full">
+          <ion-button size="large" color="primary" fill="outline" (click)="customerRegister()" expand="block">
             Register
           </ion-button>
 
@@ -97,7 +101,15 @@
 </ion-content>
 
 
-
+<ion-content *ngIf="utilityService.getIsLogin() == true">
+  <div text-center style="text-align:center">
+    <img style="margin:auto" class="imgCard" src="../../assets/professions-and-jobs.png">
+  </div>
+  <div class="ion-text-center">
+    <h1 style="display: inline" class="title">Going somewhere?</h1>
+    <p>Book expert home cleaners now!</p>
+  </div>
+</ion-content>
 <ion-footer *ngIf="utilityService.getIsLogin() == true">
 
   <ion-toolbar>
