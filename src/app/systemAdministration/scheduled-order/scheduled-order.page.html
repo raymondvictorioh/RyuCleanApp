@@ -6,11 +6,11 @@
 
 <ion-content>
 
-  <ion-item *ngIf="jobs!=null &&jobs.length==0">
+  <ion-item *ngIf="scheduledJobs!=null &&scheduledJobs.length==0">
     No Scheduled Orders.
   </ion-item>
 
-  <ion-card *ngFor="let job of jobs">
+  <ion-card *ngFor="let job of scheduledJobs">
 
     <ion-card-header color="primary">
       Job ID : {{job.jobId}}
@@ -30,10 +30,10 @@
       </ion-item>
 
       <ion-item lines="full">
-          <ion-button (click)="presentAlert($event, job)" slot="start">End Job
-              <ion-icon name="checkmark" slot="start"> </ion-icon>
-          </ion-button>
-      
+        <ion-button (click)="presentAlert($event, job)" slot="start">End Job
+          <ion-icon name="checkmark" slot="start"> </ion-icon>
+        </ion-button>
+
       </ion-item>
 
     </ion-list>

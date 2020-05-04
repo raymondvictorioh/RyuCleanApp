@@ -39,6 +39,20 @@ export class PopoverPage implements OnInit {
         console.log('********* ViewScheduledOrdePage ' + error);
       }
     )
-  }
+
+    
+    this.jobService.getAssignedJobs().subscribe(
+        response => {
+          let assignedJobs: Job[] = response.jobs;
+          this.schelduedJobsNumber = this.schelduedJobsNumber+assignedJobs.length;
+          
+  
+        },
+        error => {
+          console.log('********* ViewScheduledOrdePage ' + error);
+        }
+      )
+    }
+  
 
 }

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Order Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="planToView!=null">
+    <ion-list lines="full">
+      <ion-list-header>
+        Customer Details
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-note slot="end" color="primary">{{customer.firstName}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mobile</ion-label>
+        <ion-note slot="end" color="primary">{{customer.contactNum}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-note slot="end" color="primary">{{newOrder.zipcode}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Gender Preference </ion-label>
+        <ion-note slot="end" color="primary">{{this.orderEntityService.getCurrentOrderEntity().genderPreference}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="planToView!=null">
+    <ion-list>
+      <ion-list-header>
+        Package Selected
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Package </ion-label>
+        <ion-note slot="end" color="primary">{{planToView.planName}}</ion-note>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-note slot="end" color="primary">{{planToView.planDescription}}</ion-note>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-note slot="end" color="primary">{{this.orderEntityService.getCurrentOrderEntity().freqencyEnum}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Frequency</ion-label>
+        <ion-note slot="end" color="primary">{{totalNumCleaning}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list lines="full">
+      <ion-list-header>
+        Price
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Price per day</ion-label>
+        <ion-note slot="end" color="primary">$ {{pricePerCleaning}}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Total Price</ion-label>
+        <ion-note slot="end" color="primary"> $ {{totalPrice}}</ion-note>
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+  <ion-button icon="home " shape="block" fill="solid" (click)="proceed()" block>Proceed to Checkout</ion-button>
+</ion-content>

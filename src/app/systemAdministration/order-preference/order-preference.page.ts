@@ -54,16 +54,17 @@ export class OrderPreferencePage implements OnInit {
     this.newOrder.notes = "";
 
   }
-
-  goBack() {
-    //this.router.navigateByUrl();
+  back() {
+    this.router.navigate(["packages"]);
+  
   }
+
 
   preference(preferenceForm: NgForm) {
     if(preferenceForm.valid){
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
     // console.log(this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
-    console.log("*** FREQUENCY ENUM from this.newOrder" + this.newOrder.freqencyEnum);
+    console.log("*** FREQUENCY ENUM from this.newOrder " + this.newOrder.freqencyEnum);
     console.log("*** FREQUENCY ENUM from orderEntityService: " + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
     
     let dataString = JSON.stringify(this.newOrder);
@@ -72,6 +73,12 @@ export class OrderPreferencePage implements OnInit {
       this.resultError = true;
       this.message = "Please choose a gender preference";
     }
+    // let dataString = JSON.stringify(this.newOrder);
+    // this.router.navigate(['payment', dataString]);
+    console.log("***ORDER plan from this.newOrder" + this.orderEntityService.getCurrentOrderEntity().planId);
+    console.log("***ORDER plan from this.newOrder" + this.orderEntityService.getCurrentOrderEntity().freqencyEnum);
+
+    this.router.navigateByUrl('order-summary');
   }
 
 }

@@ -1,8 +1,13 @@
 <ion-header>
         <ion-toolbar>
-          <ion-title>Address</ion-title>
-        </ion-toolbar>
-      </ion-header>
+                <ion-buttons slot="start">
+                    <ion-button (click)="back()">
+                        <ion-icon slot="start" name="arrow-back"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+                <ion-title>Address</ion-title>
+            </ion-toolbar>
+        </ion-header>
       
       <ion-content>
               <div *ngIf="formCompleted == false" style="color: red;">
@@ -32,10 +37,7 @@
                 [(ngModel)]="postalCode"  #inPostalCode="ngModel" minlength="6" maxlength="6" required="true"></ion-input>
             </ion-item>
       
-            <ion-button size="large" color="secondary" (click)="setAddress()" expand="full" ion-icon="right-arrow">
+            <ion-button icon="home " shape="block" fill="solid" (click)="setAddress()">
                 Next
             </ion-button>
       </ion-content>
-      
-       
-      
