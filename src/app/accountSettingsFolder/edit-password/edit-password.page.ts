@@ -17,6 +17,7 @@ export class EditPasswordPage implements OnInit {
   resultError: boolean;
   message: string;
   customerToUpdate: Customer;
+  passwordCheck: string;
   retrieveCustomerError: boolean
   constructor(private utilityService: UtilityService, private modalController: ModalController, private navParams: NavParams, private customerService: CustomerService) {
     this.submitted = false;
@@ -39,13 +40,13 @@ export class EditPasswordPage implements OnInit {
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(onClosedData);
 
-    
+
   }
 
 
 
   update(updateCustomerForm: NgForm) {
-    if (updateCustomerForm.valid) {
+    if (updateCustomerForm.valid && this.passwordCheck == this.customerToUpdate.password) {
       this.customerService.updateCustomer(this.customerToUpdate).subscribe(
         response => {
           this.resultSuccess = true;
@@ -65,6 +66,9 @@ export class EditPasswordPage implements OnInit {
           console.log('********** UpdateProductComponent.ts: ' + error);
         }
       )
+    } else {
+      this.resultError = true;
+      this.message = "Passwords do not match";
     }
   }
 }

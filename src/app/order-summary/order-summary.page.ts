@@ -69,13 +69,13 @@ export class OrderSummaryPage implements OnInit {
           this.totalNumCleaning = "1"
         } else if (this.newOrder.freqencyEnum == 'REGULAR') {
           console.log("REGULAR");
-          this.pricePerCleaning = this.planToView.dailyPrice;
+          this.pricePerCleaning = this.planToView.regularPrice;
           this.totalPrice = this.planToView.regularPrice * 6;
           this.totalNumCleaning = "6"
 
         } else if (this.newOrder.freqencyEnum == 'MEMBER') {
           console.log("MEMBER");
-          this.pricePerCleaning = this.planToView.dailyPrice;
+          this.pricePerCleaning = this.planToView.memberPrice;
           this.totalPrice = this.planToView.memberPrice * 12;
           this.totalNumCleaning = "12"
 

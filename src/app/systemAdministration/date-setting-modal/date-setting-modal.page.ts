@@ -52,7 +52,7 @@ export class DateSettingModalPage implements OnInit {
     console.log("***************" + this.newJob.jobTime);
 
 
-    this.newJob.jobStatusEnum = JobStatusEnum.ACCEPTED;
+    this.newJob.jobStatusEnum = JobStatusEnum.ASSIGNED;
 
     if (submitForm.valid) {
 

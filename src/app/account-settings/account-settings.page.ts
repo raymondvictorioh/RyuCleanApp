@@ -43,11 +43,12 @@ export class AccountSettingsPage implements OnInit {
   }
 
   async presentModalUsername() {
+    console.log("username edit");
     const modal = await this.modalController.create({
       component: EditNamePage
     });
-    const { data } = await modal.onWillDismiss();
-    console.log(data);
+
+
     return await modal.present();
   }
 
