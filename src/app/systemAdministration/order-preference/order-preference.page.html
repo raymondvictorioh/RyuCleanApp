@@ -30,6 +30,14 @@
               <ion-select-option value="NO_PREFERENCE">No Preference</ion-select-option>
             </ion-select>
           </ion-item>
+          <div style="color:red;">
+              <div *ngIf="genderPreference.invalid && (genderPreference.dirty || genderPreference.touched || submitted)" class="errorText">
+                <div *ngIf="genderPreference.errors.required">
+                  Gender Preference is required.
+                </div>
+                
+              </div>
+            </div>
 
           <ion-item>
             <ion-label><b>Notes</b></ion-label>

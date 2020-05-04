@@ -31,10 +31,13 @@ export class AddressPage implements OnInit {
   retrievePlanError: boolean;
   error: boolean;
   jobList: Job[] = new Array();
-  roadname: string = "";
-  unitNumber: string = "";
-  postalCode: string = "";
-  buildingName: string = "";
+  roadname: string ;
+  unitNumber: string ;
+  postalCode: string;
+  buildingName: string;
+  formCompleted:boolean;
+  message: string;
+  buildingNamelength:boolean;
 
 
   constructor(private router: Router,
@@ -47,10 +50,24 @@ export class AddressPage implements OnInit {
     this.newOrder = orderEntityService.getCurrentOrderEntity();
     this.retrievePlanError = false;
     this.error = false;
+    this.formCompleted = true;
+    this.roadname ="";
+    this.unitNumber = "";
+    this.postalCode = "";
+    this.buildingName = "";
+
 
   }
 
   setAddress(event) {
+    if(this.roadname == "" || this.unitNumber =="" ||this.postalCode =="" || this.buildingName == "" ){
+      this.formCompleted = false;
+      this.message = "Please fill in all the fields"
+      console.log("hellllllllllo");
+    } else {
+      this.formCompleted = true;
+    }
+    if(this.formCompleted == true){
     this.newOrder.zipcode = this.unitNumber+ " " +this.buildingName+" " +this.roadname+" " +this.postalCode;
     console.log(this.newOrder.zipcode);
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
@@ -75,7 +92,7 @@ export class AddressPage implements OnInit {
 
 
     this.router.navigateByUrl("orderPreference");
-
+  } 
   }
 
   ionViewDidLeave() {
