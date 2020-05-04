@@ -16,7 +16,9 @@ import { BarcodeModalPage } from '../barcode-modal/barcode-modal.page';
 })
 export class ScheduledOrderPage implements OnInit {
 
-  jobs: Job[];
+  // assignedJobs: Job[];
+  // acceptedJobs: Job[];
+  scheduledJobs: Job[];
   value: number;
 
 
@@ -73,14 +75,39 @@ export class ScheduledOrderPage implements OnInit {
 
 
   ionViewWillEnter() {
-    this.refreshJobs();
+    // this.refreshJobs();
     console.log("asdasd");
   }
 
   refreshJobs() {
+    this.getAcceptedJobs();
+    this.getAssignedJobs();
+
+
+  }
+
+  getAcceptedJobs() {
     this.jobService.getAcceptedJobs().subscribe(
       response => {
-        this.jobs = response.jobs;
+        this.scheduledJobs = response.jobs;
+        console.log(response.jobs.length);
+      },
+      error => {
+        console.log('********* ViewScheduledOrdePage ' + error);
+      }
+    )
+  }
+
+  getAssignedJobs() {
+    this.jobService.getAssignedJobs().subscribe(
+      response => {
+        let assignedJobs: Job[] = response.jobs;
+        for (let job of assignedJobs) {
+          this.scheduledJobs.push(job);
+        }
+        console.log(response.jobs.length)
+        console.log("scheduled jobs: " + this.scheduledJobs.length);
+
       },
       error => {
         console.log('********* ViewScheduledOrdePage ' + error);
@@ -120,8 +147,8 @@ export class ScheduledOrderPage implements OnInit {
 
     modal.onDidDismiss().then((event) => {
       console.log('********** modal dismiss');
-			this.refreshJobs();
-		});
+      this.refreshJobs();
+    });
 
 
     return await modal.present();

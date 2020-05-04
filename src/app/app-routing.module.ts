@@ -112,7 +112,11 @@ const routes: Routes = [
   
   { path: 'autocomplete-map', loadChildren: './systemAdministration/autocomplete-map/autocomplete-map.module#AutocompleteMapPageModule'},
   
-  { path: 'popover', loadChildren: './systemAdministration/popover/popover.module#PopoverPageModule' }
+  { path: 'popover', loadChildren: './systemAdministration/popover/popover.module#PopoverPageModule' },
+  {
+    path: 'order-summary',
+    loadChildren: () => import('./order-summary/order-summary.module').then( m => m.OrderSummaryPageModule)
+  }
 
 ];
 

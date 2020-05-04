@@ -86,7 +86,7 @@ export class PaymentPage implements OnInit {
 
     let username = this.utilityService.getUsername();
     let password = this.utilityService.getPassword();
-    let planId = 1;
+    let planId = this.OrderEntityService.getCurrentOrderEntity().planId;
     let customerId = this.utilityService.getCurrentCustomer().cusId;
     let jobs = this.jobService.getCurrentJobList();
 
@@ -117,6 +117,11 @@ export class PaymentPage implements OnInit {
 
     );
 
+  }
+
+  back() {
+    let dataString = JSON.stringify(this.newOrder);
+    this.router.navigate(['payment', dataString]);
   }
 
 }

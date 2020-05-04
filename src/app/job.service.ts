@@ -51,9 +51,9 @@ export class JobService {
       );
   }
 
-  getInProgressJobs(): Observable<any> {
+  getAssignedJobs(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "/retrieveJobsByJobStatusEnumForCustomers?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()
-      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=CLEANING_IN_PROGRESS").pipe(
+      + "&cusId=" + this.utilityService.getCurrentCustomer().cusId + "&jobStatus=ASSIGNED").pipe(
         catchError(this.handleError)
       );
   }
@@ -81,18 +81,18 @@ export class JobService {
     );
   }
 
-  getJobByJobId(jobId: number): Observable<any>{
+  getJobByJobId(jobId: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + jobId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe(
       catchError(this.handleError)
     );
   }
 
   getPlanByPlanId(planId: number): Observable<any> {
-		return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
-			(
-				catchError(this.handleError)
-			);
-	}
+    return this.httpClient.get<any>(this.baseUrl + "/retrieveJob/" + planId + "?username=" + this.utilityService.getUsername() + "&password=" + this.utilityService.getPassword()).pipe
+      (
+        catchError(this.handleError)
+      );
+  }
 
 
   private handleError(error: HttpErrorResponse) {
@@ -126,8 +126,7 @@ export class JobService {
     return this.utilityService.getCurrentJobList();
   }
 
-  updateJob(jobToUpdate: Job): Observable<any>
-  {
+  updateJob(jobToUpdate: Job): Observable<any> {
     let updateJobReq = {
       "username": this.utilityService.getUsername(),
       "password": this.utilityService.getPassword(),
@@ -135,9 +134,9 @@ export class JobService {
     };
 
     return this.httpClient.post<any>(this.baseUrl, updateJobReq, httpOptions).pipe
-		(
-			catchError(this.handleError)
-		);
+      (
+        catchError(this.handleError)
+      );
 
   }
 

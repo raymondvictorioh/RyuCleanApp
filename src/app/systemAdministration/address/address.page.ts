@@ -51,7 +51,7 @@ export class AddressPage implements OnInit {
   }
 
   setAddress(event) {
-    this.newOrder.zipcode = this.unitNumber+ " " +this.buildingName+" " +this.roadname+" " +this.postalCode;
+    this.newOrder.zipcode = this.unitNumber + " " + this.buildingName + " " + this.roadname + " " + this.postalCode;
     console.log(this.newOrder.zipcode);
     this.orderEntityService.setCurrentOrderEntity(this.newOrder);
 
@@ -69,7 +69,7 @@ export class AddressPage implements OnInit {
     }
 
     for (var _i = 0; _i < numberOfTimes; _i++) {
-      this.jobList.push(new Job (null, null, null, new Date (), new Date ()));//new Job(_i, null, this.newOrder, null, null));
+      this.jobList.push(new Job(null, null, null, new Date(), new Date()));//new Job(_i, null, this.newOrder, null, null));
     }
     this.jobService.setCurrentJobList(this.jobList);
 
@@ -87,6 +87,11 @@ export class AddressPage implements OnInit {
   }
 
 
+  back() {
+
+    this.router.navigate(["/frequency/" + this.newOrder.planId]);
+
+  }
 
   options: any;
 
